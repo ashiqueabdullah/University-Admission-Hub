@@ -1,0 +1,67 @@
+/* XL (Desktop,Laptop) Device :1200px. */
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+    #navclose {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+
+/*LG Device :992px. (Desktop tablet horizontal)*/
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    #navclose {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+
+/*MD Device :768px. (Small tablet,Phone vertical)*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #navclose {
+        visibility: visible;
+        opacity: 1;
+    }
+    .right_box {
+        width: 100%;
+    }
+}
+
+
+/*SM Extra small Device. (Phone)*/
+
+@media (max-width: 767px) {
+    #mynav {
+        position: absolute;
+    }
+    #navclose {
+        visibility: visible;
+        opacity: 1;
+    }
+    .right_box {
+        width: 100%;
+    }
+    .right_box .top_nav input.form-contorl {
+        margin-left: 5%;
+    }
+    .right_box .top_nav .myicon ul {
+        float: none;
+        margin-left: 28%;
+    }
+    .right_box .hearo_area .box i {
+        margin-top: 5%;
+    }
+    .right_box .payment img.proc {
+        width: 100%;
+        margin-left: 0%;
+    }
+    .right_box .payment input[type="text"] {
+        margin-top: 0%;
+    }
+    .cmpt_prof{
+        width: 100%!important;
+    }
+}

@@ -1,0 +1,549 @@
+<div class="edit_part">
+        <form action="" method="post">
+                <?php
+                    $phcls=new phpclass();
+                        if (isset($_POST['submit'])) {
+                            $res=$phcls->RegistrationStudentTwo($_POST);
+                            
+                        }
+                    ?>
+                    
+                        
+                        <h3>Basic Information</h3>
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="naton">Nationality</label>
+                                    <input id="naton" name="nationality" type="text" class="form-control" placeholder="What is your Nationality">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="placeOfBirthDistrict">Place of birth district</label>
+                                    <select  class="form-control" name="placeOfBirthDistrict" id="bdst">
+                                        <option value="Chittagong">Chittagong</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Jessore">Jessore</option>
+                                        <option value="Dinajpur">Dinajpur</option>
+                                        <option value="Mymensingh">Mymensingh</option>
+                                        <option value="Comilla">Comilla</option>
+                                        <option value="Barisal">Barisal</option>
+                                        <option value="Faridpur">Faridpur</option>
+                                        <option value="Bogra">Bogra </option>
+                                        <option value="Pabna">Pabna</option>
+                                        <option value="Rangamati">Rangamati </option>
+                                        <option value="Kushtia">Kushtia </option>
+                                        <option value="Rangpur">Rangpur </option>
+                                        <option value="Noakhali">Noakhali </option>
+                                        <option value="Khulna">Khulna </option>
+                                        <option value="Tangail">Tangail </option>
+                                        <option value="Panchagarh">Panchagarh </option>
+                                        <option value="Bhola">Bhola </option>
+                                        <option value="Bandarban">Bandarban </option>
+                                        <option value="Chandpur">Chandpur </option>
+                                        <option value="Habiganj">Habiganj </option>
+                                        <option value="Lakshmipur">Lakshmipur</option>
+                                        <option value="Barguna">Barguna </option>
+                                        <option value="Jhalokati">Jhalokati</option>
+                                        <option value="Pirojpur">Pirojpur</option>
+                                        <option value="Patuakhali">Patuakhali </option>
+                                        <option value="Jhenaidah">Jhenaidah</option>
+                                        <option value="Narail">Narail</option>
+                                        <option value="Magura">Magura</option>
+                                        <option value="Lalmonirhat">Lalmonirhat</option>
+                                        <option value="Kurigram">Kurigram</option>
+                                        <option value="Nilphamari">Nilphamari </option>
+                                        <option value="Gaibandha">Gaibandha </option>
+                                        <option value="Thakurgaon">Thakurgaon </option>
+                                        <option value="Satkhira">Satkhira </option>
+                                        <option value="Bagerhat">Bagerhat </option>
+                                        <option value="Chuadanga">Chuadanga</option>
+                                        <option value="Meherpur">Meherpur</option>
+                                        <option value="Sirajganj">Sirajganj</option>
+                                        <option value="Joypurhat">Joypurhat</option>
+                                        <option value="Natore">Natore</option>
+                                        <option value="Naogaon">Naogaon</option>
+                                        <option value="Nawabganj">Nawabganj</option>
+                                        <option value="Khagrachhari">Khagrachhari</option>
+                                        <option value="Feni">Feni</option>
+                                        <option value="Brahmanbaria">Brahmanbaria</option>
+                                        <option value="Sunamganj">Sunamganj</option>
+                                        <option value="Cox's Baza">Cox's Baza</option>
+                                        <option value="Moulvibazar">Moulvibazar</option>
+                                        <option value="Gopalganj">Gopalganj</option>
+                                        <option value="Shariatpur">Shariatpur</option>
+                                        <option value="Madaripur">Madaripur</option>
+                                        <option value="Rajbari">Rajbari</option>
+                                        <option value="Gazipur">Gazipur</option>
+                                        <option value="Kishoreganj">Kishoreganj</option>
+                                        <option value="Jamalpur">Jamalpur</option>
+                                        <option value="Sherpur">Sherpur</option>
+                                        <option value="Netrakona">Netrakona</option>
+                                        <option value="Munshiganj">Munshiganj</option>
+                                        <option value="Narsingdi">Narsingdi</option>
+                                        <option value="Narayanganj">Narayanganj</option>
+                                        <option value="Manikganj">Manikganj</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="imgupload">Upload your image</label>
+                                    <input id="imgupload" name="myimage" type="file" class="form-control-file">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Marital Status</label>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input id="married" class="form-check-input" name="married" type="radio" value="one" checked>
+                                        <label for="married">Married</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input id="single" class="form-check-input" name="married" type="radio" value="two">
+                                        <label for="single">Single</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Blood Group</label>
+                                    <select name="BloodGroup" class="form-control" id="exampleFormControlSelect1">
+                                        <option value="a+">A+</option>
+                                        <option value="o+">O+</option>
+                                        <option value="a-">A-</option>
+                                        <option value="o-">O-</option>
+                                        <option value="ab">AB</option>
+                                        <option value="ab">AB-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h4 class="clear-left">Parmanent Address</h4>
+                        <small><mark>If diffrent from present address</mark></small>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input name="ParmanentAddress" id="address" type="text" class="form-control" placeholder="Enter Your address">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Division</label>
+                                    <select name="ParmanentDivision" class="form-control" id="exampleFormControlSelect1">
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Barisal">Barisal</option>
+                                        <option value="Chittagong">Chittagong</option>
+                                        <option value="Khulna">Khulna</option>
+                                        <option value="Mymensingh">Mymensingh</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="zip">Zip code</label>
+                                    <input id="zip" name="ParmanentZipCode" type="text" class="form-control" placeholder="Enter your zip">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="ParmanentDistrict">District</label>
+                                    <select class="form-control" name="ParmanentDistrict" id="bdst">
+                                        <option value="Chittagong">Chittagong</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Jessore">Jessore</option>
+                                        <option value="Dinajpur">Dinajpur</option>
+                                        <option value="Mymensingh">Mymensingh</option>
+                                        <option value="Comilla">Comilla</option>
+                                        <option value="Barisal">Barisal</option>
+                                        <option value="Faridpur">Faridpur</option>
+                                        <option value="Bogra">Bogra </option>
+                                        <option value="Pabna">Pabna</option>
+                                        <option value="Rangamati">Rangamati </option>
+                                        <option value="Kushtia">Kushtia </option>
+                                        <option value="Rangpur">Rangpur </option>
+                                        <option value="Noakhali">Noakhali </option>
+                                        <option value="Khulna">Khulna </option>
+                                        <option value="Tangail">Tangail </option>
+                                        <option value="Panchagarh">Panchagarh </option>
+                                        <option value="Bhola">Bhola </option>
+                                        <option value="Bandarban">Bandarban </option>
+                                        <option value="Chandpur">Chandpur </option>
+                                        <option value="Habiganj">Habiganj </option>
+                                        <option value="Lakshmipur">Lakshmipur</option>
+                                        <option value="Barguna">Barguna </option>
+                                        <option value="Jhalokati">Jhalokati</option>
+                                        <option value="Pirojpur">Pirojpur</option>
+                                        <option value="Patuakhali">Patuakhali </option>
+                                        <option value="Jhenaidah">Jhenaidah</option>
+                                        <option value="Narail">Narail</option>
+                                        <option value="Magura">Magura</option>
+                                        <option value="Lalmonirhat">Lalmonirhat</option>
+                                        <option value="Kurigram">Kurigram</option>
+                                        <option value="Nilphamari">Nilphamari </option>
+                                        <option value="Gaibandha">Gaibandha </option>
+                                        <option value="Thakurgaon">Thakurgaon </option>
+                                        <option value="Satkhira">Satkhira </option>
+                                        <option value="Bagerhat">Bagerhat </option>
+                                        <option value="Chuadanga">Chuadanga</option>
+                                        <option value="Meherpur">Meherpur</option>
+                                        <option value="Sirajganj">Sirajganj</option>
+                                        <option value="Joypurhat">Joypurhat</option>
+                                        <option value="Natore">Natore</option>
+                                        <option value="Naogaon">Naogaon</option>
+                                        <option value="Nawabganj">Nawabganj</option>
+                                        <option value="Khagrachhari">Khagrachhari</option>
+                                        <option value="Feni">Feni</option>
+                                        <option value="Brahmanbaria">Brahmanbaria</option>
+                                        <option value="Sunamganj">Sunamganj</option>
+                                        <option value="Cox's Baza">Cox's Baza</option>
+                                        <option value="Moulvibazar">Moulvibazar</option>
+                                        <option value="Gopalganj">Gopalganj</option>
+                                        <option value="Shariatpur">Shariatpur</option>
+                                        <option value="Madaripur">Madaripur</option>
+                                        <option value="Rajbari">Rajbari</option>
+                                        <option value="Gazipur">Gazipur</option>
+                                        <option value="Kishoreganj">Kishoreganj</option>
+                                        <option value="Jamalpur">Jamalpur</option>
+                                        <option value="Sherpur">Sherpur</option>
+                                        <option value="Netrakona">Netrakona</option>
+                                        <option value="Munshiganj">Munshiganj</option>
+                                        <option value="Narsingdi">Narsingdi</option>
+                                        <option value="Narayanganj">Narayanganj</option>
+                                        <option value="Manikganj">Manikganj</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input id="city" name="ParmanentCity" type="text" class="form-control" placeholder="Enter your city">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    
+                        
+                        <h4>Parents Information</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fathername">Father Name</label>
+                                    <input id="fathername" name="fatherName" type="text" class="form-control" placeholder="Enter Your name">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="foccipation">Occipation</label>
+                                    <input id="foccipation" name="fatherOccipation" type="text" class="form-control" placeholder="Enter Your profession">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="faddress">Address</label>
+                                    <input id="faddress" name="fatherAddress" type="text" class="form-control" placeholder="Enter Your Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fphone">Phone</label>
+                                    <input id="fphone" name="fatherPhone" type="text" class="form-control" placeholder="Enter Your number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="femail">Email</label>
+                                    <input id="femail" name="fatherEmail" type="text" class="form-control" placeholder="Enter Your Email">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="mname">Mother Name</label>
+                                    <input id="mname" name="motherName" type="text" class="form-control" placeholder="Enter Your Name">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="moccipation">Occipation</label>
+                                    <input id="moccipation" name="motherOccipation" type="text" class="form-control" placeholder="Enter Your profession">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="maddress">Address</label>
+                                    <input id="maddress" name="motherAddress" type="text" class="form-control" placeholder="Enter Your address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mphone">Phone</label>
+                                    <input id="mphone" name="motherPhone" type="text" class="form-control" placeholder="Enter Your Number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="memail">Email</label>
+                                    <input id="memail" name="motherEmail" type="text" class="form-control" placeholder="Enter Your Email">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4>Name of local guardian</h4>
+                        <small><mark>If have</mark></small>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="gname">Guardian Name</label>
+                                    <input id="gname" name="nameOfLocalGuardian" type="text" class="form-control" placeholder="Enter Your Name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="grelation">Relationship</label>
+                                    <input id="grelation" name="relationshipOfLocalGuardian" type="text" class="form-control" placeholder="Enter Your Relationship">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="gaddress">Address</label>
+                                    <input id="gaddress" name="addressOfLocalGuardian" type="text" class="form-control" placeholder="Enter Your address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="gphone">Phone</label>
+                                    <input id="gphone" name="phoneOfLocalGuardian" type="text" class="form-control" placeholder="Enter Your Number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="gemail">Email</label>
+                                    <input id="gemail" name="emailOfLocalGuardian" type="text" class="form-control" placeholder="Enter Your Email">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                        
+
+                        <h4>Person to be notified is case of emergency <small><mark>If have</mark></small></h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="erelation">Relationship</label>
+                                    <input id="erelation" name="emergencyPersonRelationshipe" type="text" class="form-control" placeholder="Relationship">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eaddress">Name</label>
+                                    <input id="eaddress" name="emergencyPersonName" type="text" class="form-control" placeholder="Enter Your Name">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="eaddress">Address</label>
+                                    <input id="eaddress" name="emergencyPersonAddress" type="text" class="form-control" placeholder="Enter your Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="eaddress">Phone</label>
+                                    <input id="eaddress" name="emergencyPersonPhone" type="text" class="form-control" placeholder="Enter your Number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="eaddress">Email</label>
+                                    <input id="eaddress" name="emergencyPersonEmail" type="text" class="form-control" placeholder="Enter your Email">
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Name of the person who will pay the fee</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pname">Name</label>
+                                    <input id="pname" name="personPayTheFeeName" type="text" class="form-control" placeholder="Enter your Name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pname">Relation</label>
+                                    <input id="pname" name="personPayTheFeeRealtion" type="text" class="form-control" placeholder="Enter Your Relationship">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pname">Address</label>
+                                    <input id="pname" name="personPayTheFeeAddress" type="text" class="form-control" placeholder="Enter your Address">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pname">Phone</label>
+                                    <input id="pname" name="personPayTheFeePhone" type="text" class="form-control" placeholder="Enter your Number">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pname">Email</label>
+                                    <input id="pname" name="personPayTheFeeEmail" type="text" class="form-control" placeholder="Enter your Email">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="pname">Annual Income</label>
+                                    <input id="pname" name="personPayTheFeeAnnualIncome" type="text" class="form-control" placeholder="Enter Your Income">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                        <p>4/4</p>
+                        <h4>SAT/TOFFEL/IELTS/GAMAT <small><mark>If any</mark></small></h4>
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">SAT</label>
+                                    <input id="pname" name="sat" type="text" class="form-control" placeholder="Enter">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Date taken</label>
+                                    <input id="pname" name="satDate" type="date" class="form-control" placeholder="Enter Address">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">IELTS</label>
+                                    <input id="pname" name="ielts" type="text" class="form-control" placeholder="Enter">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Date taken</label>
+                                    <input id="pname" name="ieltsDate" type="date" class="form-control" placeholder="Enter Address">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">TOFEL</label>
+                                    <input id="pname" name="tofel" type="text" class="form-control" placeholder="Enter">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Date taken</label>
+                                    <input id="pname" name="tofelDate" type="date" class="form-control" placeholder="Enter Address">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">GMAT</label>
+                                    <input id="pname" name="gmat" type="text" class="form-control" placeholder="Enter">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Date taken</label>
+                                    <input id="pname" name="gmatDate" type="date" class="form-control" placeholder="Enter Address">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4>SCC/O'Lavel record</h4>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Institute name</label>
+                                    <input id="pname" name="sscInstituteName" type="text" class="form-control" placeholder="Enter institute Name">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Board name</label>
+                                    <input id="pname" name="sscBordeName" type="text" class="form-control" placeholder="Enter your Board">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">GPA</label>
+                                    <input id="pname" name="sscGpa" type="text" class="form-control" placeholder="Enter Your GPA">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Passing Year</label>
+                                    <input id="pname" name="sscpassingYear" type="text" class="form-control" placeholder="Enter your passing year">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">SSC Certificate</label>
+                                    <input id="pname" name="sscCertificate" type="file" class="file-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4>HSC/A'Lavel record</h4>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Institute name</label>
+                                    <input id="pname" name="hscInstituteName" type="text" class="form-control" placeholder="Enter institute name">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Board name</label>
+                                    <input id="pname" name="hscBordeName" type="text" class="form-control" placeholder="Enter your Board">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">GPA</label>
+                                    <input id="pname" name="hscGpa" type="text" class="form-control" placeholder="Enter your GPA">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">Passing Year</label>
+                                    <input id="pname" name="hscpassingYear" type="text" class="form-control" placeholder="Enter your passing year">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pname">HSC Certificate</label>
+                                    <input id="pname" name="hscCertificate" type="file" class="file-control">
+                                </div>
+                            </div>
+
+                        
+                        <input class="btn btn-info float-center" type="submit" name="submit" value="submit">
+                    </div>
+            </form>
+        </div>

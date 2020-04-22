@@ -1,0 +1,611 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* 
+#F5F6FA (page background)
+#101924 (manubar color)
+#798BFF (text color)
+
+*/
+
+
+/*menu bar css start*/
+
+#mynav {
+    left: 0px;
+    right: 0;
+    background: #101924;
+    width: 230px;
+    height: 100%;
+    color: white;
+    z-index: 99;
+    position: fixed;
+    transition: .3s;
+    float: left;
+}
+
+#mynav #navopen {
+    background: #5CDB94;
+    padding: 5px 10px;
+    width: 80px;
+    left: 15px;
+    top: 10px;
+    text-align: center;
+    margin: 0px auto;
+    z-index: -1;
+    cursor: pointer;
+    position: fixed;
+    visibility: hidden;
+}
+
+#navclose {
+    background: black;
+    width: 20px;
+    text-align: center;
+    float: right;
+    cursor: pointer;
+}
+
+#mynav .logo {
+    padding: 20px 0px;
+    width: 170px;
+}
+
+#mynav .adminimage {
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: 2px solid white;
+}
+
+#mynav h3 {
+    text-align: center;
+}
+
+#mynav ul {
+    background: #101924;
+}
+
+#mynav ul li {
+    list-style-type: none;
+}
+
+#mynav ul li a {
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    display: block;
+    padding: 10px 10px;
+    color: white;
+    transition: .3s;
+}
+
+#mynav ul li a:hover {
+    color: gray;
+}
+
+
+/*menu bar css end*/
+
+
+/*Right top css Start*/
+
+.right_box {
+    width: calc(100% - 230px);
+    margin-left: auto;
+    height: auto;
+    background-color:#F5F6FA;
+}
+
+.right_box .top_nav {
+    height: auto;
+    background: white;
+    overflow: hidden;
+    border-bottom: 1px solid #101924;
+    padding: 5px 0px;
+    
+}
+
+.right_box .top_nav h1 {
+    color: #101924;
+    padding-left: 10px;
+}
+
+.right_box .top_nav form {}
+
+.right_box .top_nav input.form-contorl {
+    width: 84%;
+    border: 0px;
+    border-radius: 3px;
+    padding: 4px 10px;
+    margin-right: -7px;
+}
+
+.right_box .top_nav button {
+    margin-left: 0px;
+    padding: 4px 8px;
+    color: blue;
+    border: 0px;
+}
+
+.right_box .top_nav .myform {
+    margin: 12px 0px;
+}
+
+.right_box .top_nav .myicon {}
+
+.right_box .top_nav .myicon ul {
+    margin: 0px 10px;
+    padding: 0px;
+    float: right;
+}
+
+.right_box .top_nav .myicon ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 16px 5px;
+}
+
+.right_box .top_nav .myicon ul li a {
+    padding: 4px 6px;
+    color: white;
+}
+
+.right_box .top_nav .myicon i.iconbefor {
+    position: relative;
+}
+
+.right_box .top_nav .myicon ul li i.iconbefor:after {
+    position: absolute;
+    content: "";
+    top: 100px;
+    left: 0;
+    background: green;
+    height: 100px;
+    width: 150px;
+}
+
+
+/*Right top css end*/
+
+
+/*add Admin css start*/
+
+.addadmin {
+    overflow: hidden;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.addadmin .inner {
+    width: 100%;
+    height: auto;
+    border: 1px solid gray;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.addadmin button.btn{
+width: 100%;
+margin-top: 5px;
+}
+/*add Admin css end*/
+
+
+/*requer css start*/
+
+.requer {
+    overflow: hidden;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.requer .inner {
+    width: 90%;
+    height: auto;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #dbdfea;
+}
+
+.requer ul {
+    margin: 0px;
+    padding: 0px;
+}
+.requer ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.requer ul li a{
+    text-decoration: none;
+    padding: 10px 25px;
+    background-color: #101924;
+    border-radius: 3px;
+    color: #A4CFFF;
+    margin-right: 3px;
+    display: block;
+}
+.requer ul li a#depertmentbtn{
+    color:#101924;
+    background:#A4CFFF;
+}
+.requer #depertment{display: block}
+.requer #subject{display: none}
+.requer #quata{display: none}
+.requer #seat{display: none}
+.requer #allunits{display: none}
+
+.requer #addunit{
+    display: none;
+    width: 60%;
+    height: auto;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #dbdfea;
+}
+/* requer css end*/
+
+
+/*Right hero area css start*/
+
+.right_box .hearo_area {
+    overflow: hidden;
+    padding: 10px;
+}
+
+.right_box .hearo_area table.table.table-dark,
+.right_box .hearo_area table.table.table-light {
+    border-radius: 5px;
+    box-shadow: 5px 1px 10px gray;
+    border: none;
+}
+
+.right_box .hearo_area .box i {
+    font-size: 55px;
+    margin-top: 25%;
+}
+
+
+/*Right hero area css end*/
+
+
+/*Right chat area css start*/
+
+.chat {
+    overflow: hidden;
+    padding: 10px;
+}
+
+.main_box {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+.chat .left_box {
+    float: left;
+    height: 550px;
+    width: 30%;
+    overflow: hidden;
+}
+
+.chat .left_box .user_box {
+    padding: 10px 5px;
+    border-bottom: 1px solid black;
+}
+
+.chat .left_box img {
+    height: 40px;
+    width: 40px;
+    border-radius: 150px;
+    border: 2px solid white;
+    float: left;
+    margin-right: 5px;
+}
+
+.chat .left_box h6 {
+    margin: 0px;
+}
+
+.chat .left_box p {
+    color: gray;
+    margin: 0px;
+}
+
+.chat .left_box .user_box p.unred {
+    font-weight: bold;
+    color: black;
+    font-size: 15px;
+}
+
+.chat .right_box {
+    float: left;
+    height: 100%;
+    width: 70%;
+    border-left: 2px solid black;
+    overflow: hidden;
+}
+
+.right_box .disply_name {
+    height: 11%;
+    background: black;
+    color: white;
+    padding: 10px;
+}
+
+.right_box .disply_name img {
+    height: 40px;
+    width: 40px;
+    border: 2px solid white;
+    border-radius: 150px;
+    float: left;
+    margin-right: 10px;
+}
+
+.right_box .disply_name p {
+    margin: 7px 0px;
+}
+
+.right_box .disply_name h6 {
+    color: green;
+    margin: 10px 0px;
+}
+
+.right_box .disply_name i {
+    color: color;
+    text-align: right;
+    margin: 10px 0px;
+    display: block;
+    font-size: 20px;
+}
+
+.chat .right_box .show_text {
+    height: 82%;
+    width: 100%;
+    background: gray;
+    padding: 15px;
+}
+
+.chat .right_box .show_text p {
+    color: white;
+    background: blue;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.chat .right_box .show_text p.admin {
+    color: blue;
+    background: white;
+}
+
+.chat .right_box .send_text {
+    height: 20%;
+    width: 100%;
+}
+
+.chat .right_box .send_text .text {
+    width: 90%;
+    float: left;
+}
+
+.chat .right_box .send_text .send {
+    float: left;
+    width: 10%;
+    background-color: black;
+    height: 100%;
+}
+
+.chat .right_box .send_text .send form {}
+
+.chat .right_box .send_text .send i {
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: 20px;
+    display: block;
+    padding: 3px 0px;
+}
+
+
+/*Right chat area css end*/
+
+.notice{
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+}
+.notice ul {
+    margin: 0px;
+    padding: 0px;
+}
+.notice ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+.notice ul li a{
+    text-decoration: none;
+    padding: 10px 25px;
+    background-color: #101924;
+    border-radius: 3px;
+    color: #A4CFFF;
+    margin-right: 3px;
+    display: block;
+}
+.notice ul li a#noticeallbtn{
+    color:#101924;
+    background:#A4CFFF;
+}
+.notice #NoticeAll{
+    display: block;
+}
+.notice #NoticeForMe{
+    display: none;
+}
+.notice #NoticeAdd{
+    width: 60%;
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0px auto;
+    display: none;
+}
+a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-secondary  {
+    font-size: 12px;
+    color: white;
+}
+
+.noticeView{
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+    width: 70%;
+    margin: 0px auto;
+}
+
+.modaratorviews{
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+    width: 50%;
+    margin: 0px auto;
+}
+
+
+
+.notice #modaratoraddsow{
+    width: 60%;
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0px auto;
+    display: none;
+}
+
+.notice ul li a#modaratorallbtn{
+    color:#101924;
+    background:#A4CFFF;
+}
+
+#modaratorallshow{display:block;}
+#modaratorapproveshows{display:none;}
+#modaratoraddsows{display:none;}
+
+
+
+
+
+/*payment page css start*/
+
+.right_box .payment {
+    height: auto;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.right_box .payment img.plogo {
+    height: 15%;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.right_box .payment img.proc {
+    height: 90%;
+    width: 94%;
+    margin-left: 5%
+}
+
+.right_box .payment input[type="text"] {
+    width: 85%;
+    border-radius: 3px;
+    border: 1px solid #E3106E;
+    padding: 15px 17px;
+    margin-top: 10%;
+}
+
+.right_box .payment button.btn.btn-warning {
+    width: 80%;
+    margin-top: 10px;
+    background: #E3106E;
+    color: white;
+    font-size: 30px;
+}
+
+
+/*payment page css end*/
+
+
+/*Profile page css start*/
+
+.profile {
+    overflow: hidden;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+}
+
+.profile .inner{
+    width: 80%;
+    height: auto;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.profile .inner ul{}
+.profile .inner ul li{
+    list-style-type: none;
+}
+.profile .inner ul li a{
+    text-decoration: none;
+}
+
+
+
+/*Profile page css end*/
+
+
+/*apply page css start*/
+
+.apply {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.apply .selectuni {
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+
+/*apply page css end*/
+
+
+/*Prospectus page css start*/
+
+.pros {
+    padding: 10px;
+    overflow: hidden;
+}
+
+
+/*Prospectus page css end*/

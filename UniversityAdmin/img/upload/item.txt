@@ -1,0 +1,28 @@
+1. biriyani (1 leg pic,pulaw,1 dim,lebu,kacha morich,shosha)---120
+2. biriyani (1 leg pic,bashmoti,1 dim,lebu,kacha morich,shosha,chiken kaba)--180
+
+breakfast
+3.Egg khichui(egg,chanavuna,morich,lebu)----40
+
+Luch
+4.beef buna rice dal lebu morich----120
+5.chiken curry rice dal lebu rorich-----100
+6.vagitable rice lebu dal-----50
+
+
+
+Biryani with 1 chicken leg  piece, basmati rice, 1 egg,chicken kebab, lemon, green chilli.(?????????? ???? 1 ????? ?????? ??? ??? , ?????? ???, 1 ?? ???, ????, ???? ?????) Price=180
+
+
+
+Biryani with 1 chicken leg  piece, pulao, 1 egg, lemon, green chilli.Price=120
+
+
+
+
+ALTER TABLE table_name
+ADD column_name datatype;
+
+
+foregin key coloum delete
+lter table information drop FOREIGN KEY IF EXISTS seatId

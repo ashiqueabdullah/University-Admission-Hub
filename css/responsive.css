@@ -1,0 +1,255 @@
+/* XL (Desktop,Laptop) Device :1200px. */
+
+@media (min-width: 1200px) and (max-width: 1500px) {}
+
+
+/*LG Device :992px. (Desktop tablet horizontal)*/
+
+@media (min-width: 992px) and (max-width: 1200px) {}
+
+
+/*MD Device :768px. (Small tablet,Phone vertical)*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .myvsl {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .myNav {
+        position: fixed;
+        height: 100%;
+        width: 150px;
+        left: -250px;
+        transition: .5s;
+        top: 0
+    }
+    .toggle {
+        display: block;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: fixed;
+        left: 90%;
+        top: 15px;
+        background-color: black;
+        cursor: pointer;
+        transition: .5s;
+        color: white;
+        border-radius: 5px;
+    }
+    .myNav >ul >li {
+        float: none;
+        width: 150px;
+        border-bottom: 1px solid #18c1f0;
+    }
+    .myNav >ul >li >a {
+        background-color: white;
+        color: black;
+    }
+    .dd-menu {
+        position: relative;
+        width: 250px;
+    }
+    .myNav .marginR {
+        margin-right: 0px;
+    }
+    .myicons {
+        position: absolute;
+        border: 1px solid #18c1f0;
+        color: #18c1f0;
+        padding: 7px;
+        border-radius: 150px;
+        left: -6px;
+        top: 12px;
+        font-size: 11px;
+    }
+    .menu_bar {
+        background-color: white;
+        color: black;
+        padding: 10px 0px;
+    }
+    .menu_bar img {
+        margin-top: 5px;
+    }
+    ul.sm_login {
+        margin-top: 15px;
+    }
+    ul.sm_login li {
+        list-style-type: none;
+        display: inline-block;
+    }
+    ul.sm_login li a {
+        text-decoration: none;
+        padding: 10px 5px;
+        color: gray;
+        transition: .3s;
+    }
+    ul.sm_login li a:hover {
+        color: #18c1f0;
+    }
+    .header-area {
+        background-size: auto auto;
+    }
+    .header-area .head_text_area h1 {
+        font-size: 30px;
+        line-height: 24px;
+        padding-top: 120px;
+    }
+    .header-area .head_text_area p {
+        font-size: 14px;
+        padding: 5px 0px;
+    }
+    .header-area .head_text_area .frm-center {
+        width: 100%;
+    }
+    .header-area .head_text_area input[type="text"] {
+        padding: 10px 10px 8px 10px;
+        width: 70%;
+    }
+    .header-area .head_text_area i.fas.fa-search {
+        padding: 16px 10px 13px 8px;
+    }
+    .header-area .circle-_area .box1 .innerbox1 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .header-area .circle-_area .box2 .innerbox2 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .header-area .circle-_area .box3 .innerbox3 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .header-area .circle-_area .box4 .innerbox4 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+}
+
+
+/*SM Extra small Device. (Phone)*/
+
+@media (max-width: 767px) {
+    .myvsl {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .myNav {
+        position: fixed;
+        height: 100%;
+        width: 150px;
+        left: -250px;
+        transition: .5s;
+        top: 0
+    }
+    .toggle {
+        display: block;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: fixed;
+        left: 90%;
+        top: 15px;
+        background-color: black;
+        cursor: pointer;
+        transition: .5s;
+        color: white;
+        border-radius: 5px;
+    }
+    .myNav >ul >li {
+        float: none;
+        width: 150px;
+        border-bottom: 1px solid #18c1f0;
+    }
+    .myNav >ul >li >a {
+        background-color: white;
+        color: black;
+    }
+    .dd-menu {
+        position: relative;
+        width: 250px;
+    }
+    .myNav .marginR {
+        margin-right: 0px;
+    }
+    .myicons {
+        position: absolute;
+        border: 1px solid #18c1f0;
+        color: #18c1f0;
+        padding: 7px;
+        border-radius: 150px;
+        left: -6px;
+        top: 12px;
+        font-size: 11px;
+    }
+    .menu_bar {
+        background-color: white;
+        color: black;
+        padding: 10px 0px;
+    }
+    .menu_bar img {
+        margin-top: 5px;
+    }
+    ul.sm_login {
+        margin-top: 15px;
+    }
+    ul.sm_login li {
+        list-style-type: none;
+        display: inline-block;
+    }
+    ul.sm_login li a {
+        text-decoration: none;
+        padding: 10px 5px;
+        color: gray;
+        transition: .3s;
+    }
+    ul.sm_login li a:hover {
+        color: #18c1f0;
+    }
+    .header-area {
+        background-size: auto auto;
+    }
+    .header-area .head_text_area h1 {
+        font-size: 30px;
+        line-height: 24px;
+        padding-top: 120px;
+    }
+    .header-area .head_text_area p {
+        font-size: 14px;
+        padding: 5px 0px;
+    }
+    .header-area .head_text_area .frm-center {
+        width: 100%;
+    }
+    .header-area .head_text_area input[type="text"] {
+        padding: 10px 10px 8px 10px;
+        width: 70%;
+    }
+    .header-area .head_text_area i.fas.fa-search {
+        padding: 16px 10px 13px 8px;
+    }
+    .header-area .circle-_area .box1 .innerbox1 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .header-area .circle-_area .box2 .innerbox2 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .header-area .circle-_area .box3 .innerbox3 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .header-area .circle-_area .box4 .innerbox4 i.micon {
+        font-size: 45px;
+        margin-left: 40px;
+    }
+    .studer_reg .inner{
+        width: 100%;
+        height: 100%;
+        top: 50%;
+    }
+}

@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.con_box{
+    padding: 20px 0px;
+}
+.con_box .box{
+    width: 50%;
+    height: auto;
+    background: #2C7873;
+    margin: 0px auto;
+    padding: 15px;
+    border-radius: 5px;
+}
+    
+.myheader{
+    background: #5CDB94;
+    padding: 20px 0px;
+    height: auto;
+    width: 100%;
+    border-bottom: 1px solid #05396B;
+}
+.myheader  .logo{
+    margin-top: 10px;
+}
+.myheader h1{
+    color: white;
+    padding:25px 0px;
+    margin:0px;
+}
+.myheader ul li{
+    list-style-type: none;
+    display: inline-block;
+}
+.myheader ul li a{
+    display: block;
+    color: #05396B;
+    padding: 20px 20px;
+    font-size: 20px;
+}
+
+.mid_area{
+    background: #5CDB94;
+    height: auto;
+    width: 100%;
+}
+.mid_area .left_box {
+    margin: 100px 0px;
+}
+.mid_area .left_box button{
+    width: 100%;
+    margin-top: 25px;
+    padding: 25px 0px;
+    font-size: 20px;
+    background: #05396B;
+    color:#5CDB94; 
+    box-shadow: 2px 2px 15px gray;
+}
+.mid_area .right_box{
+    margin: 120px auto;
+    max-height:305px;
+    width: 90%;
+    position: relative;
+    border-radius: 5px;
+    overflow:hidden; 
+}
+.mid_area .right_box .sigle .left{
+
+}
+.mid_area .right_box .sigle .left img{
+    height: 100%;
+    width: 100%;
+}
+.mid_area .right_box .sigle .left:after{
+    background-color:#3c40c6ad;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: "";
+    top: 0;
+    left:0;
+}
+.mid_area .right_box .sigle .right{
+    position: absolute;
+    top:0;
+    left:0;
+    padding: 50px;
+    color: white;
+}
+.mid_area .right_box .sigle .right h4{
+    margin-top: 50px;
+    color: #5CDB94;
+}
+.mid_area .right_box .sigle .right button{
+    background: #05396B;
+    padding: 15px 10px;
+    font-size: 25px;
+    color:#5CDB94 ;
+    margin: 10px 0px;
+    border: 0px;
+}
+
+
+
+
+.mid_area .right_box  .owl-dots {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+.mid_area .right_box  .owl-dot {
+    background-color:#3c40c6 !important ;
+    height: 10px;
+    width: 2px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.mid_area .right_box .owl-dots .active {
+    background: red;
+}
+
+.dfooter{
+    border-top: 1px solid #05396B;
+    text-align: center;
+    background:#5CDB94;
+    color: white;
+    padding: 20px 0px;
+    margin: 0px;
+}
+.dfooter a{
+    color: #389583;
+}
+
+.dfooter h5,h6{
+    color:#05396B; 
+}
+
+
+.owl-carousel .owl-nav button{
+    position: absolute;
+    top: 40%;
+    left:1%;
+    background: #05396B!important;
+}
+.owl-carousel .owl-nav button.owl-next{
+    font-size: 30px!important;
+    padding:10px 8px!important;
+    color: white;
+    left:96%;
+    border-radius: 3px;
+}
+.owl-carousel .owl-nav button.owl-prev{
+    font-size: 30px!important;
+    padding:10px 8px!important;
+    color: white;
+    border-radius: 3px;
+}
+.owl-carousel .owl-dots{
+    position: absolute;
+    top:90%;
+    left:45%;
+}
+.owl-carousel .owl-dots button.owl-dot{
+    margin-right: 10px!important;
+    background: #05396B!important;
+    width: 10px;
+    height:10px;
+}
+.owl-carousel .owl-dots button.owl-dot.active{
+    background: #5CDB94!important;
+}
+
+
+
+
+
+
+
+
+
+.pop_up_login{
+    position: fixed;
+    background-color:#05396bc4;
+    width: 100%;
+    height: 102%;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    transform: scale(.0); 
+    transition: .3s;
+}
+.pop_up_login a{
+    margin-top: 15px;
+    display: block;
+    text-align: left;
+    color:#05396B;
+}
+.pop_up_login .pop_box{
+    width: 44%;
+    height: 250px;
+    background:#05396B;
+    z-index: 110;
+    border-radius: 10px;
+    margin: 0px auto;
+    padding: 15px 50px;
+    border: 5px solid #dae0e5;
+    position: relative;
+}
+
+.pop_up_login .pop_box img{
+    border-radius: 150px;
+    height: 75px;
+    width: 75px;
+    box-shadow: 1px 1px 5px gray;
+    clear: both;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.pop_up_login .pop_box form input[type="submit"] {
+    background: #5CDB94;
+    color:#05396B;
+    font-size: 20px;
+}
+
+.pop_up_login .pop_box #login_cross i{
+    position: absolute;
+    top: -21px;
+    right: -5%;
+    font-size: 40px;
+    color: #5CDB94;
+    padding: 10px;
+    border-radius: 150px;
+    z-index: 120;
+    cursor: pointer;
+}
+
+
+
+.studer_reg{
+    height:100%;
+    width: 100%;
+    background-color:#05396bc4;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    transform: scale(0);
+    padding: 5px;
+}
+
+.studer_reg .inner{
+    height: auto;
+    width:60%;
+    background: #05396B;
+    margin:0px auto;
+    border-radius: 10px;
+    padding: 20px 20px;
+    position: relative;
+    top: 0;
+    color: white;
+    border: 4px solid white;
+}
+.studer_reg .inner .form-group{
+    margin: 0px;
+    padding: 0px;
+}
+.studer_reg .inner #std_cross{
+    position: absolute;
+    top: -33px;
+    right: -4%;
+    color: #010A43;
+    padding: 10px;
+    border-radius: 150px;
+    z-index: 120;
+    cursor: pointer;
+    font-size: 40px;
+    color: #5CDB94;
+}
+
+.studer_reg button.btn.btn-primary.mt-2 {
+    background: #5CDB94;
+    width: 100%;
+    font-size: 20px;
+    color: #05396B;
+}
+
+.uni_reg{
+    height: 100%;
+    width: 100%;
+    background-color:#05396bc4;
+    position: fixed;
+    top: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    transform: scale(.0);
+}
+.uni_reg .inner{
+    height: auto;
+    width:60%;
+    background: #05396B;
+    margin:0px auto;
+    border-radius: 10px;
+    padding: 50px 30px;
+    position: relative;
+    border: 4px solid white;
+    color: white;
+    
+}
+.uni_reg .form-group{
+    margin: 0px;
+    padding: 0px;
+}
+.uni_reg .inner #uni_cross{
+    position: absolute;
+    top: -30px;
+    right: -4%;
+    font-size: 40px;
+    color: #5CDB94;
+    padding: 10px;
+    border-radius: 150px;
+    z-index: 120;
+    cursor: pointer;
+}
+
+.uni_reg input.form-control.btn.btn-primary.mt-2 {
+    background: #5CDB94;
+    color: #05396B;
+    font-size: 20px;
+    padding: 10px;
+    display: block;
+}
+
+
+
