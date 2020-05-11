@@ -305,6 +305,8 @@ $(document).ready(function() {
     showdepertment(0);
     showdsubject(0);
     getqutas(0);
+	getseat(0);
+	getUnit(0);
 
     $('#noticeSearch').keyup(function(){
         var src=$('#noticeSearch').val();
@@ -344,6 +346,22 @@ $(document).ready(function() {
 
    
 });
+
+
+function getUnit(page) {
+    $.post('requerUnitShow.php?page=' + page, function(respos) {
+        $('#allunits').html(respos);
+    })
+}
+
+
+
+
+function getseat(page) {
+    $.post('requerSeatShow.php?page=' + page, function(respos) {
+        $('#showSeat').html(respos);
+    })
+}
 
 function getqutas(page) {
     $.post('requerQoutaShow.php?page=' + page, function(respos) {

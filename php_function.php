@@ -1145,8 +1145,6 @@ class phpclass
 	}
 
 
-	
-
 	function getPendingStd(){
 		$sql="SELECT COUNT(`satuss`) FROM student_two WHERE `satuss`=1";
 		$getresult=$this->db->select($sql);
@@ -1272,8 +1270,6 @@ class phpclass
 
 	}
 
-
-
 	function stdDlt($id){
 		$sql="DELETE FROM `student_two` WHERE `std_one`=$id";
 		$sql2="DELETE FROM `student_one` WHERE `studentId`=$id";
@@ -1364,7 +1360,6 @@ class phpclass
 		$getresult=$this->db->insert($sql);
 	}
 
-
 	
 	function gequta($limit,$offset){
 		$id=$_SESSION['uid'];
@@ -1417,7 +1412,6 @@ class phpclass
 	}
 
 
-
 	function moneyInsert($data){
 		$amount=$data['amount'];
 		$phoneN=$data['phoneN'];
@@ -1426,11 +1420,112 @@ class phpclass
 		$reTime=date("h:i:s");
 		$stId=$_SESSION['sid'];
 
-
 		$sql="INSERT INTO `paymenthistory`(`amount`, `phoneN`, `txtId`, `reDate`, `reTime`, `stId`,`statuss`) VALUES ('$amount','$phoneN','$txtId','$reDate','$reTime','$stId',0)";
 		$res=$this->db->insert($sql);
 	}
-
+	
+	
+	function addUnit($data){
+		$unitName=$data['unitName'];
+		$statuss=0;
+		$minimumSSCgpa=$data['minimumSSCgpa'];
+		$minimumHSCgpa=$data['minimumHSCgpa'];
+		$totalGPA=$data['totalGPA'];
+		$SSSCGPAForRegulerStudent=$data['SSSCGPAForRegulerStudent'];
+		$SSSCGPAForIegulerStudent=$data['SSSCGPAForIegulerStudent'];
+		$HSCGPAForRegulerStudent=$data['HSCGPAForRegulerStudent'];
+		$HSCGPAForIregulerStudent=$data['HSCGPAForIregulerStudent'];
+		$allow=$data['allow'];
+		$examduration=$data['examduration'];
+		$specialnote=$data['specialnote'];
+		$universityId=$_SESSION['uid'];
+		$group=$data['group'];
+		
+		$sql="INSERT INTO `unit`(`unitName`, `statuss`, `minSSCGpa`, `minHSCGpa`, `TotalGpa`, `sscReguler`, `sscIreg`, `hscReg`, `hscIreg`, `allow`, `examDuration`, `notes`, `universityId`,`groups`) VALUES ('$unitName','$statuss','$minimumSSCgpa','$minimumHSCgpa','$totalGPA','$SSSCGPAForRegulerStudent','$SSSCGPAForIegulerStudent','$HSCGPAForRegulerStudent','$HSCGPAForIregulerStudent','$allow','$examduration','$specialnote','$universityId','$group')";
+		
+		$getresult=$this->db->insert($sql);
+		
+		$sql="SELECT * FROM unit ORDER BY `uniId` DESC LIMIT 1";
+		$r=$this->db->select($sql)->fetch_assoc();
+		$last_id=$r['uniId'];
+		
+	
+		$sublist=$data['subject_list'];
+		
+		if(!empty($sublist)){
+			for($i=0; $i<sizeof($sublist); $i++){
+				$list=$sublist[$i];
+				$sql="INSERT INTO `unitandsubject`( `unitId`, `subName`) VALUES ('$last_id','$list')";
+				$getresult=$this->db->insert($sql);
+			}
+		}
+		
+		
+		$deptlist=$data['depert_list'];
+		
+		if(!empty($deptlist)){
+			for($i=0; $i<sizeof($deptlist); $i++){
+				$list=$deptlist[$i];
+				$sql="INSERT INTO `unitanddepert`( `unitId`, `deptname`) VALUES ('$last_id','$list')";
+				$getresult=$this->db->insert($sql);
+			}
+		}
+	}
+	
+	
+	function getUnit(){
+		$uni_id=$_SESSION['uid'];
+		$sql="SELECT * FROM `unit` WHERE `universityId`=$uni_id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	function getdept(){
+		$uni_id=$_SESSION['uid'];
+		$sql="SELECT * FROM `depertment` WHERE `uid`=$uni_id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	function addSeat($data){
+		$unit=$data['unit'];
+		$dept=$data['dept'];
+		$seatNumber=$data['seatNumber'];
+		$ubiversityId=$_SESSION['uid'];
+		
+		$sql="INSERT INTO `seet`(`numberOfSet`, `deptname`, `unitname`, `ubiversityId`) VALUES ('$seatNumber','$dept','$unit','$ubiversityId');";
+		$getresult=$this->db->insert($sql);
+	}
+	
+	function getSeat($limit,$offset){
+		$id=$_SESSION['uid'];
+		$sql="SELECT * FROM `seet` WHERE `ubiversityId`=$id limit $limit,$offset";
+		
+		$getresult=$this->db->select($sql);
+	
+		$count="select count(`setId`) FROM seet WHERE ubiversityId=$id";
+		$gcou=$this->db->select($count);
+		return array($getresult,$gcou);
+	}
+	
+	function getUnits($limit,$offset){
+		$id=$_SESSION['uid'];
+		$sql="SELECT * FROM `unit` WHERE `universityId`=$id limit $limit,$offset";
+		
+		$getresult=$this->db->select($sql);
+	
+		$count="select count(`uniId`) FROM unit WHERE universityId=$id";
+		$gcou=$this->db->select($count);
+		
+		$sql="SELECT * FROM `unitanddepert`";
+		$dept=$this->db->select($sql);
+		$sql="SELECT * FROM `unitandsubject`";
+		$sub=$this->db->select($sql);
+		
+		return array($getresult,$gcou,$dept,$sub);
+	}
+	
+	
 
 	//login
 	function login($data){
