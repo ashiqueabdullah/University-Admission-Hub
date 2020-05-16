@@ -21,7 +21,7 @@
     width: 230px;
     height: 100%;
     color: white;
-    z-index: 99;
+	z-index:99;
     position: fixed;
     transition: .3s;
     float: left;
@@ -35,7 +35,7 @@
     top: 10px;
     text-align: center;
     margin: 0px auto;
-    z-index: -1;
+    z-index:-1;
     cursor: pointer;
     position: fixed;
     visibility: hidden;
@@ -96,12 +96,13 @@
     margin-left: auto;
     height: auto;
     background-color:#F5F6FA;
+	overflow-x:hidden;
 }
 
 .right_box .top_nav {
     height: auto;
     background: white;
-    overflow: hidden;
+    
     border-bottom: 1px solid #101924;
     padding: 5px 0px;
     
@@ -489,15 +490,7 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
 
 
 
-.notice #modaratoraddsow{
-    width: 60%;
-    background-color: white;
-    border: 1px solid #dbdfea;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 0px auto;
-    display: none;
-}
+
 
 .notice ul li a#modaratorallbtn{
     color:#101924;
@@ -507,7 +500,15 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
 #modaratorallshow{display:block;}
 #modaratorapproveshows{display:none;}
 #modaratoraddsows{display:none;}
-
+.notice #modaratoraddsow{
+    width: 60%;
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0px auto;
+    display: none;
+}
 
 
 
@@ -609,3 +610,113 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
 
 
 /*Prospectus page css end*/
+#dept_edit{
+	height:100vh;
+	background:black;
+}
+#dept_edit .inner{
+	width: 40%;
+	margin:0% auto;
+	padding:200px 0px;
+}
+
+.unitBox{
+	min-height:220px;
+	background:#101924;
+	width:100%;
+	border:1px solid #101924;
+	margin-top:20px;
+	border-radius:5px;
+	overflow:hidden;
+}
+.unitBox .top{
+	height:auto;
+	background:white;
+	color:#101924;
+	text-align:center;
+	padding-top:5%;
+	padding-bottom:5%;
+}
+.unitBox .bottom{
+	padding:15px;
+	color:white;
+}
+a.unitshow{
+	text-decoration:none;
+}
+
+
+.right_box .top_nav img{
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #798BFF;
+    margin-top:5px;
+    margin-right: 15px;
+}
+.right_box .top_nav p{
+    margin:0px 10px;
+    padding:0px;
+    margin-top: 3px;
+}
+.right_box .top_nav h6{
+    margin:0px 10px;
+    padding:0px;
+    font-weight: bold;
+    color: black;
+}
+.right_box .top_nav .forInfo{
+    position:relative;
+    cursor: pointer;
+}
+.right_box .top_nav .info{
+    z-index: 999;
+	position:absolute;
+    width: 200px;
+    background-color: #101924;
+    border-top: 3px solid #798BFF;
+    top: 80%;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    padding:10px;
+    border-radius: 5px;
+}
+.right_box .top_nav .info ul{
+    margin: 0px;
+    padding: 0px;
+}
+.right_box .top_nav .info ul li{
+    list-style-type: none;
+    padding-left: 20px;
+    border-bottom: 1px solid #798BFF;
+}
+.right_box .top_nav .info ul li:last-child{
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.right_box .top_nav .info ul li a{
+    padding: 10px 0px;
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #b7c2d0;
+}
+.right_box .top_nav .info ul li a:hover{
+    color:white;
+}
+.right_box .top_nav .forInfo:hover .info{
+    visibility: visible;
+    opacity: 1;
+    top: 105%;
+}
+
+
+
+
+
+
+
+
+

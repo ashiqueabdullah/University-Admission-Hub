@@ -19,7 +19,7 @@
 
             <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=5;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -47,8 +47,17 @@
                         <?php echo $r['soutaseat']?>
                     </td>
                     <td>
-                        <a href="?id=<?php echo $r['quotaId']?>" class="btn btn-danger mb-1 w-100"><i class="fas fa-trash-alt"></i> Delete</a>
-                        <a href="?id=<?php echo $r['quotaId']?>" class="btn btn-warning mb-1 w-100"><i class="far fa-edit"></i> Edit</a>
+                        <a href="deleteApproveReject.php?quatDelete=<?php echo $r['quotaId']?>" class="btn btn-danger mb-1 w-100"><i class="fas fa-trash-alt"></i> Delete</a>
+                        <a href="requermentQutaEdit.php?id=<?php echo $r['quotaId']?>" class="btn btn-warning mb-1 w-100"><i class="far fa-edit"></i> Edit</a>
+						
+						<?php if($r['statuss']==1){ ?> 
+						<a href="deleteApproveReject.php?qutadeactive=<?php echo $r['quotaId']?>" class="btn btn-success mb-1 w-100"><i class="far fa-edit"></i> Active</a>
+						<?php }else{ ?> 
+						<a href="deleteApproveReject.php?quataactive=<?php echo $r['quotaId']?>" class="btn btn-secondary mb-1 w-100"><i class="far fa-edit"></i> Deactive</a>
+						<?php } ?>
+						
+						
+						
                     </td>
                 </tr>
                 <?php }}?>

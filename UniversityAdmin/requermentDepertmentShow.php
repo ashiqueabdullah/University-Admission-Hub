@@ -19,7 +19,7 @@
 
             <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=5;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -47,8 +47,16 @@
                         <?php echo $r['depertshortname']?>
                     </td>
                     <td>
-                        <a href="?id=<?php echo $r['depertmentId']?>" class="btn btn-danger mb-1 w-100"><i class="fas fa-trash-alt"></i> Delete</a>
-                        <a href="?id=<?php echo $r['depertmentId']?>" class="btn btn-warning mb-1 w-100"><i class="far fa-edit"></i> Edit</a>
+                        <a href="deleteApproveReject.php?depetDelete=<?php echo $r['depertmentId']?>" class="btn btn-danger mb-1 w-100"><i class="fas fa-trash-alt"></i> Delete</a>
+                        <a href="requermentDeptEdit.php?id=<?php echo $r['depertmentId']?>" id="open_dept" class="btn btn-warning mb-1 w-100"><i class="far fa-edit"></i> Edit</a>
+						
+						<?php if($r['statuss']==1){ ?> 
+							<a href="deleteApproveReject.php?deactive=<?php echo $r['depertmentId']?>" class="btn btn-success mb-1 w-100"><i class="far fa-edit"></i> Active</a>
+						<?php }else{ ?> 
+							<a href="deleteApproveReject.php?active=<?php echo $r['depertmentId']?>" class="btn btn-secondary mb-1 w-100"><i class="far fa-edit"></i> Deactive</a>
+						<?php } ?>
+						
+						
                     </td>
                 </tr>
                 <?php }}?>

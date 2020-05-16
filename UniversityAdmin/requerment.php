@@ -12,6 +12,7 @@
          <li><a id="allUnitbtn" href="#">All Unit</a></li>
       </ul>
       <hr>
+
       <div id="depertment">
          <h4>Add New Depertment</h4>
          <div class="row">
@@ -112,6 +113,7 @@
                	echo $res;
                }
                ?>
+			  
             <h6>Enter Unit Name</h6>
             <input type="text" name="unitName" class="form-control" placeholder="Enter Unit Name">
             <div class="mt-3">
@@ -144,11 +146,15 @@
                   $phpcls=new phpclass();
                   $res=$phpcls->getsubjectforUnit();
                   if(!empty($res)){
-                    while($r=$res->fetch_assoc()){?>
+                    while($r=$res->fetch_assoc()){ if($r['statuss']==1){?>
+					
+					
                <div class="form-check form-check-inline">
                   <input class="form-check-input" name="subject_list[]" value="<?php echo $r['subjectname']?>" type="checkbox" ><?php echo $r['subjectname']?>
                </div>
-               <?php }}?>
+			   
+			   
+				  <?php }}} ?>
             </div>
             <div class="mt-4">
                <h6>Check Depertment under this unit</h6>
@@ -156,11 +162,15 @@
                   $phpcls=new phpclass();
                   $res=$phpcls->getDepertmentForuni();
                   if(!empty($res)){
-                    while($r=$res->fetch_assoc()){?>
+                    while($r=$res->fetch_assoc()){ if($r['statuss']==1){?>
+					
+					
                <div class="form-check form-check-inline">
                   <input class="form-check-input" name="depert_list[]" value="<?php echo $r['depertshortname']?>" type="checkbox" ><?php echo $r['depertshortname']?>
                </div>
-               <?php }}?>
+			   
+			   
+				  <?php }}}?>
             </div>
             <div class="row">
                <div class="col-md-6">
@@ -229,9 +239,10 @@
 						$phpcls=new phpclass();
 						$res=$phpcls->getUnit();
 						if(!empty($res)){
-							while($r=$res->fetch_assoc()){ ?>
+							while($r=$res->fetch_assoc()){ if($r['statuss']==1){ ?>
 								<input class="form-check-input" name="unit" value="<?php echo $r['unitName']?>" type="radio" ><span class="mr-2" ><?php echo $r['unitName']?></span>
-						<?php }}?>
+								
+						<?php }}} ?>
                         
                      </div>
                      <h6>Select The Depertment</h6>
@@ -240,9 +251,9 @@
 						$phpcls=new phpclass();
 						$res=$phpcls->getdept();
 						if(!empty($res)){
-							while($r=$res->fetch_assoc()){ ?>
+							while($r=$res->fetch_assoc()){ if($r['statuss']==1){ ?>
 								<input class="form-check-input" name="dept" value="<?php echo $r['depertshortname']?>" type="radio" ><span class="mr-2" ><?php echo $r['depertshortname']?></span>
-						<?php }}?>
+						<?php }}} ?>
                      </div>
                      <h6 class="mt-2">Enter Number Of seat</h6>
                      <input type="text" name="seatNumber" class="form-control" Placeholder="Add number of seat">

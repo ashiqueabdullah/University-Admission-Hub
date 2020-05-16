@@ -418,7 +418,7 @@ var modaratoradd=document.getElementById("modaratoradd");
 
 var modaratorallshows=document.getElementById("modaratorallshows");
 var modaratorapproveshows=document.getElementById("modaratorapproveshows");
-var modaratoraddsows=document.getElementById("modaratoraddsows"); 
+var modaratoraddsow=document.getElementById("modaratoraddsow"); 
 
 
 if(modaratorallbtn){
@@ -434,7 +434,7 @@ if(modaratorallbtn){
 
         modaratorallshows.style.display='block';
         modaratorapproveshows.style.display='none';
-        modaratoraddsows.style.display='none';
+        modaratoraddsow.style.display='none';
     })
 }
 
@@ -452,7 +452,7 @@ if(modaratorapprove){
 
         modaratorallshows.style.display='none';
         modaratorapproveshows.style.display='block';
-        modaratoraddsows.style.display='none';
+        modaratoraddsow.style.display='none';
     })
 }
 
@@ -471,6 +471,6 @@ if(modaratoradd){
 
         modaratorallshows.style.display='none';
         modaratorapproveshows.style.display='none';
-        modaratoraddsows.style.display='block';
+        modaratoraddsow.style.display='block';
     })
 }

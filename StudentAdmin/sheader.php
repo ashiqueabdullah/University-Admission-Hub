@@ -75,15 +75,33 @@
                         <div class="col-lg-6 col-md-6">
                             <h1>Student Dashbord</h1>
                         </div>
+						<div class="col-lg-2 col-md-2">
+							<p>Balance: <span style="color: blue"><b>200tk</b></span></p>
+                        </div>
                        
-                        <div class="col-lg-4 col-md-5 offset-md-2">
-                            <div class="myicon">
-                                <ul>
-                                    <li class="text-dark">Balance: <span style="color: blue"><b>200tk</b></span></li>
-                                    <li><a href=""><i class="fas fa-bell iconbefor"></i></a></li>
-                                    <li><a href=""><i class="fas fa-comments iconbefor"></i></a></li>
-                                    <li><a href="?log=out"><i class="fas fa-sign-out-alt"></i></a></li>
-                                </ul>
+                        <div class="col-lg-4 col-md-5 ">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="float-right mt-1">
+                                        <div class="row">
+                                            <div class="col-md-2 float-left">
+                                                <img src="img/user.jpeg" alt="" width="50">
+                                            </div>
+                                            <div class="col-md-9 forInfo">
+                                                <h6>Admin</h6>
+                                                <h6>Ashique Abdullah <i class="fas fa-caret-down"></i></h6>
+                                                <div class="info">
+                                                    <ul>
+                                                        <li><a href="modaratorView.php?id=<?php echo $_SESSION['']?>"><i class="far fa-user"></i> View Profile</a></li>
+                                                        
+                                                        <li><a href="?log=out"><i class="far fa-bell"></i></i> Logout</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

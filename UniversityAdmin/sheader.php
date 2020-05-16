@@ -1,6 +1,6 @@
 <?php
-include_once"../php_function.php";
     include_once"../session.php";
+    include_once"../php_function.php";
     session::checklogin();
 
     if (isset($_GET['log']) && $_GET['log'] == 'out') {
@@ -48,7 +48,7 @@ include_once"../php_function.php";
                             <a href="profile.php"><i class="fas fa-user mr-3"></i>Profile</a>
                         </li>
                         <li>
-                            <a href="requerment.php"><i class="fas fa-user mr-3"></i>Requirement</a>
+                        <a href="requerment.php"><i class="fas fa-user mr-3"></i>Requirement</a>
                         </li>
                         <li>
                             <a href="approve.php"><i class="fas fa-arrow-circle-right mr-3"></i>Approve Addmission</a>
@@ -68,7 +68,7 @@ include_once"../php_function.php";
                         <li>
                             <a href="result.php"><i class="fas fa-info-circle mr-3"></i>Result Update</a>
                         </li>
-                       
+                      
                     </ul>
                 </div>
                 </div>
@@ -77,24 +77,33 @@ include_once"../php_function.php";
             <div class="right_box">
                 <div class="top_nav">
                     <div class="row">
-                        <div class="col-lg-4 col-md-4">
-                            <h1>Dashbord</h1>
+                        <div class="col-lg-6 col-md-6">
+                            <h1>University Dashbord</h1>
                         </div>
-                        <div class="col-lg-5 col-md-4">
-                            <form action="" class="myform">
-                                <input type="text" placeholder="Search..." class="form-contorl">
-                                <button>
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                            <div class="myicon">
-                                <ul>
-                                    <li><a href=""><i class="fas fa-bell iconbefor"></i></a></li>
-                                    <li><a href=""><i class="fas fa-comments iconbefor"></i></a></li>
-                                    <li><a href="?log=out"><i class="fas fa-sign-out-alt"></i></a></li>
-                                </ul>
+                        
+                        <div class="col-lg-6 col-md-6">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="float-right mt-1">
+                                        <div class="row">
+                                            <div class="col-md-2 float-left">
+                                                <img src="img/user.jpeg" alt="" width="50">
+                                            </div>
+                                            <div class="col-md-9 forInfo">
+                                                <h6>Admin</h6>
+                                                <h6>Ashique Abdullah <i class="fas fa-caret-down"></i></h6>
+                                                <div class="info">
+                                                    <ul>
+                                                        <li><a href="modaratorView.php?id=<?php echo $_SESSION['']?>"><i class="far fa-user"></i> View Profile</a></li>
+                                                        
+                                                        <li><a href="?log=out"><i class="far fa-bell"></i></i> Logout</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

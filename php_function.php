@@ -1295,7 +1295,7 @@ class phpclass
 	function adddepertment($data){
 		$dptname=$data['dptname'];
 		$dptshortname=$data['dptshortname'];
-		$status=0;
+		$status=1;
 		$id=$_SESSION['uid'];
 
 		$sql="INSERT INTO `depertment`(`depertmentName`, `statuss`, `uid`, `depertshortname`) VALUES ('$dptname','$status','$id','$dptshortname')";
@@ -1324,7 +1324,7 @@ class phpclass
 	function addsubject($data){
 		$subjecname=$data['subjecname'];
 		$subjectmark=$data['subjectmark'];
-		$status=0;
+		$status=1;
 		$id=$_SESSION['uid'];
 
 		$sql="INSERT INTO `subject`(`subjectname`, `subjectMark`, `uid`,`statuss`) VALUES ('$subjecname','$subjectmark','$id','$status')";
@@ -1353,7 +1353,7 @@ class phpclass
 	function addquta($data){
 		$qutaName=$data['qutaName'];
 		$qutaSeat=$data['qutaSeat'];
-		$status=0;
+		$status=1;
 		$id=$_SESSION['uid'];
 
 		$sql="INSERT INTO `quota`(`quotaName`, `statuss`, `soutaseat`, `uid`) VALUES ('$qutaName','$status','$qutaSeat','$id')";
@@ -1427,7 +1427,7 @@ class phpclass
 	
 	function addUnit($data){
 		$unitName=$data['unitName'];
-		$statuss=0;
+		$statuss=1;
 		$minimumSSCgpa=$data['minimumSSCgpa'];
 		$minimumHSCgpa=$data['minimumHSCgpa'];
 		$totalGPA=$data['totalGPA'];
@@ -1492,8 +1492,9 @@ class phpclass
 		$dept=$data['dept'];
 		$seatNumber=$data['seatNumber'];
 		$ubiversityId=$_SESSION['uid'];
+		$stauts=1;
 		
-		$sql="INSERT INTO `seet`(`numberOfSet`, `deptname`, `unitname`, `ubiversityId`) VALUES ('$seatNumber','$dept','$unit','$ubiversityId');";
+		$sql="INSERT INTO `seet`(`numberOfSet`, `deptname`, `unitname`, `ubiversityId`, `statuss`) VALUES ('$seatNumber','$dept','$unit','$ubiversityId','$stauts');";
 		$getresult=$this->db->insert($sql);
 	}
 	
@@ -1525,8 +1526,157 @@ class phpclass
 		return array($getresult,$gcou,$dept,$sub);
 	}
 	
+	function getUnitsforshow($id){
+		$sql="SELECT * FROM `unit` WHERE `uniId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
 	
-
+	function anotherUnit(){
+		$sql="SELECT * FROM `unitanddepert`";
+		$dept=$this->db->select($sql);
+		$sql="SELECT * FROM `unitandsubject`";
+		$sub=$this->db->select($sql);
+		return array($dept,$sub);
+	}
+	
+	function deletedept($id){
+		$sql="DELETE FROM `depertment` WHERE `depertmentId`=$id";
+		$getresult=$this->db->delete($sql);
+		header("Location:requerment.php");
+	}
+	
+	function deptDeactive($id){
+		$sql="UPDATE `depertment` SET `statuss`=0  WHERE `depertmentId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	function deptactive($id){
+		$sql="UPDATE `depertment` SET `statuss`=1  WHERE `depertmentId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+		
+	function getDeptForEdit($id){
+		$sql="SELECT * FROM `depertment` WHERE `depertmentId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	function insertEditDept($ids,$data){
+		$fulname=$data['fullname'];
+		$shortname=$data['shotname'];
+		
+		$sql="UPDATE `depertment` SET `depertmentName`='$fulname',`depertshortname`='$shortname' WHERE `depertmentId`='$ids'";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	
+	function subjectDelete($id){
+		$sql="DELETE FROM `subject` WHERE `subjectId`=$id";
+		$getresult=$this->db->delete($sql);
+		header("Location:requerment.php");
+	}
+	function subjectActive($id){
+		$sql="UPDATE `subject` SET `statuss`=1  WHERE `subjectId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	function subjectDeactive($id){
+		$sql="UPDATE `subject` SET `statuss`=0  WHERE `subjectId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	function getSubForEdit($id){
+		$sql="SELECT * FROM `subject` WHERE `subjectId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	function insertEditSub($ids,$data){
+		$subname=$data['subname'];
+		$submark=$data['submark'];
+		
+		$sql="UPDATE `subject` SET `subjectname`='$subname',`subjectMark`='$submark' WHERE `subjectId`='$ids'";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	function quatDelete($id){
+		$sql="DELETE FROM `quota` WHERE `quotaId`=$id";
+		$getresult=$this->db->delete($sql);
+		header("Location:requerment.php");
+	}
+	function qutadeactive($id){
+		$sql="UPDATE `quota` SET `statuss`=0  WHERE `quotaId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	function quataactive($id){
+		$sql="UPDATE `quota` SET `statuss`=1  WHERE `quotaId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	
+	function getQuataForEdit($id){
+		$sql="SELECT * FROM `quota` WHERE `quotaId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	function insertEditQuta($ids,$data){
+		$qutaname=$data['qutaname'];
+		$qutaseat=$data['qutaseat'];
+		
+		$sql="UPDATE `quota` SET `quotaName`='$qutaname',`soutaseat`='$qutaseat' WHERE `quotaId`='$ids'";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	function seatDelete($id){
+		$sql="DELETE FROM `seet` WHERE `setId`=$id";
+		$getresult=$this->db->delete($sql);
+		header("Location:requerment.php");
+	}
+	
+	function seatActive($id){
+		$sql="UPDATE `seet` SET `statuss`=1  WHERE `setId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	function seatDeactive($id){
+		$sql="UPDATE `seet` SET `statuss`=0  WHERE `setId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
+	function getSeatForEdit($id){
+		$sql="SELECT * FROM `seet` WHERE `setId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	
+	function unitdlete($id){
+		$sql="DELETE FROM `unit` WHERE `uniId`=$id";
+		$getresult=$this->db->delete($sql);
+		header("Location:requerment.php");
+	}
+	function unitdeactive($id){
+		$sql="UPDATE `unit` SET `statuss`=0  WHERE `uniId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	function unitactive($id){
+		$sql="UPDATE `unit` SET `statuss`=1  WHERE `uniId`=$id";
+		$getresult=$this->db->insert($sql);
+		header("Location:requerment.php");
+	}
+	
 	//login
 	function login($data){
 		$email=$data['email'];
