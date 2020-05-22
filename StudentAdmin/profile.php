@@ -641,7 +641,7 @@
 
                             <h2>Parents Information</h2>
                             <h5 class="text-center">Fathers Information</h5>
-                            <p><b>Fathers Name:</b> A<?php echo $value['fatherName']?></p>
+                            <p><b>Fathers Name:</b> <?php echo $value['fatherName']?></p>
                             <p><b>Occipation:</b> <?php echo $value['fatherOccipation']?></p>
                             <p><b>Address:</b> <?php echo $value['fatherAddress']?></p>
                             <p><b>Phone:</b> <?php echo $value['fatherPhone']?></p>

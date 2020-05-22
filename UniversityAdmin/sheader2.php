@@ -45,7 +45,7 @@
                             <a href="index.php"><i class="fas fa-desktop mr-3"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="profile.php"><i class="fas fa-user mr-3"></i>Profile</a>
+                            <a href="profile.php"><i class="fas fa-user mr-3"></i>University Profile</a>
                         </li>
                         <li>
                         <a href="requerment.php"><i class="fas fa-user mr-3"></i>Requirement</a>
@@ -60,15 +60,14 @@
                             <a href="modarator.php"><i class="far fa-bell mr-3"></i>Manage Moderator</a>
                         </li>
                         <li>
-                            <a href="inbox.php"><i class="far fa-envelope mr-3"></i>Inbox</a>
-                        </li>
-                        <li>
-                            <a href="studentlist.php"><i class="fas fa-money-bill-alt mr-3"></i>All Student</a>
+                            <a href="inbox.php"><i class="far fa-envelope mr-3"></i>Message</a>
                         </li>
                         <li>
                             <a href="result.php"><i class="fas fa-info-circle mr-3"></i>Result Update</a>
                         </li>
-                      
+						<li>
+                            <a href="userprofile.php"><i class="fas fa-money-bill-alt mr-3"></i>User Profile</a>
+                        </li>
                     </ul>
                 </div>
                 </div>

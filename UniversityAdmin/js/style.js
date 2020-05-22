@@ -307,6 +307,9 @@ $(document).ready(function() {
     getqutas(0);
 	getseat(0);
 	getUnit(0);
+	showpendingstudent(0);
+	showapprovedstudent(0);
+	showrejectstudent(0);
 
     $('#noticeSearch').keyup(function(){
         var src=$('#noticeSearch').val();
@@ -347,6 +350,26 @@ $(document).ready(function() {
    
 });
 
+
+
+function showapprovedstudent(page) {
+    $.post('allapprovestudent.php?page=' + page, function(respos) {
+        $('#allApprovedStudent').html(respos);
+    })
+}
+
+
+function showrejectstudent(page) {
+    $.post('allrejectStudent.php?page=' + page, function(respos) {
+        $('#allRejectStudent').html(respos);
+    })
+}
+
+function showpendingstudent(page) {
+    $.post('approvePendingstudent.php?page=' + page, function(respos) {
+        $('#allPendingStudent').html(respos);
+    })
+}
 
 function getUnit(page) {
     $.post('requerUnitShow.php?page=' + page, function(respos) {
@@ -421,6 +444,12 @@ var modaratorapproveshows=document.getElementById("modaratorapproveshows");
 var modaratoraddsow=document.getElementById("modaratoraddsow"); 
 
 
+
+var allApprovedStudent=document.getElementById("allApprovedStudent");
+var allPendingStudent=document.getElementById("allPendingStudent");
+var allRejectStudent=document.getElementById("modaratoraddsow"); 
+
+
 if(modaratorallbtn){
     modaratorallbtn.addEventListener('click',function(){
         modaratorallbtn.style.color='#101924';
@@ -472,5 +501,76 @@ if(modaratoradd){
         modaratorallshows.style.display='none';
         modaratorapproveshows.style.display='none';
         modaratoraddsow.style.display='block';
+    })
+}
+
+
+
+
+
+
+
+var allapr=document.getElementById("allapr");
+var allpend=document.getElementById("allpend");
+var allrej=document.getElementById("allrej"); 
+
+
+var allApprovedStudent=document.getElementById("allApprovedStudent");
+var allPendingStudent=document.getElementById("allPendingStudent");
+var allRejectStudent=document.getElementById("allRejectStudent"); 
+
+
+if(allapr){
+    allapr.addEventListener('click',function(){
+        allapr.style.color='#101924';
+        allapr.style.background='#A4CFFF';
+
+        allpend.style.color='#A4CFFF';
+        allpend.style.background='#101924 ';
+
+        allrej.style.color='#A4CFFF';
+        allrej.style.background='#101924 ';
+
+        allApprovedStudent.style.display='block';
+        allPendingStudent.style.display='none';
+        allRejectStudent.style.display='none';
+    })
+}
+
+
+
+if(allpend){
+    allpend.addEventListener('click',function(){
+        allpend.style.color='#101924';
+        allpend.style.background='#A4CFFF';
+
+        allrej.style.color='#A4CFFF';
+        allrej.style.background='#101924 ';
+
+        allapr.style.color='#A4CFFF';
+        allapr.style.background='#101924 ';
+
+        allApprovedStudent.style.display='none';
+        allPendingStudent.style.display='block';
+        allRejectStudent.style.display='none';
+    })
+}
+
+
+
+if(allrej){
+    allrej.addEventListener('click',function(){
+        allrej.style.color='#101924';
+        allrej.style.background='#A4CFFF';
+
+        allapr.style.color='#A4CFFF';
+        allapr.style.background='#101924 ';
+
+        allpend.style.color='#A4CFFF';
+        allpend.style.background='#101924 ';
+
+        allApprovedStudent.style.display='none';
+        allPendingStudent.style.display='none';
+        allRejectStudent.style.display='block';
     })
 }

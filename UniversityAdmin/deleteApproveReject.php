@@ -1,5 +1,5 @@
 <?php
-   include_once("sheader2.php");
+  include_once"../php_function.php";
 	
 	$phpcls=new phpclass();
 
@@ -83,7 +83,24 @@
 		$id=$_GET['unitactive'];
 		$res=$phpcls->unitactive($id);
 	}
+	
+	
+	if(isset($_GET['admissonactive'])){
+		$id=$_GET['admissonactive'];
+		$res=$phpcls->admissonactive($id);
+	}
+	
+	
+	if(isset($_GET['admissondelete'])){
+		$id=$_GET['admissondelete'];
+		$res=$phpcls->admissondelete($id);
+	}
+	
   
+	if(isset($_GET['admissonreject'])){
+		$id=$_GET['admissonreject'];
+		$res=$phpcls->admissonreject($id);
+	}
   
    include_once("sfooter.php");
    ?>

@@ -204,6 +204,8 @@
                   <input type="text" name="HSCGPAForIregulerStudent"  class="form-control" placeholder="Enter Unit Name">
                </div>
             </div>
+			<h6 class="mt-2">Addmisson Fee</h6>
+                  <input type="text" name="admissionfeee" class="form-control" placeholder="Enter Addmisson Fee">
             <h6 class="mt-2">Allow</h6>
             <div class="form-check form-check-inline">
                <input class="form-check-input" name="allow" type="radio" value="2">2nd

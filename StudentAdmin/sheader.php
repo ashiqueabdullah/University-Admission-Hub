@@ -49,7 +49,7 @@
                             <a href="profile.php"><i class="fas fa-user mr-3"></i>Profile</a>
                         </li>
                         <li>
-                            <a href="apply.php"><i class="fas fa-arrow-circle-right mr-3"></i>Apply</a>
+                            <a href="prospectus.php"><i class="fas fa-arrow-circle-right mr-3"></i>Apply</a>
                         </li>
                         <li>
                             <a href="notice.php"><i class="far fa-bell mr-3"></i>Notice</a>
@@ -61,9 +61,6 @@
                             <a href="payment.php"><i class="fas fa-money-bill-alt mr-3"></i>Payment</a>
                         </li>
                         <li>
-                            <a href="prospectus.php"><i class="fas fa-info-circle mr-3"></i>Prospectus</a>
-                        </li>
-                        <li>
                             <a href="admitcard.php"><i class="fas fa-id-card mr-3"></i>Admit Card</a>
                         </li>
                     </ul>
@@ -72,11 +69,17 @@
             <div class="right_box">
                 <div class="top_nav">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-5 col-md-5">
                             <h1>Student Dashbord</h1>
                         </div>
-						<div class="col-lg-2 col-md-2">
-							<p>Balance: <span style="color: blue"><b>200tk</b></span></p>
+						<div class="col-lg-3 col-md-3">
+							<p>Balance: <span style="color: blue"><b><?php 
+								
+								echo $_SESSION['amoint'];
+								
+								
+
+							?> tk</b></span></p>
                         </div>
                        
                         <div class="col-lg-4 col-md-5 ">
@@ -92,7 +95,7 @@
                                                 <h6>Ashique Abdullah <i class="fas fa-caret-down"></i></h6>
                                                 <div class="info">
                                                     <ul>
-                                                        <li><a href="modaratorView.php?id=<?php echo $_SESSION['']?>"><i class="far fa-user"></i> View Profile</a></li>
+                                                        <li><a href="profile.php"><i class="far fa-user"></i> View Profile</a></li>
                                                         
                                                         <li><a href="?log=out"><i class="far fa-bell"></i></i> Logout</a></li>
                                                     </ul>

@@ -13,9 +13,19 @@
             ?>
 
             <div class="col-md-3">
-                <Button class="btn btn-info">
-                    <?php echo $r['universityName']?>
-                </Button>
+			<a href="prospectusUniversityInfoShow.php?id=<?php echo $r['universityId']?>" class="linkache">
+                <div class="universityShowBox">
+					<center>
+						<img src="../UniversityAdmin/img/upload/<?php echo $r['universityImg']?>" height="150" class="mb-2">
+						<h6><?php echo $r['universityName']?></h6>
+						</center>
+						<p>Divisition: <strong><?php echo $r['division']?></strong></p>
+						<p>District: <strong><?php echo $r['district']?></strong></p>
+						<p>City: <strong><?php echo $r['city']?></strong></p>
+						<p>Phone: <strong><?php echo $r['pohne']?></strong></p>
+					
+				</div>
+				</a>
             </div>
                     <?php }}?>
         </div>

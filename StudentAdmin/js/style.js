@@ -2,7 +2,17 @@ $(document).ready(function() {
     progress();
     progress2();
     showpaymet(0);
+	progress2();
+	progress();
+	getnotice(0);
 });
+
+
+function getnotice(page) {
+    $.post('noticeShow.php?page=' + page, function(respos) {
+        $('#noticeShow').html(respos);
+    })
+}
 
 function showpaymet(page) {
     $.post('paymentHistory.php?page=' + page, function(respos) {
@@ -93,7 +103,7 @@ function progress2() {
         }
     }
 }
-progress2();
+
 
 function progress() {
     var count = document.querySelector('.count');
@@ -113,7 +123,7 @@ function progress() {
         }
     }
 }
-progress();
+
 //progress bar Js end
 
 //complite profile Js Start

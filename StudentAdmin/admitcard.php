@@ -1,118 +1,45 @@
 <?php
     include_once("sheader.php");
+	
+	$phpcls=new phpclass();
    ?>
     <div class="admitAndnotice">
-        <h3>Download your admit card</h3>
         <div class="row">
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/admit.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="box mt-3 bgtwo">
-                    <center>
-                        <img class="img-fluid img-thumbnail main-img" src="img/bg1.jpg" alt="" height="200">
-                    </center>
-                    <h5 class="text-center mt-2">North East university</h5 class="text-center mt-2">
-                    <div class="row">
-                    <ul>
-                        <li><a href="">Download</a></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="display-modal">
-            <div class="aclose">X</div>
-            <img class="img-fluid img-thumbnail modal-img" alt="">
-        </div>
+			
+			<?php 
+				$id=$_SESSION['sid'];
+				$res=$phpcls->getnuitnameuniname($id);
+				if($res){
+					while($r=$res->fetch_assoc()){
+						$uniid=$r['universityId'];
+						$un=$phpcls->geruniforaddmisson($uniid);
+						if($un){
+							while($rr=$un->fetch_assoc()){
+								$uniname=$rr['universityName'];
+							}
+						}
+						$unitId=$r['unitId'];
+						$unit=$phpcls->getunitforaddmisson($unitId);
+						if($unit){
+							while($rrr=$unit->fetch_assoc()){
+								$unitname=$rrr['unitName'];
+							}
+						}
+				
+			?>
+		
+			
+			<div class="col-md-3 inneradmit">
+			<a href="#" target="_blank">
+			  <h4><?php echo $uniname ?></h4>
+			  <h4><?php echo $unitname ?></h4>
+			  </a>
+			</div>
+			
+			<?php }}?>
+			
+		</div>
+	</div>
         <?php
     include_once("sfooter.php");
    ?>
