@@ -7,6 +7,18 @@
     if (isset($_GET['log']) && $_GET['log'] == 'out') {
         session::destroy();
     }
+    $phpcls=new phpclass();
+        $id=$_SESSION['sid'];
+        $res=$phpcls->getstdinfotforprofile($id);
+        if($res){
+            while($r=$res->fetch_assoc()){
+                $GLOBALS['userimage']=$r['image'];
+                $GLOBALS['username']=$r['fname']." ".$r['lname'];
+                $GLOBALS['balance']=$r['balace']; 
+                $_SESSION['amoint']=$balance;
+                $GLOBALS['ParmanentAddress']=$r['ParmanentAddress'];
+            }
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +50,9 @@
                     <div id="navclose">X</div>
                     <center>
                         <img class="logo" src="img/logo2.png" alt="" width="200">
-                        <img class="adminimage" src="img/4.jpg" alt="" width="180">
+                        <img class="adminimage" src="img/upload/<?php echo $userimage?>" alt="" width="180">
                     </center>
-                    <h3>Halima Ashraf</h3>
+                    <h3><?php echo $username?></h3>
                     <ul>
                         <li>
                             <a href="index.php"><i class="fas fa-desktop mr-3"></i>Dashboard</a>
@@ -73,9 +85,9 @@
                             <h1>Student Dashbord</h1>
                         </div>
 						<div class="col-lg-3 col-md-3">
-							<p>Balance: <span style="color: blue"><b><?php 
+							<p class="mt-3">Balance: <span style="color: blue"><b><?php 
 								
-								echo $_SESSION['amoint'];
+								echo $balance;
 								
 								
 
@@ -88,11 +100,16 @@
                                     <div class="float-right mt-1">
                                         <div class="row">
                                             <div class="col-md-2 float-left">
-                                                <img src="img/user.jpeg" alt="" width="50">
+                                               
+
+                                                        <img src="img/upload/<?php echo $userimage?>" alt="" width="50">
+                                                    
+                                                
+                                                    
+                                                
                                             </div>
                                             <div class="col-md-9 forInfo">
-                                                <h6>Admin</h6>
-                                                <h6>Ashique Abdullah <i class="fas fa-caret-down"></i></h6>
+                                                <h6 class="mt-3"><?php echo $_SESSION['stdname']?> <i class="fas fa-caret-down"></i></h6>
                                                 <div class="info">
                                                     <ul>
                                                         <li><a href="profile.php"><i class="far fa-user"></i> View Profile</a></li>

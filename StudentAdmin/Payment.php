@@ -3,7 +3,7 @@
  ?>
 
     <div class="payment p-5">
-        <h1 class="text-center mb-5">Available balance: <span style="color: #E3106E"><?php echo $_SESSION['amoint'];?> Tk</span></h1>
+        <h1 class="text-center mb-5">Available balance: <span style="color: #E3106E"><?php echo  $balance;?> Tk</span></h1>
         <div class="row">
             <div class="col-md-6">
                 

@@ -1872,26 +1872,73 @@
 		return $getresult;
 	}
 	
+
+	function edituniversity($id,$data,$file){
+		$code=$data['code'];
+		$name=$data['name'];
+		$disision=$data['disision'];
+		$district=$data['district'];
+		$city=$data['city'];
+		$zip=$data['zip'];
+		$phone=$data['phone'];
+		$emil=$data['emil'];
+
+		$image=$file['image']['name'];
+   		$filetemp=$file['image']['tmp_name'];
+		move_uploaded_file($filetemp,"img/upload/".$image);
+		
+		$sql="UPDATE `university` SET 
+		`universityName`='$name',
+		`universityCode`='$code',
+		`universityImg`='$image',
+		`division`='$disision',
+		`district`='$district',
+		`city`='$city',
+		`zip`='$zip',
+		`pohne`='$phone',
+		`email`='$emil'
+		 WHERE `universityId`=$id";
+
+		$getresult=$this->db->update($sql);
+		return $getresult;
+	}
+
+	function getuniname($id){
+		$sql="SELECT * FROM `university` WHERE `universityId`=$id";
+		$getresult=$this->db->update($sql);
+		return $getresult;
+	}
+
+	function getModaratorInformation($id){
+		$sql="SELECT * FROM `modarator` WHERE `morId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	function getstdinfotforprofile($id){
+		$sql="SELECT * FROM `student_two` join student_one WHERE 
+		student_two.std_one= student_one.studentId and student_two.std_one=$id";
+		   $getresult=$this->db->select($sql);
+		   return $getresult;
+	}
 	
    	//login
    	function login($data){
    		$email=$data['email'];
    		$passs=$data['pass'];
    		$sqr="SELECT * FROM student_one WHERE email='$email' AND pass='$passs'";
-   		$uqr="SELECT * FROM university WHERE email='$email' AND pass='$passs'";
+		$uqr="SELECT * FROM university WHERE email='$email' AND pass='$passs'";
+		   
    		
-   		
-   		
-   		$adminsql="SELECT * FROM modarator WHERE email='$email' AND pass='$passs'";
+		$adminsql="SELECT * FROM modarator WHERE email='$email' AND pass='$passs'";
+		   
    		$sres=$this->db->select($sqr);
    		$ures=$this->db->select($uqr);
-   		/* $ures2=$this->db->select($uqr2); */
    		$adminqr=$this->db->select($adminsql);
-   		
-   		if ($sres==true) {
+   		 if ($sres==true) {
    			$value=$sres->fetch_assoc();
    			session::set("std",true);
-   			session::set("sid",$value['studentId']);
+			   session::set("sid",$value['studentId']);
+			   session::set("stdname",$value['fname']." ".$value['lname']);
    			
 			$studentIds=$value['studentId'];
    			$payment="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and student_two.std_one=$studentIds";
@@ -1903,19 +1950,36 @@
    			
    			
    			header("Location:StudentAdmin/index.php");
-   		}
-   		if ($ures==true) {
+   		}else if ($ures==true) {
    			$value=$ures->fetch_assoc();
    			session::set("uni",true);
-   			session::set("uid",$value['universityId']);
+			   session::set("uid",$value['universityId']);
+			   session::set("unicheck",2);
+			   session::set("typ",1);
    			header("Location:UniversityAdmin/index.php");
-   		}if ($adminqr==true) {
+   		}else if ($adminqr==true) {
    			$value=$adminqr->fetch_assoc();
-   			session::set("admin",true);
-   			session::set("admid",$value['morId']);
-   			session::set("admintype",$value['types']);
-   			session::set("adminname",$value['name']);
-   			header("Location:Admin/index.php");
+   			
+			if(empty($value['uniid']) && !empty($value['adminId'])){
+				//admin
+				session::set("admin",true);
+				session::set("admid",$value['morId']);
+				session::set("admintype",$value['types']);
+				session::set("adminname",$value['name']);
+				session::set("unicheck",0);
+				header("Location:Admin/index.php");	
+			}else{
+				//university
+				session::set("uni",true);
+				session::set("uid",$value['uniid']);
+				session::set("typ",$value['types']);
+				session::set("name",$value['name']);
+				session::set("morId",$value['morId']);
+				session::set("userimg",$value['img']);
+				session::set("unicheck",1);
+   				header("Location:UniversityAdmin/index.php");
+			}
+   			
    		}else{
    			echo '<script type="text/javascript">';
    			echo ' alert("Password and email do not match")';

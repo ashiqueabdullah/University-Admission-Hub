@@ -563,13 +563,13 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
 }
 
 .profile .inner{
-    width: 80%;
+    width: 60%;
     height: auto;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     margin: 80px auto;
-    padding: 20px;
+    padding: 60px;
 }
 
 .profile .inner ul{}
@@ -580,6 +580,23 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
     text-decoration: none;
 }
 
+.profile h1{
+    margin-bottom: 20px;
+}
+
+.universityeditProfile img{
+    border-radius: 5px;
+}
+.universityeditProfile .inner{
+    width: 60%;
+    height: auto;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    margin: 80px auto;
+    padding: 60px;
+    background-color: white;
+}
 
 
 /*Profile page css end*/
@@ -741,6 +758,11 @@ a.unitshow{
 	margin-bottom:10px;
 }
 
+.profile img{
+	height:400px;
+	border-radius:5px;
+    margin-bottom:10px;
+}
 
 
 

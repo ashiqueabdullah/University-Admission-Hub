@@ -6,14 +6,13 @@
         <div class="top">
             <div class="row zin">
                 <div class="col-md-2">
-                    <img src="img/1.jpg" alt="">
+                    <img src="img/upload/<?php echo $userimage?>" alt="">
                 </div>
-                <div class="col-md-3 text-white">
-                    <h1>Halima Ashraf</h1>
-                    <p><i class="fas fa-map-marker-alt"></i> 29, Rajar Golli Dorga Gate
-                        <br>Sylhet, 3100</p>
+                <div class="col-md-4 text-white">
+                    <h1><?php echo $username?></h1>
+                    <p><i class="fas fa-map-marker-alt"></i> <?php echo $ParmanentAddress?>
                 </div>
-                <div class="col-md-4 text-white offset-md-3">
+                <div class="col-md-4 text-white offset-md-2">
 
                     <?php
                         $sid=$_SESSION['sid'];
