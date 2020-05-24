@@ -4,7 +4,11 @@ $(document).ready(function() {
     showpaymet(0);
 	progress2();
 	progress();
-	getnotice(0);
+    getnotice(0);
+    showapplieds(0);
+    apply(0);
+
+
 });
 
 
@@ -197,6 +201,64 @@ if (pre3)
     pre3.addEventListener('click', function() {
         academi.style.display = 'none';
         anothergur.style.display = 'block';
-    });
+});
 
 //complite profile Js end
+
+var applyuniversity=document.getElementById("applyuniversity");
+var applieduniversity=document.getElementById("applieduniversity");
+
+var shoqapply=document.getElementById("shoqapply");
+var showapplied=document.getElementById("showapplied");
+
+
+
+if(applyuniversity){
+    applyuniversity.addEventListener('click',function(){
+
+        applyuniversity.style.color='white';
+        applyuniversity.style.background='#798BFF';
+
+        applieduniversity.style.color='white';
+        applieduniversity.style.background='#101924';
+
+        shoqapply.style.display='block';
+        showapplied.style.display='none';
+    
+    })
+}
+
+
+if(applieduniversity){
+    applieduniversity.addEventListener('click',function(){
+
+        applieduniversity.style.color='white';
+        applieduniversity.style.background='#798BFF';
+
+        applyuniversity.style.color='white';
+        applyuniversity.style.background='#101924';
+
+        shoqapply.style.display='none';
+        showapplied.style.display='block';
+    
+    })
+}
+
+
+function showapplieds(page) {
+    $.post('showapplied.php?page=' + page, function(respos) {
+        $('#showapplied').html(respos);
+    })
+}
+
+function apply(page) {
+    $.post('shoqapply.php?page=' + page, function(respos) {
+        $('#shoqapply').html(respos);
+    })
+}
+
+
+
+
+
+

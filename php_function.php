@@ -1920,7 +1920,45 @@
 		   $getresult=$this->db->select($sql);
 		   return $getresult;
 	}
+
+	function getadmitcardinfo($id){
+		$sql="SELECT * FROM `unit` WHERE  `uniId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+
+	function getstdinfoforadmitcard($id){
+		$sql="SELECT * FROM `student_two` join student_one WHERE 
+		student_two.std_one= student_one.studentId and student_two.std_one=$id";
+		   $getresult=$this->db->select($sql);
+		   return $getresult;
+	}
+
+	function getappliediformation($limit,$offset){
+		$id=$_SESSION['sid'];
+		$sql="SELECT * FROM `addmisson` WHERE `studentId`=$id limit $limit,$offset";
+		$pending=$this->db->select($sql);
+   		
+		$count="select count(`addmionId`) FROM addmisson WHERE `studentId`=$id";
+   		$gcou=$this->db->select($count);
+		
+		return array($pending,$gcou);
+	}
 	
+	function getuniveristynameForaddmisson($id){
+		$sql="SELECT * FROM `university` WHERE `universityId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+
+	function getunitnameForaddmisson($id){
+		$sql="SELECT * FROM `unit` WHERE `uniId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+
+	
+
    	//login
    	function login($data){
    		$email=$data['email'];

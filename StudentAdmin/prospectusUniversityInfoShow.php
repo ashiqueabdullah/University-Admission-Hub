@@ -12,7 +12,7 @@
  
  
  <div class="universiyInformation">
-	<h1>Basic Information</h1>
+	<h1 class="text-center">University Information</h1>
 	<hr>
 	<div class="row">
 		<div class="col-md-6">
@@ -28,7 +28,8 @@
 		</div>
 	</div>
 	<?php }} ?>
-	<h1>Unit Information</h1>
+	<hr>
+	<h1 class="text-center">Unit Information</h1>
 	<hr>
 	<div class="row">
 	<?php 

@@ -23,6 +23,7 @@
 						if($unit){
 							while($rrr=$unit->fetch_assoc()){
 								$unitname=$rrr['unitName'];
+								$GLOBALS['uniId']=$rrr['uniId'];
 							}
 						}
 				
@@ -30,7 +31,7 @@
 		
 			
 			<div class="col-md-3 inneradmit">
-			<a href="#" target="_blank">
+			<a href="admitcarddownload.php?id=<?php echo $uniId?>" target="_blank">
 			  <h4><?php echo $uniname ?></h4>
 			  <h4><?php echo $unitname ?></h4>
 			  </a>

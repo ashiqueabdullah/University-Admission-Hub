@@ -7,7 +7,7 @@
 
 
     <div class="p-5">
-    <div class="modaratorviews">
+    <div class="prosunit">
         
 
         <?php
@@ -45,7 +45,7 @@
 				<p class="mt-3"><strong>HSC Reguler GPA: </strong><?php echo $r['hscReg']?></p>
                 <p class="mt-3"><strong>HSC Ireguler GPA: </strong><?php echo $r['hscIreg']?></p>
                 <p class="mt-3"><strong>Allow: </strong><?php echo $r['allow']?></p>
-				<p class="mt-3"><strong>Quta: </strong>
+				<h4 class="mt-3">Quta: </h4>
 				
 				<form class="" method="post" action="">
 				<?php 
@@ -61,7 +61,7 @@
 					
 					<?php }}?>
 				
-					<input type="submit" name="adds" class="btn btn-success mt-3">
+					<input type="submit" name="adds" class="btn btn-success mt-3 w-100">
 					
 				</form>
 				
@@ -87,7 +87,7 @@
                 <p class="mt-3"><strong>Notes: </strong><?php echo $r['notes']?></p>
 				<p class="mt-3"><strong>Groups: </strong><?php echo $r['groups']?></p>
 				<p class="mt-3"><strong>Number Of Seat: </strong><?php echo $r['groups']?></p>
-				<p class="mt-3"><strong>Addmisson Fee: </strong><?php echo $r['admsFee']?></p>
+				<p class="mt-3"><strong>Addmisson Fee: </strong><?php echo $r['admsFee']?> tk</p>
             </div>
         </div>
         
