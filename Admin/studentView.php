@@ -5,12 +5,19 @@
 <div class="viewStudent">
     <div class="inner">
         <div class="row">
+        <?php
+            $id=$_GET['id'];
+            $phpcls=new phpclass();
+            $res=$phpcls->getAllStudentForView($id);
+            if($res){
+                while($value=$res->fetch_assoc()){ ?>
+
             <div class="col-md-6">
                 <h5>Information About Ashique Abdullah</h5>
             </div>
             <div class="col-md-6">
-                <a href="#" class="btn btn-danger float-right">Delete Student Profile</a>
-                <a href="#" class="btn btn-warning mr-1 float-right">Hold Student Profile</a>
+                <a href="studentDeleteApprove.php?delete=<?php echo $value['std_one']?>" class="btn btn-danger float-right">Delete Student Profile</a>
+                <a href="studentDeleteApprove.php?hold=<?php echo $value['std_one']?>" class="btn btn-warning mr-1 float-right">Hold Student Profile</a>
             </div>
         </div>
         <hr>
@@ -96,6 +103,7 @@
                             <img class="img-thumbnail mb-1" src="img/upload/<?php echo $value['hscCertificate']?>" width="200" alt="">
             </div>
         </div>
+                <?php }}?>
     </div>
 </div>
 

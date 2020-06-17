@@ -7,18 +7,20 @@
 body {
     font-family: 'Poppins', sans-serif;
 }
-
+td,th{
+    color: white;
+}
 
 /*menu bar css start*/
 
 .bgone {
-    background: #05396B;
+    background:#798BFF;
     color: white!important;
     border: 1px solid white;
 }
 
 .bgtwo {
-    background: #389583;
+    background: #101924;
     color: #EDF5E0!important;
     border: 1px solid white;
 }
@@ -109,19 +111,20 @@ body {
     width: calc(100% - 230px);
     margin-left: auto;
 	height:100%;
-	overflow-x: hidden;
+    overflow-x: hidden;
+    background-color: #596275;
 }
 
 .right_box .top_nav {
     height: auto;
-    background: white;
+    background:#798BFF;
     padding: 10px 0px;
     z-index:-1;
     border-bottom: 1px solid black;
 }
 
 .right_box .top_nav h1 {
-    color: #05396B;
+    color: white;
     padding-left: 10px;
 }
 
@@ -331,7 +334,8 @@ body {
 .right_box .hearo_area {
     overflow: hidden;
     padding: 10px;
-    background: #EDF5E0;
+    background: #596275;
+    padding-top: 30px;
 }
 
 .right_box .hearo_area a {
@@ -381,13 +385,14 @@ body {
 .admitAndnotice {
     overflow: hidden;
     padding: 10px;
-    background: #EDF5E0;
+    background: #596275;
 }
 
 .admitAndnotice h3 {
-    color: #05396B;
+    color: white;
     padding-bottom: 10px;
-    border-bottom: 2px dotted;
+    border-bottom: 2px solid gray;
+    margin-bottom: 15px;
 }
 
 .admitAndnotice table {
@@ -464,7 +469,8 @@ body {
     overflow: hidden;
     padding: 10px;
     width: auto;
-    background-color: #F5F6FA;
+    background-color: #596275;
+    color: white;
 }
 
 .right_box .payment img.plogo {
@@ -482,20 +488,22 @@ body {
     border-radius: 5px;
     margin-right: 3%;
     padding: 20px;
-    background-color: white;
+    background-color: #798BFF;
     border: 1px solid #dbdfea;
     height: auto;
     width: 100%;
+    color: white;
 }
 
 .right_box .payment .box2 {
     border-radius: 5px;
     margin-right: 3%;
     padding: 20px;
-    background-color: white;
+    background-color: #798BFF;
     border: 1px solid #dbdfea;
     height: auto;
     width: 100%;
+    color: white;
 }
 
 .right_box .payment h2 {
@@ -745,20 +753,21 @@ body {
     border-radius: 100%;
     width: 45px;
     height: 45px;
-    border: 2px solid #798BFF;
+    border: 2px solid #596275;
     margin-top:5px;
-    margin-right: 15px;
 }
 .right_box .top_nav p{
     margin:0px 10px;
     padding:0px;
     margin-top: 3px;
+    color: white;
+    font-size: 25px;
 }
 .right_box .top_nav h6{
-    margin:0px 10px;
+    margin:0px 5px;
     padding:0px;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 .right_box .top_nav .forInfo{
     position:relative;

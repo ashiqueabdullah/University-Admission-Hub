@@ -9,7 +9,7 @@
             $phpcls=new phpclass();
                 $id=$_SESSION['uid'];
                 $res=$phpcls->getUniversityInfo($id); if(isset($res)){ while($r=$res->fetch_assoc()){ echo $r['universityName']; ?>
-            <img class="img-thumbnail" src="img/upload/<?php echo $r['universityImg']?>" alt="" height="300" />
+            <img class="img-thumbnail mt-3" src="img/upload/<?php echo $r['universityImg']?>" alt="" height="300" />
             <?php }} ?>
         </h1>
         <div class="row">
@@ -54,7 +54,7 @@
                 </p>
             </div>
             <?php if($_SESSION['typ']==1){?>
-            <a href="profileedit.php?id=<?php echo $r['universityId']?>" class="btn btn-warning mt-5 w-100">Edit University</a>
+            <a href="profileedit.php?id=<?php echo $r['universityId']?>" class="btn btn-warning mt-5 w-100 ">Edit University</a>
 
             <?php }}}?>
         </div>

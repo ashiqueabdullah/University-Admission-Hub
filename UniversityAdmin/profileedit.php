@@ -5,10 +5,11 @@
 
 <div class="universityeditProfile">
     <div class="inner">
-        <h1 class="text-center">Edit North East University Information</h1>
+        
         <?php 
                 $phpcls=new phpclass();
                 $res=$phpcls->getUniversityInfo($id); if(isset($res)){ while($r=$res->fetch_assoc()){ ?>
+                <h1 class="text-center">Edit <?php echo $r['universityName']?> Information</h1>
         <form action="" method="post" enctype="multipart/form-data">
             <?php 
                 if(isset($_POST['add'])){

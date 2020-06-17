@@ -24,7 +24,7 @@
 						
 						<?php
 							$obj=new phpclass();
-							$limit=2;
+							$limit=20;
 							if (isset($_GET['page'])) {
 								$get_page=$_GET['page'];
 								if ($get_page=="" || $get_page=="1") {
@@ -43,11 +43,11 @@
 						?>
                         <tr>
                            
-                            <td><?php echo $r['lname']?></td>
-                            <td><?php echo $r['lname']?></td>
-                            <td><?php echo $r['lname']?></td>
-                            <td><?php echo $r['lname']?></td>
-                            <td><?php echo $r['lname']?></td>
+                            <td><?php echo $r['fname']." ".$r['lname']?></td>
+                            <td><?php echo $r['sscGpa']?></td>
+                            <td><?php echo $r['sscBordeName']?></td>
+                            <td><?php echo $r['hscGpa']?></td>
+                            <td><?php echo $r['hscBordeName']?></td>
                             <td>
                                 <a href="studentView.php?id=<?php echo $r['std_one']?>" class="btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
                                 <a href="studentDeleteApprove.php?delete=<?php echo $r['std_one']?>" class="btn btn-danger float-right mr-1"><i class="fas fa-trash-alt"></i> Delete</a>

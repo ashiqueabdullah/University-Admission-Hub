@@ -23,7 +23,7 @@
 
             <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -35,7 +35,7 @@
                                 $get_page=0;
                             }
 
-                            $res=$obj->getModaratorInfo($get_page,$limit);
+                            $res=$obj->getModaratorInfo2($get_page,$limit);
                            
                             
                             $GLOBALS['number_of_page']=ceil((implode($res[1]->fetch_assoc()))/$limit);
@@ -60,10 +60,10 @@
                     </td>
                     <td>
                         <?php 
-                    if ($r['status']==1) {?>
-                    <a href="modaratoractive.php?deactive=<?php echo $r['morId']?>" class="btn btn-secondary"><i class="fas fa-check-circle"></i> Deaactive</a>
+                    if ($r['status']==2) {?>
+                    <a href="modaratoractive.php?active=<?php echo $r['morId']?>" class="btn btn-secondary"><i class="fas fa-check-circle"></i> Deaactive</a>
                      <?php }else{?>
-                    <a href="modaratoractive.php?active=<?php echo $r['morId']?>"  class="btn btn-success"><i class="fas fa-check-circle"></i> Active</a>
+                    <a href="modaratoractive.php?deactive=<?php echo $r['morId']?>"  class="btn btn-success"><i class="fas fa-check-circle"></i> Active</a>
 
                      <?php }?>
 

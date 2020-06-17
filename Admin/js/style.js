@@ -1,3 +1,54 @@
+//form validation
+function formvalidation(){
+    var name=document.modaratorAddform.modaname;
+    var modaimg=document.modaratorAddform.modaimg;
+    var modaemail=document.modaratorAddform.modaemail;
+    var modapass=document.modaratorAddform.modapass;
+    var modaphone=document.modaratorAddform.modaphone;
+    var address=document.modaratorAddform.address;
+    var city=document.modaratorAddform.city;
+    var zip=document.modaratorAddform.zip;
+    if(name.value==""){
+        document.getElementById("errorShow").innerHTML="Please Admin/Modarator Name";
+        return false;
+    }
+    if(modaimg.value==""){
+        document.getElementById("errorShow").innerHTML="Please Upload Image";
+        return false;
+    }
+
+    if(modaemail.value==""){
+        document.getElementById("errorShow").innerHTML="Please Enter Email";
+        return false;
+    }
+    if(modapass.value==""){
+        document.getElementById("errorShow").innerHTML="Please Password";
+        return false;
+    }
+
+    if(modaphone.value==""){
+        document.getElementById("errorShow").innerHTML="Please Enter Phone";
+        return false;
+    }
+    if(zip.value==""){
+        document.getElementById("errorShow").innerHTML="Please Enter Zip code";
+        return false;
+    }
+
+    if(address.value==""){
+        document.getElementById("errorShow").innerHTML="Please Enter Address";
+        return false;
+    }
+    if(city.value==""){
+        document.getElementById("errorShow").innerHTML="Please Enter City";
+        return false;
+    }
+}
+
+
+
+
+
 $(document).ready(function(){
     $('.studentsearchs').keyup(function(){
         var src=$('.studentsearchs').val();

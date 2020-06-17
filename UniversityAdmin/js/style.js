@@ -309,7 +309,8 @@ $(document).ready(function() {
 	getUnit(0);
 	showpendingstudent(0);
 	showapprovedstudent(0);
-	showrejectstudent(0);
+    showrejectstudent(0);
+    shoresult(0);
 
     $('#noticeSearch').keyup(function(){
         var src=$('#noticeSearch').val();
@@ -347,10 +348,52 @@ $(document).ready(function() {
     });
 
 
+    $('#resutSearch').keyup(function(){
+        var src=$('#resutSearch').val();
+        if (src=="") {
+            shoresult(0);
+        }else{
+           $.ajax({
+            url:'resultSearch.php',
+            data:'resultSearch='+src,
+            success:function(data){
+                $('#pendisgResult').html(data);
+            }
+        }); 
+        }
+        
+    });
+
+
+
+
+
+
+
+    showreseltPassed(0);
+    showreseltfailed(0);
    
 });
 
+function showreseltfailed(page) {
+    $.post('resultfailed.php?page=' + page, function(respos) {
+        $('#failResult').html(respos);
+    })
+}
 
+
+function showreseltPassed(page) {
+    $.post('resultPassed.php?page=' + page, function(respos) {
+        $('#PassedResult').html(respos);
+    })
+}
+
+
+function shoresult(page) {
+    $.post('resultshow.php?page=' + page, function(respos) {
+        $('#pendisgResult').html(respos);
+    })
+}
 
 function showapprovedstudent(page) {
     $.post('allapprovestudent.php?page=' + page, function(respos) {
@@ -572,5 +615,73 @@ if(allrej){
         allApprovedStudent.style.display='none';
         allPendingStudent.style.display='none';
         allRejectStudent.style.display='block';
+    })
+}
+
+
+
+
+var pendinstudent=document.getElementById("pendinstudent");
+var passStudent=document.getElementById("passStudent");
+var failrStudent=document.getElementById("failrStudent"); 
+
+
+
+var pendisgResult=document.getElementById("pendisgResult");
+var PassedResult=document.getElementById("PassedResult");
+var failResult=document.getElementById("failResult"); 
+
+
+if(pendinstudent){
+    pendinstudent.addEventListener('click',function(){
+        pendinstudent.style.color='#101924';
+        pendinstudent.style.background='#A4CFFF';
+
+        passStudent.style.color='#A4CFFF';
+        passStudent.style.background='#101924 ';
+
+        failrStudent.style.color='#A4CFFF';
+        failrStudent.style.background='#101924 ';
+
+        pendisgResult.style.display='block';
+        PassedResult.style.display='none';
+        failResult.style.display='none';
+    })
+}
+
+
+
+if(passStudent){
+    passStudent.addEventListener('click',function(){
+        passStudent.style.color='#101924';
+        passStudent.style.background='#A4CFFF';
+
+        pendinstudent.style.color='#A4CFFF';
+        pendinstudent.style.background='#101924 ';
+
+        failrStudent.style.color='#A4CFFF';
+        failrStudent.style.background='#101924 ';
+
+        pendisgResult.style.display='none';
+        PassedResult.style.display='block';
+        failResult.style.display='none';
+    })
+}
+
+
+if(failrStudent){
+    failrStudent.addEventListener('click',function(){
+        failrStudent.style.color='#101924';
+        failrStudent.style.background='#A4CFFF';
+
+        pendinstudent.style.color='#A4CFFF';
+        pendinstudent.style.background='#101924 ';
+
+        passStudent.style.color='#A4CFFF';
+        passStudent.style.background='#101924 ';
+
+        pendisgResult.style.display='none';
+        PassedResult.style.display='none';
+        failResult.style.display='block';
     })
 }

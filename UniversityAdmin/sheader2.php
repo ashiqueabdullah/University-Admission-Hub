@@ -79,7 +79,7 @@
                         <li>
                             <a href="result.php"><i class="fas fa-info-circle mr-3"></i>Result Update</a>
                         </li>
-                        <?php if($_SESSION['typ']==1){?>
+                        <?php if($_SESSION['unicheck']==1){?>
 						<li>
                             <a href="userprofile.php"><i class="fas fa-money-bill-alt mr-3"></i>User Profile</a>
                         </li>

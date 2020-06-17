@@ -22,7 +22,7 @@
 
             <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -61,7 +61,7 @@
             <?php for($i=1; $i<=$number_of_page; $i++){
                     ?>
                 <li class="page-item mr-2">
-                    <?php echo '<span class="page-link" style="cursor: pointer;" onclick="allNoticeForUni('.$i.')">'.$i.'</span>';?>
+                    <?php echo '<span class="page-link" style="cursor: pointer;" onclick="getnotice('.$i.')">'.$i.'</span>';?>
                 </li>
                 <?php }?>
 

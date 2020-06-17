@@ -1172,6 +1172,10 @@ a.btn.btn-danger {
     width: 50%;
 }
 
+#errorShow{
+    color: red;
+    text-align: center;
+}
     
 
 

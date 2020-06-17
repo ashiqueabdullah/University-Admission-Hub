@@ -479,17 +479,31 @@
    			$mdtp=1;
    		}
    		
-   		$status=1;
+		   $status=1;
+		   
+		   $check="SELECT * FROM `modarator` WHERE `email`='$modaemail'";
+		   $checkEmail=$this->db->select($check);
+		   $checkEmail=$checkEmail->fetch_assoc();
+
+		   if($checkEmail['email']!=$modaemail){
+
+			$sql="INSERT INTO `modarator`
+			(`name`,  `adress`, `email`, `pass`,  `img`,  `status`, `phone`, `types`, `city`, `zip`, `adminId`) VALUES 
+			('$name','$address','$modaemail','$modapass','$modaimg','$status','$modaphone','$mdtp','$city','$zip','$adminId')";
+			$getresult=$this->db->insert($sql);
+			
+		   }else{
+				echo '<script type="text/javascript">';
+				echo ' alert("Email Already exsist")';
+				echo '</script>';
+		   }
+		
+		
+		   
+
+
    
    		
-   
-   		$sql="INSERT INTO `modarator`(`name`,  `adress`, `email`, `pass`,  `img`,  `status`, `phone`, `types`, `city`, `zip`, `adminId`) VALUES ('$name','$address','$modaemail','$modapass','$modaimg','$status','$modaphone','$mdtp','$city','$zip','$adminId')";
-   		$getresult=$this->db->insert($sql);
-   
-   		$sqls="select count(`morId`) FROM modarator WHERE `adminId`IS NOT NULL";
-   
-   		$gcou=$this->db->select($sqls);		
-   		return array($getresult,$gcou);
    	}
    
    
@@ -530,15 +544,27 @@
    	}
    
    
-   	function getModaratorInfo($limit,$offset){
-   		$sql="SELECT * FROM `modarator`  limit $limit,$offset";
+   	function getModaratorInfo2($limit,$offset){
+		$id=$_SESSION['admid'];
+   		$sql="SELECT * FROM `modarator` WHERE `adminId`=$id limit $limit,$offset";
    		$getresult=$this->db->select($sql);
    
-   		$sqls="select count(`morId`) FROM modarator WHERE `adminId` IS NOT NULL";
+   		$sqls="select count(`morId`) FROM modarator WHERE `adminId`=$id";
    
    		$gcou=$this->db->select($sqls);		
    		return array($getresult,$gcou);
-   	}
+	   }
+	   
+
+	   function getModaratorInfo($limit,$offset){
+		$sql="SELECT * FROM `modarator` WHERE `status`=0 AND `uniid` IS NOT NULL limit $limit,$offset";
+		$getresult=$this->db->select($sql);
+
+		$sqls="select count(`morId`) FROM modarator WHERE `adminId` IS NOT NULL";
+
+		$gcou=$this->db->select($sqls);		
+		return array($getresult,$gcou);
+	}
    
    
    	function getModaratorInfoForUniversity($limit,$offset){
@@ -855,7 +881,19 @@
    
    		$gcou=$this->db->select($sqls);	
    		return $getresult;
-   	}
+	   }
+	   
+	   function getnoticeforhomepage(){
+		$sql="SELECT * FROM `notice` WHERE `statuss`=1 AND `whome`<>2 LIMIT 10";
+		$getresult=$this->db->select($sql);	
+   		return $getresult;
+	   }
+
+	   function getappliedinfo($id){
+		$sqls="select count(`addmissonId`) FROM addmisson  WHERE `studentId`=$id";
+		$getresult=$this->db->select($sqls);	
+		return $getresult;
+	   }
    
    
    	function getNoticeInformationAdminPanale($id){
@@ -1233,7 +1271,8 @@
    	}
    
    	function adminMOdaraSearch($search){
-   		$sql="SELECT * FROM `modarator` WHERE `adminId` IS NOT NULL AND `name` LIKE '%$search%'";
+		$id=$_SESSION['admid'];
+   		$sql="SELECT * FROM `modarator` WHERE `adminId`=$id AND `name` LIKE '%$search%'";
    		$getresult=$this->db->select($sql);
    		return $getresult;
    	}
@@ -1790,7 +1829,7 @@
 		$sql="SELECT * FROM `addmisson` WHERE `statuss`=0 limit $limit,$offset";
 		$pending=$this->db->select($sql);
    		
-		$count="select count(`addmionId`) FROM addmisson WHERE `statuss`=0";
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=0";
    		$gcou=$this->db->select($count);
 		
 		return array($pending,$gcou);
@@ -1806,13 +1845,13 @@
 	
 	
 	function admissonactive($id){
-		$sql="UPDATE `addmisson` SET `statuss`=1 WHERE `addmionId`=$id";
+		$sql="UPDATE `addmisson` SET `statuss`=1 WHERE `addmissonId`=$id";
 		$getresult=$this->db->update($sql);
 		header("Location:approve.php");
 	}
 	
 	function admissondelete($id){
-		$sql="DELETE FROM `addmisson` WHERE `addmionId`=$id";
+		$sql="DELETE FROM `addmisson` WHERE `addmissonId`=$id";
 		$getresult=$this->db->update($sql);
 		header("Location:approve.php");
 	}
@@ -1828,7 +1867,7 @@
 		$sql="SELECT * FROM `addmisson` WHERE `statuss`=1 limit $limit,$offset";
 		$pending=$this->db->select($sql);
    		
-		$count="select count(`addmionId`) FROM addmisson WHERE `statuss`=1";
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=1";
    		$gcou=$this->db->select($count);
 		
 		return array($pending,$gcou);
@@ -1840,7 +1879,7 @@
 		$sql="SELECT * FROM `addmisson` WHERE `statuss`=2 limit $limit,$offset";
 		$pending=$this->db->select($sql);
    		
-		$count="select count(`addmionId`) FROM addmisson WHERE `statuss`=2";
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=2";
    		$gcou=$this->db->select($count);
 		
 		return array($pending,$gcou);
@@ -1848,7 +1887,7 @@
 	}
 	
 	function admissonreject($id){
-		$sql="UPDATE `addmisson` SET `statuss`=2 WHERE `addmionId`=$id";
+		$sql="UPDATE `addmisson` SET `statuss`=2 WHERE `addmissonId`=$id";
 		$getresult=$this->db->update($sql);
 		header("Location:approve.php");
 	}
@@ -1939,7 +1978,7 @@
 		$sql="SELECT * FROM `addmisson` WHERE `studentId`=$id limit $limit,$offset";
 		$pending=$this->db->select($sql);
    		
-		$count="select count(`addmionId`) FROM addmisson WHERE `studentId`=$id";
+		$count="select count(`addmissonId`) FROM addmisson WHERE `studentId`=$id";
    		$gcou=$this->db->select($count);
 		
 		return array($pending,$gcou);
@@ -1959,6 +1998,92 @@
 
 	
 
+	function resultShows($limit,$offset){
+		$sql="SELECT * FROM `addmisson` WHERE `statuss`=1 AND `results`=0 limit $limit,$offset";
+		$pending=$this->db->select($sql);
+   		
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=1 AND `results`=0";
+   		$gcou=$this->db->select($count);
+		
+		return array($pending,$gcou);
+	}
+
+
+	function passed($id){
+		$sql="UPDATE `addmisson` SET `results`=1 WHERE `addmissonId`=$id";
+		$getresult=$this->db->select($sql);
+		header("Location:result.php");
+	}
+	function fail($id){
+		$sql="UPDATE `addmisson` SET `results`=2 WHERE `addmissonId`=$id";
+		$getresult=$this->db->select($sql);
+		header("Location:result.php");
+	}
+
+	function resultShowspassed($limit,$offset){
+		$sql="SELECT * FROM `addmisson` WHERE `statuss`=1 AND `results`=1 limit $limit,$offset";
+		$pending=$this->db->select($sql);
+   		
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=1 AND `results`=1";
+   		$gcou=$this->db->select($count);
+		
+		return array($pending,$gcou);
+	}
+
+	function resultShowsfailed($limit,$offset){
+		$sql="SELECT * FROM `addmisson` WHERE `statuss`=1 AND `results`=2 limit $limit,$offset";
+		$pending=$this->db->select($sql);
+   		
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=1 AND `results`=2";
+   		$gcou=$this->db->select($count);
+		
+		return array($pending,$gcou);
+	}
+
+
+	function resultsearchs($search){
+		$id=$_SESSION['uid'];
+   		$sql="SELECT * FROM `addmisson` WHERE universityId=$id AND `studentId` LIKE '%$search%'";
+   		$getresult=$this->db->select($sql);
+   		return $getresult;
+	}
+
+	function getAllStudentForView($id){
+		$sql="SELECT * FROM `student_two` join student_one WHERE 
+		student_two.std_one= student_one.studentId and student_two.std_one=$id";
+		   $getresult=$this->db->select($sql);
+		   return $getresult;
+	}
+
+
+	function approved($id){
+		$sql="UPDATE `modarator` SET `status`=1 WHERE `morId`=$id";
+		$getresult=$this->db->select($sql);
+		header("Location:modarator.php");
+	}
+
+	function  getalluniversitymodarators($limit,$offset){
+		$sql="SELECT * FROM `modarator` WHERE `uniid` IS NOT NULL limit $limit,$offset";
+		$getresult=$this->db->select($sql);
+
+		$sqls="select count(`morId`) FROM modarator WHERE `uniid` IS NOT NULL";
+
+		$gcou=$this->db->select($sqls);		
+		return array($getresult,$gcou);
+	}
+
+	function getuniversitynameformoradaratorsoe($id){
+		$sql="SELECT * FROM `university` WHERE `universityId`=$id";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+	
+	function modaratorSearch2($search){
+		$sql="SELECT * FROM `modarator`  WHERE `adminId` IS NULL AND `name` LIKE '%$search%'";
+		$getresult=$this->db->select($sql);
+		return $getresult;
+	}
+
    	//login
    	function login($data){
    		$email=$data['email'];
@@ -1977,6 +2102,7 @@
    			session::set("std",true);
 			   session::set("sid",$value['studentId']);
 			   session::set("stdname",$value['fname']." ".$value['lname']);
+            session::set("msz",1);
    			
 			$studentIds=$value['studentId'];
    			$payment="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and student_two.std_one=$studentIds";
@@ -1990,7 +2116,7 @@
    			header("Location:StudentAdmin/index.php");
    		}else if ($ures==true) {
    			$value=$ures->fetch_assoc();
-   			session::set("uni",true);
+   				session::set("uni",true);
 			   session::set("uid",$value['universityId']);
 			   session::set("unicheck",2);
 			   session::set("typ",1);
@@ -1998,7 +2124,7 @@
    		}else if ($adminqr==true) {
    			$value=$adminqr->fetch_assoc();
    			
-			if(empty($value['uniid']) && !empty($value['adminId'])){
+			if(empty($value['uniid']) && !empty($value['adminId']) && $value['status']==1){
 				//admin
 				session::set("admin",true);
 				session::set("admid",$value['morId']);
@@ -2006,7 +2132,7 @@
 				session::set("adminname",$value['name']);
 				session::set("unicheck",0);
 				header("Location:Admin/index.php");	
-			}else{
+			}else if(!empty($value['uniid']) && empty($value['adminId']) && $value['status']==1){
 				//university
 				session::set("uni",true);
 				session::set("uid",$value['uniid']);

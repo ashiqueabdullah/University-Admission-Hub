@@ -72,9 +72,6 @@
                         <li>
                             <a href="payment.php"><i class="fas fa-money-bill-alt mr-3"></i>Payment</a>
                         </li>
-                        <li>
-                            <a href="admitcard.php"><i class="fas fa-id-card mr-3"></i>Admit Card</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,7 +82,7 @@
                             <h1>Student Dashbord</h1>
                         </div>
 						<div class="col-lg-3 col-md-3">
-							<p class="mt-3">Balance: <span style="color: blue"><b><?php 
+							<p class="mt-2">Balance: <span style="color:red"><b><?php 
 								
 								echo $balance;
 								

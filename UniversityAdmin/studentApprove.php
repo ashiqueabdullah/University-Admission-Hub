@@ -101,7 +101,7 @@
                 <p class="mt-3"><b>Division: </b><?php echo $r['sscBordeName']?></p>
                 <p class="mt-3"><b>GPA: </b><?php echo $r['sscGpa']?></p>
                 <p class="mt-3"><b>Passing Year: </b><?php echo $r['sscpassingYear']?></p>
-                <p class="mt-3"><b>SSC Certificate: </b><img src="img/<?php echo $r['sscCertificate']?>" width="200" alt=""></p>
+                <p class="mt-3"><b>SSC Certificate: </b><img src="../StudentAdmin/img/Upload/<?php echo $r['sscCertificate']?>" width="200" alt=""></p>
 
                 
                 <h4>HSC/A'Lavel record</h4>
@@ -110,7 +110,7 @@
                 <p class="mt-3"><b>Division: </b><?php echo $r['hscBordeName']?></p>
                 <p class="mt-3"><b>GPA: </b><?php echo $r['hscGpa']?></p>
                 <p class="mt-3"><b>Passing Year: </b><?php echo $r['hscpassingYear']?></p>
-                <p class="mt-3"><b>SSC Certificate: </b><img src="img/<?php echo $r['hscCertificate']?>" width="200" alt=""></p>
+                <p class="mt-3"><b>SSC Certificate: </b><img src="../StudentAdmin/img/Upload/<?php echo $r['hscCertificate']?>" width="200" alt=""></p>
 
             </div>
             </div>

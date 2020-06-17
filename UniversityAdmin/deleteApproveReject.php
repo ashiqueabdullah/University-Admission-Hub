@@ -101,6 +101,17 @@
 		$id=$_GET['admissonreject'];
 		$res=$phpcls->admissonreject($id);
 	}
+
+
+	if(isset($_GET['passed'])){
+		$id=$_GET['passed'];
+		$res=$phpcls->passed($id);
+	}
+
+	if(isset($_GET['fail'])){
+		$id=$_GET['fail'];
+		$res=$phpcls->fail($id);
+	}
   
    include_once("sfooter.php");
    ?>

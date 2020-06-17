@@ -15,13 +15,7 @@
                     
                 </ul>
                     </div>
-                    <div class="col-md-3">
-                      <form class="form-inline d-flex justify-content-center md-form form-sm  mt-1">
-                          <input class="p-3 form-control form-control-sm mr-3" type="text" placeholder="Search Student By SSC Rool Or Name"
-                            aria-label="Search">
-                          <i class="fas fa-search" aria-hidden="true"></i>
-                        </form>  
-                    </div>
+                    
                 </div>
 
                 

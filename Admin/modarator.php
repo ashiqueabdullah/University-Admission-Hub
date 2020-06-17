@@ -11,11 +11,11 @@
                 $res=$phpcls->addModarator($_POST,$_FILES);
             }
         ?>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" name="modaratorAddform" onsubmit="return formvalidation()">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Modarator Name</label>
-                            <input type="text" name="modaname" class="form-control" placeholder="Enter Name" required>
+                            <input type="text" name="modaname" class="form-control" placeholder="Enter Name" >
                         </div>
                         <div class="form-group col-md-6">
                             <label>Upload Image</label>
@@ -26,19 +26,19 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Modarator Email</label>
-                            <input type="text" name="modaemail" class="form-control" placeholder="Enter Email" required>
+                            <input type="text" name="modaemail" class="form-control" placeholder="Enter Email" >
                         </div>
                         <div class="form-group col-md-6">
                             <label>Password</label>
-                            <input type="password" name="modapass" class="form-control" placeholder="Password" required>
+                            <input type="password" name="modapass" class="form-control" placeholder="Password" >
                         </div>
                         <div class="form-group col-md-6">
                             <label>Phone</label>
-                            <input type="text" name="modaphone" class="form-control" placeholder="Enter Modarator phoen Number" required>
+                            <input type="text" name="modaphone" class="form-control" placeholder="Enter Modarator phoen Number" >
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputState">Type</label>
-                            <select name="modatype" class="form-control" required>
+                            <select name="modatype" class="form-control" >
                                 <option value="Modarator">Modarator</option>
                                 <option value="Admin">Admin</option>
                             </select>
@@ -48,7 +48,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Address</label>
-                            <input type="text" name="address" class="form-control" placeholder="1234 Main St" required>
+                            <input type="text" name="address" class="form-control" placeholder="1234 Main St" >
                         </div>
 
                     </div>
@@ -57,16 +57,16 @@
 
                         <div class="form-group col-md-6">
                             <label>City</label>
-                            <input type="text" name="city" class="form-control" required>
+                            <input type="text" name="city" class="form-control" >
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>Zip</label>
-                            <input type="text" name="zip" class="form-control" required>
+                            <input type="text" name="zip" class="form-control" >
                         </div>
                     </div>
-
-                    <button type="submit" name="addmoda" class="btn btn-success">Add Modarator</button>
+                    <p id="errorShow"></p>
+                    <input type="submit" name="addmoda" class="btn btn-success w-100" value="Add Modarator">
                 </form>
         </div>
     </div>
@@ -112,20 +112,7 @@
                 <div class="col-md-7">
                     <h5>Modarator Want to Approve</h5>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-row">
-
-                        <div class="col-md-8 offset-md-4">
-                            <div class="input-group md-form form-sm form-2 pl-0">
-                                <input id="wantApproveModa" class="form-control my-0 py-1 red-border" type="text" placeholder="Search Modarator">
-                                <div class="input-group-append">
-                                    <span class="input-group-text red lighten-3" id="basic-text1"><i style="color: #798BFF" class="fas fa-search text-grey"
-                        aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
             <hr class="pb-3">

@@ -3,7 +3,9 @@
     padding: 0px;
 }
 
-
+p{
+    font-size: 18px;
+}
 /* 
 #F5F6FA (page background)
 #101924 (manubar color)
@@ -94,15 +96,15 @@
 .right_box {
     width: calc(100% - 230px);
     margin-left: auto;
-    height: auto;
-    background-color:#F5F6FA;
+    height: 100vh;
+    background-color:#596275;
 	overflow-x:hidden;
 }
 
 .right_box .top_nav {
     height: auto;
-    background: white;
-    
+    background: #798BFF;
+    color: white;
     border-bottom: 1px solid #101924;
     padding: 5px 0px;
     
@@ -113,7 +115,7 @@
     padding-left: 10px;
 }
 
-.right_box .top_nav form {}
+
 
 .right_box .top_nav input.form-contorl {
     width: 84%;
@@ -570,6 +572,8 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     margin: 80px auto;
     padding: 60px;
+    background-color: #798BFF;
+    color: white;
 }
 
 .profile .inner ul{}
@@ -595,7 +599,8 @@ a.btn.btn-danger,a.btn.btn-warning,a.btn.btn-info,a.btn.btn-success ,a.btn.btn-s
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     margin: 80px auto;
     padding: 60px;
-    background-color: white;
+    background-color: #798BFF;
+    color: white;
 }
 
 
@@ -668,8 +673,7 @@ a.unitshow{
     width: 45px;
     height: 45px;
     border: 2px solid #798BFF;
-    margin-top:5px;
-    margin-right: 15px;
+    
 }
 .right_box .top_nav p{
     margin:0px 10px;
@@ -680,7 +684,7 @@ a.unitshow{
     margin:0px 10px;
     padding:0px;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 .right_box .top_nav .forInfo{
     position:relative;
@@ -765,4 +769,55 @@ a.unitshow{
 }
 
 
+.result{
+    background-color: white;
+    border: 1px solid #dbdfea;
+    border-radius: 5px;
+    padding: 20px;
+}
 
+
+
+
+
+
+
+.result ul {
+    margin: 0px;
+    padding: 0px;
+}
+.result ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+.result ul li a{
+    text-decoration: none;
+    padding: 10px 25px;
+    background-color: #101924;
+    border-radius: 3px;
+    color: #A4CFFF;
+    margin-right: 3px;
+    display: block;
+}
+.result ul li a#pendinstudent{
+    color:#101924;
+    background:#A4CFFF;
+}
+
+.result #pendisgResult{
+    display: block;
+}
+.result #PassedResult{
+    display: none;
+}
+.result #failResult{
+    display: none;
+}
+
+.info_box{
+    margin:60px;
+    padding:50px;
+    background-color: white;
+    border-radius: 5px;
+}

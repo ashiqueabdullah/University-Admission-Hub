@@ -8,6 +8,7 @@ $(document).ready(function() {
     showapplieds(0);
     apply(0);
 
+    
 
 });
 

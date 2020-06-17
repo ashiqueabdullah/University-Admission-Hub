@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 05:29 PM
+-- Generation Time: Jun 17, 2020 at 06:06 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.27
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,18 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addmission`
+-- Table structure for table `addmisson`
 --
 
-CREATE TABLE `addmission` (
+CREATE TABLE `addmisson` (
   `addmissonId` int(11) NOT NULL,
   `studentId` int(11) DEFAULT NULL,
-  `infoId` int(11) DEFAULT NULL,
-  `admiId` int(11) DEFAULT NULL,
+  `universityId` int(11) DEFAULT NULL,
   `statuss` int(11) DEFAULT NULL,
   `dates` date DEFAULT NULL,
-  `times` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `times` time DEFAULT NULL,
+  `unitId` int(11) DEFAULT NULL,
+  `qutaId` int(11) DEFAULT NULL,
+  `results` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,8 @@ INSERT INTO `depertment` (`depertmentId`, `depertmentName`, `statuss`, `uid`, `d
 (11, 'LAW', 0, 5, 'LAW'),
 (12, 'EEE', 0, 5, 'EEE'),
 (13, 'CE', 0, 5, 'CE'),
-(14, 'MSE', 0, 5, 'MSE');
+(14, 'MSE', 0, 5, 'MSE'),
+(15, 'CSE', 1, 5, 'CSE');
 
 -- --------------------------------------------------------
 
@@ -370,9 +372,9 @@ CREATE TABLE `student_two` (
 --
 
 INSERT INTO `student_two` (`student_id`, `nationality`, `placeOfBirthDistrict`, `image`, `married`, `BloodGroup`, `ParmanentAddress`, `ParmanentDivision`, `ParmanentZipCode`, `ParmanentDistrict`, `ParmanentCity`, `fatherName`, `fatherOccipation`, `fatherAddress`, `fatherPhone`, `fatherEmail`, `motherName`, `motherOccipation`, `motherAddress`, `motherPhone`, `motherEmail`, `nameOfLocalGuardian`, `relationshipOfLocalGuardian`, `addressOfLocalGuardian`, `phoneOfLocalGuardian`, `emailOfLocalGuardian`, `emergencyPersonName`, `emergencyPersonRelationshipe`, `emergencyPersonAddress`, `emergencyPersonPhone`, `emergencyPersonEmail`, `personPayTheFeeName`, `personPayTheFeeRealtion`, `personPayTheFeeAddress`, `personPayTheFeePhone`, `personPayTheFeeEmail`, `personPayTheFeeAnnualIncome`, `sat`, `satDate`, `ielts`, `ieltsDate`, `tofel`, `tofelDate`, `gmat`, `gmatDate`, `sscInstituteName`, `sscBordeName`, `sscGpa`, `sscpassingYear`, `sscCertificate`, `hscInstituteName`, `hscBordeName`, `hscGpa`, `hscpassingYear`, `hscCertificate`, `std_one`, `balace`, `satuss`, `hold`) VALUES
-(56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 58, NULL, 2, 0),
-(57, '', 'Chittagong', '', 'one', 'a+', '', 'Dhaka', '', 'Chittagong', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 59, NULL, 2, 0),
-(58, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 60, NULL, 2, 0);
+(56, NULL, NULL, 'received_580735252507091.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 58, NULL, 2, 0),
+(57, '', 'Chittagong', 'received_580735252507091.png', 'one', 'a+', '', 'Dhaka', '', 'Chittagong', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', 59, NULL, 2, 0),
+(58, NULL, NULL, 'received_580735252507091.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 60, NULL, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -423,7 +425,20 @@ INSERT INTO `subject` (`subjectId`, `subjectname`, `subjectMark`, `uid`, `status
 CREATE TABLE `unit` (
   `uniId` int(11) NOT NULL,
   `unitName` varchar(50) DEFAULT NULL,
-  `statuss` int(11) DEFAULT NULL
+  `statuss` int(11) DEFAULT NULL,
+  `minSSCGpa` double DEFAULT NULL,
+  `minHSCGpa` double DEFAULT NULL,
+  `TotalGpa` double DEFAULT NULL,
+  `sscReguler` double DEFAULT NULL,
+  `sscIreg` double DEFAULT NULL,
+  `hscReg` double DEFAULT NULL,
+  `hscIreg` double DEFAULT NULL,
+  `allow` varchar(50) DEFAULT NULL,
+  `examDuration` time DEFAULT NULL,
+  `notes` longtext DEFAULT NULL,
+  `universityId` int(11) DEFAULT NULL,
+  `groups` varchar(50) DEFAULT NULL,
+  `admsFee` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -453,7 +468,7 @@ CREATE TABLE `university` (
 --
 
 INSERT INTO `university` (`universityId`, `universityName`, `universityCode`, `universityImg`, `division`, `district`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`, `hold`) VALUES
-(5, 'neub', '10', '50-Beautiful-and-Minimalist-Presentation-Backgroun', 'Dhaka', 'bangladesh', 'Sylhet', '3100', '10', 'neub@gmail.com', '1234', 2, 1);
+(5, 'neub', '10', 'Screenshot_5.png', 'Dhaka', 'bangladesh', 'Sylhet', '3100', '10', 'neub@gmail.com', '1234', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -475,13 +490,10 @@ CREATE TABLE `university_verift` (
 --
 
 --
--- Indexes for table `addmission`
+-- Indexes for table `addmisson`
 --
-ALTER TABLE `addmission`
-  ADD PRIMARY KEY (`addmissonId`),
-  ADD KEY `studentId` (`studentId`),
-  ADD KEY `infoId` (`infoId`),
-  ADD KEY `admiId` (`admiId`);
+ALTER TABLE `addmisson`
+  ADD PRIMARY KEY (`addmissonId`);
 
 --
 -- Indexes for table `admin`
@@ -609,9 +621,9 @@ ALTER TABLE `university_verift`
 --
 
 --
--- AUTO_INCREMENT for table `addmission`
+-- AUTO_INCREMENT for table `addmisson`
 --
-ALTER TABLE `addmission`
+ALTER TABLE `addmisson`
   MODIFY `addmissonId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -630,7 +642,7 @@ ALTER TABLE `admincard`
 -- AUTO_INCREMENT for table `depertment`
 --
 ALTER TABLE `depertment`
-  MODIFY `depertmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `depertmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `information`
@@ -725,14 +737,6 @@ ALTER TABLE `university_verift`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `addmission`
---
-ALTER TABLE `addmission`
-  ADD CONSTRAINT `addmission_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `student_one` (`studentId`),
-  ADD CONSTRAINT `addmission_ibfk_2` FOREIGN KEY (`infoId`) REFERENCES `information` (`info`),
-  ADD CONSTRAINT `addmission_ibfk_3` FOREIGN KEY (`admiId`) REFERENCES `admin` (`adminId`);
 
 --
 -- Constraints for table `information`

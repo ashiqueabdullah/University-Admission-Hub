@@ -65,6 +65,7 @@
                                 $res=$phcls->login($_POST);
                             }
                         ?>
+                        
                         <div class="form-group mt-4">
                             <input class="form-control" name="email" type="email" placeholder="Enter Email" required>
                         </div>
