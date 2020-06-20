@@ -53,8 +53,21 @@
                     <?php echo $r['universityCode']?>
                 </p>
             </div>
+
+      <h2 class="text-center">Google Map</h2>
+    <input style="display: none" id="lat" value="<?php echo $r['lat']?>">
+    <input style="display: none" id="lng" value="<?php echo $r['lng']?>">
+        <div id="map">
+        
+        
+        </div>
+
             <?php if($_SESSION['typ']==1){?>
             <a href="profileedit.php?id=<?php echo $r['universityId']?>" class="btn btn-warning mt-5 w-100 ">Edit University</a>
+
+
+
+    
 
             <?php }}}?>
         </div>

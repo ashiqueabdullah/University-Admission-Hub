@@ -20,19 +20,4 @@
 </head>
 
 <body>
-    <div class="myheader">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img  class="logo" src="img/logo4.png" alt="">
-                </div>
-                <div class="col-md-8">
-                    <ul class="float-right">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="about.php">About</a></li>
-                        <li><a href="contact.php">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+   

@@ -8,9 +8,206 @@ $(document).ready(function() {
     showapplieds(0);
     apply(0);
 
+    //google location
+    var la=document.getElementById("lat").value;
+    var ln=document.getElementById("lng").value;
+    console.log(la);
+
+    var map=  new GMaps({
+          div: '#map',
+          lat: la,
+          lng: ln
+        });
+
+    map.addMarker({
+      lat: la,
+      lng: ln,
+      title: 'Lima'
+    });
+});
+
+function cmtValidation(){
+
+    var nationality=document.cmtForm.nationality;
+    if(nationality.value==""){
+        swal("Please Enter Nationality!", "", "error");
+        return false;
+    }
+
+    var myimage=document.cmtForm.myimage;
+    if(myimage.value==""){
+        swal("Please Chose your Image!", "", "error");
+        return false;
+    }
+    
+    var fatherName=document.cmtForm.fatherName;
+    if(fatherName.value==""){
+        swal("Please Enter Father Name!", "", "error");
+        return false;
+    }
+    var fatherOccipation=document.cmtForm.fatherOccipation;
+    if(fatherOccipation.value==""){
+        swal("Please Enter Father Occipation!", "", "error");
+        return false;
+    }
+    var fatherAddress=document.cmtForm.fatherAddress;
+    if(fatherAddress.value==""){
+        swal("Please Enter Father Address!", "", "error");
+        return false;
+    }
+    var fatherPhone=document.cmtForm.fatherPhone;
+    if(fatherPhone.value==""){
+        swal("Please Enter Father Phone!", "", "error");
+        return false;
+    }
+    
+    var motherName=document.cmtForm.motherName;
+    if(motherName.value==""){
+        swal("Please Enter Mother Name!", "", "error");
+        return false;
+    }
+    var motherOccipation=document.cmtForm.motherOccipation;
+    if(motherOccipation.value==""){
+        swal("Please Enter Mother Occipation!", "", "error");
+        return false;
+    }
+   
+    
+    var emergencyPersonRelationshipe=document.cmtForm.emergencyPersonRelationshipe;
+    if(emergencyPersonRelationshipe.value==""){
+        swal("Please Enter Emergency Person relationship!", "", "error");
+        return false;
+    }
+    var emergencyPersonName=document.cmtForm.emergencyPersonName;
+    if(emergencyPersonName.value==""){
+        swal("Please Enter Emergency Person name!", "", "error");
+        return false;
+    }
+    var emergencyPersonAddress=document.cmtForm.emergencyPersonAddress;
+    if(emergencyPersonAddress.value==""){
+        swal("Please Enter Emergency person address!", "", "error");
+        return false;
+    }
+    var emergencyPersonPhone=document.cmtForm.emergencyPersonPhone;
+    if(emergencyPersonPhone.value==""){
+        swal("Please Enter Emengency person Phone!", "", "error");
+        return false;
+    }
+    
+    var personPayTheFeeName=document.cmtForm.personPayTheFeeName;
+    if(personPayTheFeeName.value==""){
+        swal("Please Enter Name Who pay the fee!", "", "error");
+        return false;
+    }
+    var personPayTheFeeRealtion=document.cmtForm.personPayTheFeeRealtion;
+    if(personPayTheFeeRealtion.value==""){
+        swal("Please Enter Relationship!", "", "error");
+        return false;
+    }
+    var personPayTheFeeAddress=document.cmtForm.personPayTheFeeAddress;
+    if(personPayTheFeeAddress.value==""){
+        swal("Please Enter Person pay the fee Address!", "", "error");
+        return false;
+    }
+    var personPayTheFeePhone=document.cmtForm.personPayTheFeePhone;
+    if(personPayTheFeePhone.value==""){
+        swal("Please Enter Person pay the fee Phone!", "", "error");
+        return false;
+    }
+    
+    var personPayTheFeeAnnualIncome=document.cmtForm.personPayTheFeeAnnualIncome;
+    if(personPayTheFeeAnnualIncome.value==""){
+        swal("Please Enter Anual Income!", "", "error");
+        return false;
+    }
+    var sscInstituteName=document.cmtForm.sscInstituteName;
+    if(sscInstituteName.value==""){
+        swal("Please Enter SSC Instruite Name!", "", "error");
+        return false;
+    }
+    var sscBordeName=document.cmtForm.sscBordeName;
+    if(sscBordeName.value==""){
+        swal("Please Enter SSC Bord!", "", "error");
+        return false;
+    }
+    var sscGpa=document.cmtForm.sscGpa;
+    if(sscGpa.value==""){
+        swal("Please Enter SSC GPA!", "", "error");
+        return false;
+    }
+    var sscpassingYear=document.cmtForm.sscpassingYear;
+    if(sscpassingYear.value==""){
+        swal("Please Enter SSC Passing Year!", "", "error");
+        return false;
+    }
+    var sscCertificate=document.cmtForm.sscCertificate;
+    if(sscCertificate.value==""){
+        swal("Upload SSC cirtificate!", "", "error");
+        return false;
+    }
+    var hscInstituteName=document.cmtForm.hscInstituteName;
+    if(hscInstituteName.value==""){
+        swal("Please Enter HSC Instruite Name!", "", "error");
+        return false;
+    }
+    var hscBordeName=document.cmtForm.hscBordeName;
+    if(hscBordeName.value==""){
+        swal("Please Enter HSC Bord name!", "", "error");
+        return false;
+    }
+    var hscGpa=document.cmtForm.hscGpa;
+    if(hscGpa.value==""){
+        swal("Please Enter HSC GPA!", "", "error");
+        return false;
+    }
+    var hscpassingYear=document.cmtForm.hscpassingYear;
+    if(hscpassingYear.value==""){
+        swal("Please Enter HSC Passing Year!", "", "error");
+        return false;
+    }
+    var hscCertificate=document.cmtForm.hscCertificate;
+    if(hscCertificate.value==""){
+        swal("Upload HSC cirtificate!", "", "error");
+        return false;
+    }
+
+
+
+
+
+    // var sat=document.cmtForm.sat;
+    // if(sat.value!="" && isNaN(at.value)){
+    //     swal("Upload HSC cirtificate!", "", "error");
+    //     return false;
+    // }
+
+    // var sat=document.cmtForm.sat;
+    // if(sat.value==""){
+    //     swal("Upload HSC cirtificate!", "", "error");
+    //     return false;
+    // }
+
+    //  var ielts=document.cmtForm.ielts;
+    // if(ielts.value==""){
+    //     swal("Upload HSC cirtificate!", "", "error");
+    //     return false;
+    // }
+
+    //  var tofel=document.cmtForm.tofel;
+    // if(tofel.value==""){
+    //     swal("Upload HSC cirtificate!", "", "error");
+    //     return false;
+    // }
+    // var gmat=document.cmtForm.gmat;
+    // if(gmat.value==""){
+    //     swal("Upload HSC cirtificate!", "", "error");
+    //     return false;
+    // }
     
 
-});
+
+    
+}
 
 
 function getnotice(page) {

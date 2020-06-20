@@ -4,62 +4,20 @@
     include_once"session.php";
     session::checkSession();
 ?>
-    <div class="mid_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="left_box">
-                        <button id="login" class="btn btn-info">Login</button>
-                        <button id="std" class="btn btn-info">Student Registation</button>
-                        <button id="uni" class="btn btn-info">University Registration</button>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="right_box owl-carousel">
-                        <div class="sigle">
-                            <div class="left">
-                                <img src="img/1.jpg" alt="">
-                            </div>
-                            <div class="right">
-                                <h4>North East University Bangladesh</h4>
-                                <button class="btn btn-info">Want to know about this university?</button>
-                            </div>
-                        </div>
+    
 
-                        <div class="sigle">
-                            <div class="left">
-                                <img src="img/2.jpg" alt="">
-                            </div>
-                            <div class="right">
-                                <h4>Shahjalal University of Science & Technology</h4>
-                                <button class="btn btn-info">Want to know about this university?</button>
-                            </div>
-                        </div>
-
-                        <div class="sigle">
-                            <div class="left">
-                                <img src="img/3.jpg" alt="">
-                            </div>
-                            <div class="right">
-                                <h4>Shahjalal University of Science & Technology</h4>
-                                <button class="btn btn-info">Want to know about this university?</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="pop_up_login">
-        <div class="container">
-            <div class="pop_box">
-                <div id="login_cross">
-                    <i class="far fa-times-circle"></i>
-                </div>
-                <center>
-                    <form action="" method="post">
-                        <?php
+    <div id="login">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="left ">
+                    <div id="loginBox" class="pt-5 pr-5">
+                    <img src="img/blackLogo.png" alt="">
+                    <h1>Sign in</h1>
+                    <p>Don't have an account? <a href="#" id="getUser">Sign up</a></p>
+                    
+                    
+                        <form action="" method="post">
+                       <?php
                             $phcls=new phpclass();
                             if (isset($_POST['logins'])) {
                                 $res=$phcls->login($_POST);
@@ -67,41 +25,41 @@
                         ?>
                         
                         <div class="form-group mt-4">
+                            <label class="mt-3" for="">Email address</label>
                             <input class="form-control" name="email" type="email" placeholder="Enter Email" required>
                         </div>
                         <div class="form-group">
+                            <label class="mt-1" for="">Password</label>
                             <input class="form-control" name="pass" type="password" placeholder="Enter password" required>
                         </div>
-                        <div class="row">
+                        <input type="submit" value="Sign in" name="logins" class="form-control btn w-100 btn-info">
+                       <!--  <div class="row">
                             <div class="col-md-6">
                                 <a href="index.html" style="color: #5CDB94">Forget Password</a>
                             </div>
                             <div class="col-md-6">
                                 <input type="submit" name="logins" class="form-control btn-info mt-2">
                             </div>
-                        </div>
+                        </div> -->
+
                     </form>
-                </center>
-            </div>
-        </div>
-    </div>
-    
-    <div class="studer_reg">
-        <div class="inner">
-            <div id="std_cross">
-                <i class="far fa-times-circle"></i>
-            </div>
-            <div class="container">
-                <h4 class="text-center">Every place has to be filled</h4>
-                <form action="#" method="post" onsubmit="return stvelidetion()">
-                    <?php
+                    <div  id="addUniversity">Or Add University</div>
+                    </div>
+                </div>
+
+
+                <div id="student">
+                    <div id="signFormStudent" class="text-center">Sign in</div>
+
+                    <form action="#" method="post" onsubmit="return stvelidetion()">
+                    <!-- <?php
                         $phcls=new phpclass();
                         if (isset($_POST["submit"])) {
                             $res=$phcls->RegistrationStudent($_POST);
                         }
-                    ?>
+                    ?> -->
                     <div class="row">
-                        <div class="col-md-5 offset-md-1">
+                        <div class="col-md-6 offset-md-1">
                             <div class="form-group">
                                 <label><span class="text-danger">*</span> First Name</label>
                                 <input type="text" class="form-control" id="sfname" name="sfname" placeholder="Enter Fast Name" required>
@@ -173,22 +131,24 @@
                                 <input type="password" class="form-control" id="svpass" name="svpass" placeholder="Verify password" required>
                                 <small class="text-danger" id="svpasss"></small>
                             </div>
-                            <button type="submit" name="submit" value="submit" class="btn btn-primary mt-2">Submit</button>
+                            
                         </div>
                     </div>
+                    <button type="submit" name="submit" value="submit" class="btn btn-primary mt-2 ml-5">Submit</button>
                 </form>
-            </div>
-        </div>
-    </div>
 
-    <div class="uni_reg">
-        <div class="inner">
-            <div id="uni_cross">
-                <i class="far fa-times-circle"></i>
-            </div>
-            <div class="container">
-                <h4 class="text-center">Every place has to be filled</h4>
-                <form action="" method="post" onsubmit="return unvelidetion()">
+                </div>
+
+                <div id="univerity" class="pl-5">
+                    <div id="signFormUniversity" class="text-center">Sign in</div>
+
+
+
+
+
+
+
+                    <form action="" method="post" onsubmit="return unvelidetion()">
                    <?php
                     $pcls=new phpclass();
                     if (isset($_POST["reg"])) {
@@ -291,7 +251,23 @@
                         <input type="submit" value="Submit" name="reg" class="form-control btn btn-primary mt-2">
                     </div>
                 </form>
+                </div>
+
+
+            </div>
+            <div class="col-md-7 loginRight">
+                <div class="right">
+                    <div class="content">
+                        <h5>Education is the passport to the future, for tomorrow belongs to those who prepare for it today</h5>
+                        <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <?php include_once"footer.php"?>
+
+
+    
+
+
+<?php include_once"footer.php"?>

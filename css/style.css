@@ -1,11 +1,113 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 * {
     padding: 0px;
     margin: 0px;
 }
 
+button.btn.btn-primary.mt-2.ml-5 {
+    width: 91%;
+}
+
+#signFormStudent, #signFormUniversity{
+    cursor: pointer;
+    width: 200px;
+    margin:0px auto;
+
+    color: #101924;
+    text-shadow: 3px 2px 2px #0000ff38;
+    font-size: 40px;
+    font-weight: 700
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Balsamiq Sans', cursive;
+}
+#student{
+    display: none;
+}
+#univerity{
+    display: none;
+}
+
+#login{
+    overflow:hidden;
+}
+#loginBox{
+    display: block;
+}
+.loginRight{}
+.loginRight .right{
+    height: 100vh;
+    width: 100%;
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+.loginRight .right:before{
+    content: "";
+    top: 0;
+    left:0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #101924db;
+    z-index: 10;
+}
+.loginRight .right .content{
+    color: white;
+    z-index: 20;
+    position: absolute;
+    padding: 200px 50px;
+}
+.loginRight .right .content h5{
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+}
+#loginBox{
+    margin-left: 30%!important;
+    margin-top: 5%;
+}
+
+#loginBox h1{
+   color: #101924;
+    margin-top: 5%;
+    text-shadow: 3px 2px 2px #0000ff38;
+    font-size: 40px;
+    font-weight: 700;
+}
+#loginBox span{
+    cursor: pointer;
+    color:#3b9dff;
+}
+#loginBox #addUniversity{
+    text-align: center;
+    margin-top: 15%;
+    cursor: pointer;
+    color:#3b9dff;
+    position: relative;
+}
+#loginBox #addUniversity:after{
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: "";
+    height: 1px;
+    width: 30%;
+    top:10px;
+    background-color: #101924;;
+}
+#loginBox #addUniversity:before{
+    position: absolute;
+    left: 70%;
+    right: 0;
+    content: "";
+    height: 1px;
+    top:10px;
+    width: 30%;
+    background-color: #101924;
 }
 .con_box{
     padding: 20px 0px;

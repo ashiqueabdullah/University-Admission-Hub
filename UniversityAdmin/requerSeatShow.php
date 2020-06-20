@@ -62,14 +62,14 @@
             <?php echo $r['numberOfSet']?>
          </td>
          <td>
-            <a href="deleteApproveReject.php?seatDelete=<?php echo $r['setId']?>" class="btn btn-danger mb-1 w-100"><i class="fas fa-trash-alt"></i> Delete</a>
+            <a href="deleteApproveReject.php?seatDelete=<?php echo $r['seatId']?>" class="btn btn-danger mb-1 w-100"><i class="fas fa-trash-alt"></i> Delete</a>
             
 			
 			<?php if($r['statuss']==1){?>
 			
-			<a href="deleteApproveReject.php?seatDeactive=<?php echo $r['setId']?>" class="btn btn-success mb-1 w-100"><i class="far fa-edit"></i> Active</a>
+			<a href="deleteApproveReject.php?seatDeactive=<?php echo $r['seatId']?>" class="btn btn-success mb-1 w-100"><i class="far fa-edit"></i> Active</a>
 			<?php }else{ ?>
-			<a href="deleteApproveReject.php?seatActive=<?php echo $r['setId']?>" class="btn btn-secondary mb-1 w-100"><i class="far fa-edit"></i> Deactive</a>
+			<a href="deleteApproveReject.php?seatActive=<?php echo $r['seatId']?>" class="btn btn-secondary mb-1 w-100"><i class="far fa-edit"></i> Deactive</a>
 			<?php }?>
          </td>
       </tr>

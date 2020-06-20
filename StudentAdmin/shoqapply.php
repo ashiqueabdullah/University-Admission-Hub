@@ -3,7 +3,7 @@
     include_once"../php_function.php";
 ?>
 <div class="pros">
-        <h3>Requirement of each university</h3>
+        <h3>Requirement and information of each university</h3>
         <div class="row">
 
             <?php 

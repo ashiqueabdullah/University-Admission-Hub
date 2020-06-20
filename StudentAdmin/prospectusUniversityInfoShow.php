@@ -27,9 +27,16 @@
 			<p>Zip: <strong><?php echo $r['zip']?></strong></p>
 		</div>
 	</div>
-	<?php }} ?>
-	<hr>
-	<h1 class="text-center">Unit Information</h1>
+	
+	<h1 class="text-center">Google Map</h1>
+	<input style="display: none" id="lat" value="<?php echo $r['lat']?>">
+	<input style="display: none" id="lng" value="<?php echo $r['lng']?>">
+		<div id="map">
+		
+		
+		</div>
+<?php }} ?>
+	<h1 class="text-center mt-3">Unit Information</h1>
 	<hr>
 	<div class="row">
 	<?php 

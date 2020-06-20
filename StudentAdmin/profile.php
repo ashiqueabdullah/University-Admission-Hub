@@ -39,13 +39,8 @@
             </div>
         </div>
         <div class="cmpt_prof">
-            <form action="" method="post">
-                <?php
-                    $phcls=new phpclass();
-                        if (isset($_POST['submit'])) {
-                            $res=$phcls->RegistrationStudentTwo($_POST,$_FILES);
-                        }
-                    ?>
+            <form name="cmtForm" onsubmit="return cmtValidation()" action="" method="post" enctype="multipart/form-data">
+                
                     <div class="basic">
                         <p>1/4</p>
                         <h3>Basic Information</h3>
@@ -607,11 +602,17 @@
                             </div>
                             <div class="col-md-2 offset-md-8">
 
-                                <input class="btn btn-info float-right" type="submit" name="submit" value="submit">
+                                <input class="btn btn-info float-right" type="submit" name="submit" value="submit" >
                             </div>
                         </div>
                     </div>
             </form>
+            <?php
+                    $phcls=new phpclass();
+                        if (isset($_POST['submit'])) {
+                            $res=$phcls->RegistrationStudentTwo($_POST,$_FILES);
+                        }
+                    ?>
         </div>
         <div class="secnd_part">
             <?php
@@ -711,13 +712,8 @@
                 <?php }}?>
         </div>
         <div class="edit_part">
-            <?php
-                    $phcls=new phpclass();
-                        if (isset($_POST['submittwo'])) {
-                            $res=$phcls->editValue($_POST, $_FILES);
-                        }
-                    ?>
-            <form action="" method="POST" enctype="multipart/form-data">
+                
+            <form onsubmit="return validation();" name="test" action="" method="POST" enctype="multipart/form-data">
         
         
                 
@@ -1256,9 +1252,14 @@
                             </div>
 
                         </div>
-                        <input class="btn btn-info float-right" type="submit" name="submittwo" value="submit">
-                    
-        
+                        <input  class="btn btn-info float-right" type="submit" name="submittwo" value="submit" >
+
+                        <?php
+                    $phcls=new phpclass();
+                        if (isset($_POST['submittwo'])) {
+                            $res=$phcls->editValue($_POST, $_FILES);
+                        }
+                    ?>
             </form>
         </div>
     </div>

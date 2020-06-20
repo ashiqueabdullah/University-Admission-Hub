@@ -1,57 +1,61 @@
 
-var login = document.getElementById("login");
-var login_cross = document.getElementById("login_cross");
-var login_box = document.querySelector(".pop_up_login");
-var std=document.getElementById('std');
-var std_reg=document.querySelector('.studer_reg');
-var uni =document.getElementById('uni');
-var uni_reg=document.querySelector('.uni_reg');
-var std_cross=document.getElementById('std_cross');
-var uni_cross=document.getElementById('uni_cross');
+var loginBox = document.getElementById("loginBox");
+var student = document.getElementById("student");
+var univerity = document.getElementById("univerity");
 
-if (login) {
-	login.addEventListener('click',function(){
-		login_box.style.visibility='visible';
-		login_box.style.transform='scale(1)';
-		login_box.style.transition='.3s';
+var getUser = document.getElementById("getUser");
+var addUniversity = document.getElementById("addUniversity");
+
+
+
+var signFormStudent = document.getElementById("signFormStudent");
+var signFormUniversity = document.getElementById("signFormUniversity");
+
+
+// var std=document.getElementById('std');
+// var std_reg=document.querySelector('.studer_reg');
+// var uni =document.getElementById('uni');
+// var uni_reg=document.querySelector('.uni_reg');
+// var std_cross=document.getElementById('std_cross');
+// var uni_cross=document.getElementById('uni_cross');
+
+if (getUser) {
+	getUser.addEventListener('click',function(){
+		student.style.display='block';
+		loginBox.style.display='none';
+		univerity.style.display='none';
 	});
 }
 
-if (login_cross) {
-
-login_cross.addEventListener('click',function(){
-	login_box.style.visibility='hidden';
-	login_box.style.transform='scale(.0)';
-});
+if (addUniversity) {
+	addUniversity.addEventListener('click',function(){
+		student.style.display='none';
+		loginBox.style.display='none';
+		univerity.style.display='block';
+	});
 }
 
-if (std) {
-std.addEventListener('click',function(){
-	std_reg.style.visibility='visible';
-	std_reg.style.transform='scale(1)';
-	std_reg.style.transition='.3s';
-});
-}
-if (std_cross) {
-std_cross.addEventListener('click',function(){
-	std_reg.style.visibility='hidden';
-	std_reg.style.transform='scale(.0)';
-});
+
+if (signFormStudent) {
+	signFormStudent.addEventListener('click',function(){
+		student.style.display='none';
+		loginBox.style.display='block';
+		univerity.style.display='none';
+	});
 }
 
-if (uni) {
-uni.addEventListener('click',function(){
-	uni_reg.style.visibility='visible';
-	uni_reg.style.transform='scale(1)';
-	uni_reg.style.transition='.3s';
-});
+
+if (signFormUniversity) {
+	signFormUniversity.addEventListener('click',function(){
+		student.style.display='none';
+		loginBox.style.display='block';
+		univerity.style.display='none';
+	});
 }
-if (uni_cross) {
-uni_cross.addEventListener('click',function(){
-	uni_reg.style.visibility='hidden';
-	uni_reg.style.transform='scale(.0)';
-});
-}
+
+
+
+
 
 $('.owl-carousel').owlCarousel({
     loop:true,

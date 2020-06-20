@@ -50,7 +50,22 @@
                     <div id="navclose">X</div>
                     <center>
                         <img class="logo" src="img/logo2.png" alt="" width="200">
-                        <img class="adminimage" src="img/upload/<?php echo $userimage?>" alt="" width="180">
+
+                        <?php  
+
+                            if ($userimage) { ?>
+                               <img class="adminimage mb-3" src="img/upload/<?php echo $userimage?>" alt="" width="180">
+                            <?php }else{?>
+
+                          <img class="adminimage mb-3" src="img/user.jpeg" alt="" width="180">
+                          <?php  }
+
+                        ?>
+                        
+
+                        
+
+                        
                     </center>
                     <h3><?php echo $username?></h3>
                     <ul>
@@ -78,34 +93,36 @@
             <div class="right_box">
                 <div class="top_nav">
                     <div class="row">
-                        <div class="col-lg-5 col-md-5">
-                            <h1>Student Dashbord</h1>
+                        <div class="col-md-5">
+                            <h1>Your Dashboard</h1>
                         </div>
-						<div class="col-lg-3 col-md-3">
-							<p class="mt-2">Balance: <span style="color:red"><b><?php 
-								
-								echo $balance;
-								
-								
+                        <div class="col-md-4">
+                            <p class="mt-2">Balance: <?php 
+                                
+                                echo $balance;
+                                
+                                
 
-							?> tk</b></span></p>
+                            ?> tk</p>
                         </div>
                        
-                        <div class="col-lg-4 col-md-5 ">
+                        <div class="col-md-3">
                             <div class="row">
-                                <div class="col-md-11">
-                                    <div class="float-right mt-1">
-                                        <div class="row">
-                                            <div class="col-md-2 float-left">
+                                            <div class="col-md-2">
                                                
 
-                                                        <img src="img/upload/<?php echo $userimage?>" alt="" width="50">
+                                                       <?php if ($userimage) { ?>
+                               <img class="adminimage" src="img/upload/<?php echo $userimage?>" alt="" width="50">
+                            <?php }else{?>
+
+                          <img class="adminimage " src="img/user.jpeg" alt="" width="50">
+                          <?php  } ?>
                                                     
                                                 
                                                     
                                                 
                                             </div>
-                                            <div class="col-md-9 forInfo">
+                                            <div class="col-md-10 forInfo">
                                                 <h6 class="mt-3"><?php echo $_SESSION['stdname']?> <i class="fas fa-caret-down"></i></h6>
                                                 <div class="info">
                                                     <ul>
@@ -117,9 +134,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+
                     </div>
                 </div>

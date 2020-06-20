@@ -1,0 +1,11 @@
+Student
+Pass: 1234
+Email: ashique@gmail.com
+
+University
+Pass: neub
+Email: neub@gmail.com
+
+Admin
+Pass: 1234
+Email: admin@gmail.com

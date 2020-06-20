@@ -53,7 +53,7 @@
             ?></td>
          <td>
             <a href="studentApprove.php?id=<?php echo $rr['studentId']?>" target="_blank" class="viewmod btn btn-info float-right mr-1 mt-1"><i class="fas fa-eye"></i></a> 
-            <a href="deleteApproveReject.php?admissondelete=<?php echo $r['addmionId']?>" class="viewmod btn btn-danger float-right mr-1 mt-1"><i class="far fa-trash-alt"></i></a>
+            <a href="deleteApproveReject.php?admissondelete=<?php echo $r['addmissonId']?>" class="viewmod btn btn-danger float-right mr-1 mt-1"><i class="far fa-trash-alt"></i></a>
 			
          </td>
       </tr>

@@ -43,23 +43,28 @@
    				$val=$getresult["studentId"];
    				$query="INSERT INTO `student_two` (`std_one`,`satuss`) VALUES ($val,0)";
    				$getresult=$this->db->insert($query);
-   				if ($getresult) {
-   					$msz="Registration Successful complete ";
-   					$sfname="";
-   					$slname="";
-   					$sdate="";
-   					$radio="";
-   					$sphone="";
-   					$saddress="";
-   					$pcode="";
-   					$CounSelct="";
-   					$semail="";
-   					$spass="";
-   					$svpass="";
-   					return $msz;
-   				}
-   			}
+
+               
+               $query="SELECT `universityId` FROM `university`";
+               $universityInfo=$this->db->select($query);
+               if($universityInfo){
+               while ($unires=$universityInfo->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+                  $whomes="University";
+                  $uniId=$unires['universityId'];
+
+                  $sql="INSERT INTO `friedns` (`stdId`, `otherId`,`whome`, `times`, `dates` ) VALUES ('$val','$uniId','$whomes','$timess','$datess')";
+
+                  $getresult=$this->db->insert($sql);
+                  return $getresult;
+
+               }
+            }
+   				
    		}
+   	}
    
    
    
@@ -118,18 +123,18 @@
    		$hscpassingYear=$data["hscpassingYear"];
    
    
-   		$image=$file['myimage']['name'];
-   		$filetemp=$file['myimage']['tmp_name'];
-   		move_uploaded_file($filetemp,"img/upload/".$image);
+   		$image2=$file['myimage']['name'];
+         $filetemp=$file['myimage']['tmp_name'];
+         move_uploaded_file($filetemp,"img/upload/".$image2);
    
-   		$sscCertificate=$file['sscCertificate']['name'];
-   		$filetemp2=$file['sscCertificate']['tmp_name'];
-   		move_uploaded_file($filetemp2,"img/upload/".$sscCertificate);
+         $sscCertificate2=$file['sscCertificate']['name'];
+         $filetemp2=$file['sscCertificate']['tmp_name'];
+         move_uploaded_file($filetemp2,"img/upload/".$sscCertificate2);
    
    
-   		$hscCertificate=$file['hscCertificate']['name'];
-   		$filetemp3=$file['hscCertificate']['tmp_name'];
-   		move_uploaded_file($filetemp3,"img/upload/".$hscCertificate);
+         $hscCertificate2=$file['hscCertificate']['name'];
+         $filetemp3=$file['hscCertificate']['tmp_name'];
+         move_uploaded_file($filetemp3,"img/upload/".$hscCertificate2);
    		
    
    
@@ -137,7 +142,7 @@
    		$query="UPDATE `student_two` SET 
    		`nationality`='$nationality',
    		`placeOfBirthDistrict`='$placeOfBirthDistrict',
-   		`image`='$image',
+   		`image`='$image2',
    		`married`='$married',
    		`BloodGroup`='$BloodGroup',
    		`ParmanentAddress`='$ParmanentAddress',
@@ -183,72 +188,17 @@
    		`sscBordeName`='$sscBordeName',
    		`sscGpa`='$sscGpa',
    		`sscpassingYear`='$sscpassingYear',
-   		`sscCertificate`='$sscCertificate',
+   		`sscCertificate`='$sscCertificate2',
    		`hscInstituteName`='$hscInstituteName',
    		`hscBordeName`='$hscBordeName',
    		`hscGpa`='$hscGpa',
    		`hscpassingYear`='$hscpassingYear',
-   		`hscCertificate`='$hscCertificate',
+   		`hscCertificate`='$hscCertificate2',
    		`satuss`=1
    		WHERE std_one=$sid";
+
    		$getresult=$this->db->insert($query);
-   		if ($getresult) {
-   		$nationality="";
-   		$placeOfBirthDistrict="";
-   		$image="";
-   		$married="";
-   		$BloodGroup="";
-   		$ParmanentAddress="";
-   		$ParmanentDivision="";
-   		$ParmanentZipCode="";
-   		$ParmanentDistrict="";
-   		$ParmanentCity="";
-   		$fatherName="";
-   		$fatherOccipation="";
-   		$fatherAddress="";
-   		$fatherPhone="";
-   		$fatherEmail="";
-   		$motherName="";
-   		$motherOccipation="";
-   		$motherAddress="";
-   		$motherPhone="";
-   		$motherEmail="";
-   		$nameOfLocalGuardian="";
-   		$relationshipOfLocalGuardian="";
-   		$addressOfLocalGuardian="";
-   		$phoneOfLocalGuardian="";
-   		$emailOfLocalGuardian="";
-   		$emergencyPersonRelationshipe="";
-   		$emergencyPersonName="";
-   		$emergencyPersonAddress="";
-   		$emergencyPersonPhone="";
-   		$emergencyPersonEmail="";
-   		$personPayTheFeeName="";
-   		$personPayTheFeeRealtion="";
-   		$personPayTheFeeAddress="";
-   		$personPayTheFeePhone="";
-   		$personPayTheFeeEmail="";
-   		$personPayTheFeeAnnualIncome="";
-   		$sat="";
-   		$satDate="";
-   		$ielts="";
-   		$ieltsDate="";
-   		$tofel="";
-   		$tofelDate="";
-   		$gmat="";
-   		$gmatDate="";
-   		$sscInstituteName="";
-   		$sscBordeName="";
-   		$sscGpa="";
-   		$sscpassingYear="";
-   		$sscCertificate="";
-   		$hscInstituteName="";
-   		$hscBordeName="";
-   		$hscGpa="";
-   		$hscpassingYear="";
-   		$hscCertificate="";
-   
-   		}
+   		
    	}
    
    		
@@ -1222,10 +1172,18 @@
    	}
    	function getStudentInfo($id){
    		$sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and
-   		student_two.student_id=$id";
+   		student_two.student_id=$id limit 1";
    		 $getresult=$this->db->select($sql);
    		 return $getresult;
    	}
+
+
+      function getStudentInfoForChat($id){
+         $sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and
+         student_one.studentId=$id limit 1";
+          $getresult=$this->db->select($sql);
+          return $getresult;
+      }
    
    	function stdApprove($id){
    		$sql="UPDATE `student_two` SET `satuss`=2 WHERE `student_id`=$id";
@@ -1463,22 +1421,38 @@
    				echo '</script>';
    			}else{
    
-   				$query="INSERT INTO `university`(`universityName`, `universityCode`, `universityImg`, `division`, `district`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`) VALUES ('$uname','$rgcode','$unimage','$division','$district','$city','$zcode','$phone','$email','$pass', 0)";
+   				$query="INSERT INTO `university`(`universityName`, `universityCode`, `universityImg`, `division`, `district`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`,`onlines`) VALUES ('$uname','$rgcode','$unimage','$division','$district','$city','$zcode','$phone','$email','$pass', 0,'offline')";
    
    				$getresult=$this->db->insert($query);
-   				if ($getresult) {
-   					$msz="Registration Successful complete ";
-   					$uname="";
-   					$rgcode="";
-   					$division="";
-   					$phone="";
-   					$email="";
-   					$zcode="";
-   					$district="";
-   					$city="";
-   					$pass="";
-   					return $msz;
-   				}
+   				
+
+
+
+
+
+               $query="SELECT universityId FROM university ORDER BY universityId DESC LIMIT 1";
+               $getresult=$this->db->select($query)->fetch_assoc();
+               $val=$getresult["universityId"];
+
+               
+               $query="SELECT `studentId` FROM `student_one`";
+               $stdinformation=$this->db->select($query);
+               if ($stdinformation) {
+                  
+               while ($stdinfo=$stdinformation->fetch_assoc()) {
+
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+                  $whomes="University";
+                  $stdid=$stdinfo['studentId'];
+
+                  $sql="INSERT INTO `friedns` (`stdId`, `otherId`,`whome`, `times`, `dates` ) VALUES ('$stdid','$val','$whomes','$timess','$datess')";
+
+                  $getresult=$this->db->insert($sql);
+                  return $getresult;
+               }
+            }
+                 
    			}
    	}
    
@@ -1576,7 +1550,7 @@
    		
    		$getresult=$this->db->select($sql);
    	
-   		$count="select count(`setId`) FROM seet WHERE ubiversityId=$id";
+   		$count="select count(`seatId`) FROM seet WHERE ubiversityId=$id";
    		$gcou=$this->db->select($count);
    		return array($getresult,$gcou);
    	}
@@ -1709,25 +1683,25 @@
    	}
    	
    	function seatDelete($id){
-   		$sql="DELETE FROM `seet` WHERE `setId`=$id";
+   		$sql="DELETE FROM `seet` WHERE `seatId`=$id";
    		$getresult=$this->db->delete($sql);
    		header("Location:requerment.php");
    	}
    	
    	function seatActive($id){
-   		$sql="UPDATE `seet` SET `statuss`=1  WHERE `setId`=$id";
+   		$sql="UPDATE `seet` SET `statuss`=1  WHERE `seatId`=$id";
    		$getresult=$this->db->insert($sql);
    		header("Location:requerment.php");
    	}
    	
    	function seatDeactive($id){
-   		$sql="UPDATE `seet` SET `statuss`=0  WHERE `setId`=$id";
+   		$sql="UPDATE `seet` SET `statuss`=0  WHERE `seatId`=$id";
    		$getresult=$this->db->insert($sql);
    		header("Location:requerment.php");
    	}
    	
    	function getSeatForEdit($id){
-   		$sql="SELECT * FROM `seet` WHERE `setId`=$id";
+   		$sql="SELECT * FROM `seet` WHERE `seatId`=$id";
    		$getresult=$this->db->select($sql);
    		return $getresult;
    	}
@@ -1762,62 +1736,84 @@
    	}
    	
    	function addmission($id,$data){
-   		$qutaIds=$data['qutas'];
-   		$sql="SELECT * FROM `unit` WHERE `uniId`=$id LIMIT 1";
-   		$uniID=$this->db->select($sql);
-   		while($r=$uniID->fetch_assoc()){
-   			$rr=$r['universityId'];
-   			$fee=$r['admsFee'];
-   			$totalGpa=$r['TotalGpa'];
-   		}
-   		
-   		$studentId = $_SESSION["sid"];
-   		$sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and student_two.std_one=$studentId";
-   		$getresult=$this->db->select($sql);
-   		
-   		while($r=$getresult->fetch_assoc()){
-   			$ttgpa=$r['sscGpa'] + $r['hscGpa'];
-   		}
-   		
-   		
-   		
-   		$universityId=$rr;
-   		$statuss=0;
-   		$dates=date("Y/m/d");
-   		$times=date("h:i:sa");
-   		$unitId=$id;
-   		$mt=$_SESSION['amoint'];
-		
-   		if($fee<=$mt){
-   			
-   			if($totalGpa<=$ttgpa){
-   		
-   		$sql="INSERT INTO `addmisson`(`studentId`, `universityId`, `statuss`, `dates`, `times`, `unitId`,`qutaId`) VALUES ('$studentId','$universityId','$statuss','$dates','$times','$unitId','$qutaIds')";
-   		$getresult=$this->db->insert($sql);
-   		
-		
-		$afterblnc=$mt-$fee;
-		$_SESSION['amoint']=$afterblnc;
-		$stdId=$_SESSION['sid'];
-		$sql="UPDATE `student_two` SET `balace`=$afterblnc WHERE `std_one`=$stdId";
-		$getresult=$this->db->update($sql);
-		
-		
-		
-		
-		
-   			}else{
-   				echo '<script type="text/javascript">';
-   			echo ' alert("CG kom")';
-   			echo '</script>';
-   			}
-   		
-   		}else{
-   			echo '<script type="text/javascript">';
-   			echo ' alert("Tk nai")';
-   			echo '</script>';
-   		}
-   	}
+
+         $qutaIds=$data['qutas'];
+         $sql="SELECT * FROM `unit` WHERE `uniId`=$id LIMIT 1";
+         $uniID=$this->db->select($sql);
+         while($r=$uniID->fetch_assoc()){
+            $rr=$r['universityId'];
+            $fee=$r['admsFee'];
+            $totalGpa=$r['TotalGpa'];
+         }
+         
+         $studentId = $_SESSION["sid"];
+         $sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and student_two.std_one=$studentId";
+         $getresult=$this->db->select($sql);
+         
+         while($r=$getresult->fetch_assoc()){
+            $ttgpa=$r['sscGpa'] + $r['hscGpa'];
+         }
+
+         // Unit cheakc ei unit a age addmisson niche ki nah
+         $sql="SELECT * FROM `addmisson` WHERE `unitId`=$id AND studentId=$studentId LIMIT 1";
+         $cheakUnit=$this->db->select($sql);
+
+         
+         
+         
+         $universityId=$rr;
+         $statuss=0;
+         $dates=date("Y/m/d");
+         $times=date("h:i:sa");
+         $unitId=$id;
+         $mt=$_SESSION['amoint'];
+         
+         //unit cheak
+         if(!$cheakUnit){
+         //addmisson fee cheack
+         if($fee<=$mt){
+            
+            //cgp cheack
+            if($totalGpa<=$ttgpa){
+
+
+
+
+
+         $afterblnc=$mt-$fee;
+         $_SESSION['amoint']=$afterblnc;
+         $stdId=$_SESSION['sid'];
+         $sql="UPDATE `student_two` SET `balace`=$afterblnc WHERE `std_one`=$stdId";
+         $getresult=$this->db->update($sql);
+         
+         $sql="INSERT INTO `addmisson`(`studentId`, `universityId`, `statuss`, `dates`, `times`, `unitId`,`qutaId`) VALUES ('$studentId','$universityId','$statuss','$dates','$times','$unitId','$qutaIds')";
+         $getresult=$this->db->insert($sql);
+         
+         header("Location:prospectus.php");
+         
+      
+      
+      
+      
+      
+            }else{
+            echo '<script type="text/javascript">';
+            echo ' alert("CG kom")';
+            echo '</script>';
+            }
+         
+         }else{
+            echo '<script type="text/javascript">';
+            echo ' alert("Tk nai")';
+            echo '</script>';
+         }
+      }else{
+         echo '<script type="text/javascript">';
+            echo ' alert("unit age ache")';
+            echo '</script>';
+      }
+   }
+
    	
    	function getUnitForUnitshow($id){
    		$sql="SELECT * FROM `quota` WHERE `uid`=$id";
@@ -2084,6 +2080,60 @@
 		return $getresult;
 	}
 
+   function getchatlist(){
+      $sql="SELECT * FROM `friedns` ORDER BY `times` DESC";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function getindividualeUniversity($id){
+      $sql="SELECT * FROM `university` WHERE universityId=$id limit 1";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+
+   function getchaat($id){
+      $sql="SELECT * FROM `chatwith` WHERE chatwhomeId=$id";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function getchaat2($id){
+      $sql="SELECT * FROM `chatwith` WHERE stdId=$id";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function addmsz($data,$uid,$who,$kar){
+
+
+      $msz=$data['msz'];
+      $stdid=$_SESSION['sid'];
+      $tim=date("h:m:sa");
+      $dts=date("Y-m-d");
+
+      $sql="INSERT INTO `chatwith`(`stdId`, `chatwhomeId`, `who`, `chats`, `times`, `dates`, `cheacks`) 
+      VALUES ('$stdid','$uid','$who','$msz','$tim','$dts','$kar')";
+      $getresult=$this->db->insert($sql);
+      return $getresult;
+   }
+
+
+
+   function addmsz2($data,$sid,$who,$kar){
+
+
+      $msz=$data['msz'];
+      $uid=$_SESSION['uid'];
+      $tim=date("h:m:sa");
+      $dts=date("Y-m-d");
+
+      $sql="INSERT INTO `chatwith`(`stdId`, `chatwhomeId`, `who`, `chats`, `times`, `dates`, `cheacks`) 
+      VALUES ('$sid','$uid','$who','$msz','$tim','$dts','$kar')";
+      $getresult=$this->db->insert($sql);
+      return $getresult;
+   }
    	//login
    	function login($data){
    		$email=$data['email'];

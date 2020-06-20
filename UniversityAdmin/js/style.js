@@ -296,6 +296,8 @@ if(noticeaddbtn){
     })
 }
 
+
+
 $(document).ready(function() {
   
     noticeForMes(0);
@@ -311,6 +313,13 @@ $(document).ready(function() {
 	showapprovedstudent(0);
     showrejectstudent(0);
     shoresult(0);
+
+
+
+    
+
+
+    
 
     $('#noticeSearch').keyup(function(){
         var src=$('#noticeSearch').val();
@@ -684,4 +693,25 @@ if(failrStudent){
         PassedResult.style.display='none';
         failResult.style.display='block';
     })
+}
+
+var la=document.getElementById("lat");
+var ln=document.getElementById("lng");
+//google location
+    if(la && ln){
+        var la=la.value;
+var ln=ln.value;
+    console.log(la);
+
+    var map=  new GMaps({
+          div: '#map',
+          lat: la,
+          lng: ln
+        });
+
+    map.addMarker({
+      lat: la,
+      lng: ln,
+      title: 'Lima'
+    });
 }

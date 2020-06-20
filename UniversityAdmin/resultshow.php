@@ -77,8 +77,8 @@
                         <?php 
                             if($r['statuss']==1){?>
 
-                                <a href="deleteApproveReject.php?passed=<?php echo $r['addmionId']?>" class="btn btn-success">Pass</a>
-                                <a href="deleteApproveReject.php?fail=<?php echo $r['addmionId']?>" class="btn btn-danger">Fail</a>
+                                <a href="deleteApproveReject.php?passed=<?php echo $r['addmissonId']?>" class="btn btn-success">Pass</a>
+                                <a href="deleteApproveReject.php?fail=<?php echo $r['addmissonId']?>" class="btn btn-danger">Fail</a>
 
                            <?php  }else{?>
                                 <span class="text-center">None</span>

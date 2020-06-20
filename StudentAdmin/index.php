@@ -3,17 +3,10 @@
 ?>
 <div class="hearo_area">
    <div class="row">
-      <div class="col-lg-4 col-md-4">
+      <div class="col-md-3">
          <a href="profile.php">
-            <div class="box bgone">
-               <div class="row">
-                  <div class="col-lg-4 col-md-4 col-5">
-                     <center>
-                        <i class="fas fa-user mr-3 text-right"></i>
-                     </center>
-                  </div>
-                  <div class="col-lg-7 col-md-4 col-6 ">
-                     <h1>Profile</h1>
+            <div class="box bgone text-center">
+               <h2>Profile</h2>
                      <?php
                         $sid=$_SESSION['sid'];
                         $phpcls=new phpclass();
@@ -23,26 +16,17 @@
                         }
                         if ($_SESSION['satuss']==0) {
                             ?>
-                     <h6 class="text-danger">20% Done</h6>
+                     <h6 class="text-info">20% Done</h6>
                      <?php }else{?>
                      <h6>100% Complete</h6>
                      <?php }?>
-                  </div>
-               </div>
             </div>
          </a>
       </div>
-      <div class="col-lg-4 col-md-4">
+      <div class="col-md-3">
          <a href="apply.php">
-            <div class="box bgtwo">
-               <div class="row">
-                  <div class="col-lg-4 col-md-4 col-5">
-                     <center>
-                        <i class="fas fa-arrow-circle-right mr-3 text-right"></i>
-                     </center>
-                  </div>
-                  <div class="col-lg-7 col-md-4 col-6 ">
-                     <h1>Apply</h1>
+            <div class="box bgone text-center">
+               <h2>Apply</h2>
                      <h6> 
                      
                      <?php 
@@ -54,33 +38,36 @@
                      
                      
                      University</h6>
-                  </div>
-               </div>
             </div>
          </a>
       </div>
-      <div class="col-lg-4 col-md-4">
+      <div class="col-md-3 ">
          <a href="Payment.php">
-            <div class="box bgone">
-               <div class="row">
-                  <div class="col-lg-3 col-md-3 col-5">
-                     <center>
-                        <i class="fas fa-money-bill-alt mr-3 text-right my"></i>
-                     </center>
-                  </div>
-                  <div class="col-lg-8 col-md-8 col-6 ">
-                     <h1>Balance</h1>
-                     <h6>Available <span style="color:red"><?php echo $_SESSION['amoint']?></span> Tk</h6>
-                  </div>
-               </div>
+            <div class="box bgone text-center">
+               <h2>Balance</h2>
+               <h6>Available <span style="color:red"><?php echo $_SESSION['amoint']?></span> Tk</h6>
+            </div>
+         </a>
+      </div>
+
+
+
+      <div class="col-md-3 ">
+         <a href="Payment.php">
+            <div class="box bgone text-center">
+               <h2>Message</h2>
+               <h6>Start Conversation</h6>
             </div>
          </a>
       </div>
    </div>
 </div>
-<div class="admitAndnotice">
-   <h2 class="text-center mb-2" style="color:white;">Some Notice Here</h2>
-   <table class="table table-bordered">
+
+
+<div  class="admitAndnotice ">
+   <h1 class="text-center pt-3" >Some Notice Here</h1>
+   <center><hr class="w-50"></center>
+   <table style="background-color: white" class="col-md-8 offset-md-2  table table-bordered">
    <thead>
       <th>Title</th>
       <th>Message</th>
