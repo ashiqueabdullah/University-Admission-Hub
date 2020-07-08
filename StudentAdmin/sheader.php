@@ -5,6 +5,9 @@
     session::checklogin();
 
     if (isset($_GET['log']) && $_GET['log'] == 'out') {
+        $id=$_SESSION['sid'];
+        $phpcls=new phpclass();
+        $res=$phpcls->offline($id);
         session::destroy();
     }
     $phpcls=new phpclass();
@@ -15,8 +18,11 @@
                 $GLOBALS['userimage']=$r['image'];
                 $GLOBALS['username']=$r['fname']." ".$r['lname'];
                 $GLOBALS['balance']=$r['balace']; 
+                $GLOBALS['chks']=$r['hscGpa']; 
+                $GLOBALS['status']=$r['satuss']; 
                 $_SESSION['amoint']=$balance;
                 $GLOBALS['ParmanentAddress']=$r['ParmanentAddress'];
+
             }
         }
 ?>
@@ -75,18 +81,33 @@
                         <li>
                             <a href="profile.php"><i class="fas fa-user mr-3"></i>Profile</a>
                         </li>
+
+                        <?php 
+                            if(!empty($chks)){
+                        ?>
                         <li>
                             <a href="prospectus.php"><i class="fas fa-arrow-circle-right mr-3"></i>Apply</a>
                         </li>
+                        
+                        <?php }?>
+
                         <li>
                             <a href="notice.php"><i class="far fa-bell mr-3"></i>Notice</a>
                         </li>
+
+                        <?php 
+                            if(!empty($chks)){
+                        ?>
                         <li>
                             <a href="inbox.php"><i class="far fa-envelope mr-3"></i>Inbox</a>
                         </li>
+
+                            
+
                         <li>
                             <a href="payment.php"><i class="fas fa-money-bill-alt mr-3"></i>Payment</a>
                         </li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>
@@ -134,6 +155,5 @@
                                             </div>
                                         </div>
                                     </div>
-
                     </div>
                 </div>

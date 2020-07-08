@@ -39,7 +39,7 @@
                 <div class="box">
                     <h4>Add new notice</h4>
                     <hr>
-                    <form action="" method="post" class="mt-3" enctype="multipart/form-data">
+                    <form name="adminnotice" onsubmit="return chekform();" action="" method="post" class="mt-3" enctype="multipart/form-data">
                         <?php 
                             $phpcls=new phpclass();
 
@@ -61,10 +61,9 @@
                             <div class="form-group col-md-6">
                                 <label>For whome</label>
                                 <select name="whome" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option value="0">Both</option>
-                                    <option value="1">Student</option>
-                                    <option value="2">University</option>
+                                    <option value="Both">Both</option>
+                                    <option value="Student">Student</option>
+                                    <option value="University">University</option>
                                 </select>
                             </div>
                         </div>

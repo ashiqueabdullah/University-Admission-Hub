@@ -1,3 +1,223 @@
+function editcheck(chk){
+    console.log(ckk);
+    if(chk==10){
+        swal("this email already exists!", "", "error");
+    }
+}
+
+
+function edit(edt){
+    var link="modaratorEdit.php?id=";
+    var mainlink=link.concat(edt);
+    swal({
+      title: "Are you sure want to edit?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      return:false
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+           window.open(mainlink, "_self");
+      } 
+    });
+}
+
+
+
+
+function dlt(dlt){
+    
+    var link="modaratorActiveDeactiveDelete.php?delete=";
+    var mainlink=link.concat(dlt);
+    swal({
+      title: "Are you sure want to delete?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      return:false
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+           window.open(mainlink, "_self");
+      } 
+    });
+}
+
+
+
+
+function deacts(deact){
+    
+    var link="modaratorActiveDeactiveDelete.php?active=";
+    var mainlink=link.concat(deact);
+    swal({
+      title: "Are you sure want to Deactive?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      return:false
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+           window.open(mainlink, "_self");
+      } 
+    });
+}
+
+
+
+function activ(aact){
+    var link="modaratorActiveDeactiveDelete.php?deactive=";
+    var mainlink=link.concat(aact);
+    swal({
+      title: "Are you sure want to Active?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      return:false
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+           window.open(mainlink, "_self");
+      } 
+    });
+}
+
+
+
+
+
+var mdcceck=document.getElementById("mdcceck");
+if(mdcceck){
+    if(mdcceck.value==10){
+        swal("this email already exists!", "", "error");
+    
+    }else if(mdcceck.value==5){
+        swal("Done successfully!", "", "success");
+       
+    }
+}
+    
+
+
+function adminFormvalid(){
+    
+    var modaname=document.modaaddform.modaname;
+    if(modaname.value==""){
+        swal("Please Enter Modarator or admin Name!", "", "error");
+        return false;
+    }
+
+
+var modaimg=document.modaaddform.modaimg;
+    if(modaimg.value==""){
+        swal("Please upload image!", "", "error");
+        return false;
+    }
+
+
+var modaemail=document.modaaddform.modaemail;
+    if(modaemail.value==""){
+        swal("Please Enter email!", "", "error");
+        return false;
+    }
+
+
+var modapass=document.modaaddform.modapass;
+    if(modapass.value==""){
+        swal("Please Enter Password!", "", "error");
+        return false;
+    }
+
+
+var modaphone=document.modaaddform.modaphone;
+    if(modaphone.value==""){
+        swal("Please Enter phone Number!", "", "error");
+        return false;
+    }
+
+
+var address=document.modaaddform.address;
+    if(address.value==""){
+        swal("Please Enter Address!", "", "error");
+        return false;
+    }
+
+
+var city=document.modaaddform.city;
+    if(city.value==""){
+        swal("Please Enter City!", "", "error");
+        return false;
+    }
+
+
+var zip=document.modaaddform.zip;
+    if(zip.value==""){
+        swal("Please Enter Zip code!", "", "error");
+        return false;
+    }
+
+}
+
+
+
+function adminFormvalid2(){
+    
+    var modaname=document.modaaddform.modaname;
+    if(modaname.value==""){
+        swal("Please Enter Modarator or admin Name!", "", "error");
+        return false;
+    }
+
+
+
+
+var modaemail=document.modaaddform.modaemail;
+    if(modaemail.value==""){
+        swal("Please Enter email!", "", "error");
+        return false;
+    }
+
+
+var modapass=document.modaaddform.modapass;
+    if(modapass.value==""){
+        swal("Please Enter Password!", "", "error");
+        return false;
+    }
+
+
+var modaphone=document.modaaddform.modaphone;
+    if(modaphone.value==""){
+        swal("Please Enter phone Number!", "", "error");
+        return false;
+    }
+
+
+var address=document.modaaddform.address;
+    if(address.value==""){
+        swal("Please Enter Address!", "", "error");
+        return false;
+    }
+
+
+var city=document.modaaddform.city;
+    if(city.value==""){
+        swal("Please Enter City!", "", "error");
+        return false;
+    }
+
+
+var zip=document.modaaddform.zip;
+    if(zip.value==""){
+        swal("Please Enter Zip code!", "", "error");
+        return false;
+    }
+
+}
+
+
+
 var depertmentbtn=document.getElementById("depertmentbtn");
 var subjectbtn=document.getElementById("subjectbtn");
 var quatabtn=document.getElementById("quatabtn");
@@ -375,10 +595,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
     showreseltPassed(0);
     showreseltfailed(0);
    
@@ -700,18 +916,20 @@ var ln=document.getElementById("lng");
 //google location
     if(la && ln){
         var la=la.value;
-var ln=ln.value;
-    console.log(la);
+    var ln=ln.value;
+        console.log(la);
 
-    var map=  new GMaps({
-          div: '#map',
+        var map=  new GMaps({
+              div: '#map',
+              lat: la,
+              lng: ln
+            });
+
+        map.addMarker({
           lat: la,
-          lng: ln
+          lng: ln,
+          title: 'Lima'
         });
-
-    map.addMarker({
-      lat: la,
-      lng: ln,
-      title: 'Lima'
-    });
 }
+
+

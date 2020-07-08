@@ -10,11 +10,21 @@
 ?>
 
 
-<div class="row">
+<table class="table table-bordered">
+        <thead >
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>University Name</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
 
-
-
-<?php
+            <?php
                             $obj=new phpclass();
                             $limit=20;
                             if (isset($_GET['page'])) {
@@ -37,27 +47,60 @@
                                 while($r=$res[0]->fetch_assoc()){
                         ?>
 
-                <div class="col-md-3">
-                    <div class="box">
-                        <center>
-                            <img src="../UniversityAdmin/img/upload/<?php echo $r['img']?>" alt="">
-                            <h5><?php echo $r['name']?></h5>
-                            <p>North East University</p>
-                            <h5>
-                            <a href="modaratorViewUniversity.php?id=<?php echo $r['morId']?>" class="viewmod btn btn-info "> <i class="fas fa-eye"></i> View</a>
-                            <a href="modaratordlt.php?id=<?php echo $r['morId']?>" class=" btn btn-danger   mr-1"><i class="fas fa-trash-alt"></i> Delete</a>
-                            <a href="modaratordlt.php?approved=<?php echo $r['morId']?>" class=" btn btn-success   mt-1"><i class="fas fa-trash-alt"></i> Approve</a>
-                        </h5>
-                        </center>
-                    </div>
-                </div>
+                <tr>
+                    <td><img src="img/upload/<?php echo $r['img']?>" height="70" width="70" alt=""></td>
+                    <td>
+                        <?php echo $r['name']?>
+                    </td>
+                    <td>
+                        <?php echo $r['email']?>
+                    </td>
+                    <td>
+                        <?php echo $r['phone']?>
+                    </td>
+                    <td>
 
-<?php }}?>
+                        
+                       <?php 
+                            $uniid=$r['uniid'];
+                         $uniname=$obj->getsingleuniname($uniid)->fetch_assoc();
+                         echo $uniname['universityName'];
+
+                       ?>
+
+
+                    </td>
+                    <td>
+                        <?php 
+                    echo $r['types'];
+                ?>
+                    </td>
+                    
+                    <td>
+                        <?php 
+                    if ($r['status']==0) {?>
+
+                    <a href="modaratoractive.php?active=<?php echo $r['morId']?>"  class="btn btn-success float-right ml-1"><i class="fas fa-check-circle"></i> Approve</a>
+                     
+    
+                     <?php }?>
+                        <a target="_blank" href="modaratorView.php?id=<?php echo $r['morId']?>" class="viewmod btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
+                        
+                        <a href="modaratordlt.php?id=<?php echo $r['morId']?>" class="mt-1 btn btn-danger  float-right mr-1"><i class="fas fa-trash-alt"></i> Delete</a>
+                    </td>
+                </tr>
+
+                <?php }}?>
+
+        </tbody>
+    </table>
+
+
           
 
 
 
-</div>
+
  <nav class="mt-3" aria-label="Page navigation example">
                     <ul class="pagination">
                    

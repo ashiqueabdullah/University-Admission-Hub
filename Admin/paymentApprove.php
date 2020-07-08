@@ -23,7 +23,7 @@
                         
                         <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -48,15 +48,19 @@
                                     <?php
                                     if ($r['statuss']==0) { ?>
                                        <span style="color: red">Pending</span> 
-                                    <?php }else{?>
+                                    <?php }else if ($r['statuss']==1){?>
                                         <span style="color: green">Approve</span> 
                                     <?php }?>
                                     
                             </td>
                             <td>
-                                <a href="paymentDeleteApprove.php?rejectfromapprove=<?php echo $r['payId']?>" class="btn btn-danger float-right mr-1"><i class="fas fa-trash-alt"></i> Reject</a> 
-                                <a href="paymentView.php?view=<?php echo $r['payId']?>" class="btn btn-info float-right mr-1"><i class="fas fa-eye"></i> View</a> 
+
+                                <button onclick="return pmtrej('<?php echo $r['payId']?>')" class="btn btn-danger float-right mr-1"><i class="fas fa-trash-alt"></i> Reject</button> 
+
+
+                                <a target="_blank" href="studentView.php?id=<?php echo $r['stId']?>" class="btn btn-info float-right mr-1"><i class="fas fa-eye"></i> Student View</a> 
                             </td>
+                            
                             </tr>
                     <?php }}?>
 

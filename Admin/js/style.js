@@ -1,3 +1,126 @@
+
+function formvalidation2(){
+    var name=document.modaratorAddform.modaname;
+    var modaemail=document.modaratorAddform.modaemail;
+    var modapass=document.modaratorAddform.modapass;
+    var modaphone=document.modaratorAddform.modaphone;
+    var address=document.modaratorAddform.address;
+    var city=document.modaratorAddform.city;
+    var zip=document.modaratorAddform.zip;
+    if(name.value==""){
+        swal("Please Admin/Modarator Name!", "", "error");
+        return false;
+    }
+   
+
+    if(modaemail.value==""){
+        swal("Please Enter Email!", "", "error");
+        return false;
+    }
+    if(modapass.value==""){
+        swal("Please Enter Password!", "", "error");
+        return false;
+    }
+
+    if(modaphone.value==""){
+        swal("Please Enter Phone Number!", "", "error");
+        return false;
+    }
+    if(zip.value==""){
+        swal("Please Enter Zip code!", "", "error");
+        return false;
+    }
+
+    if(address.value==""){
+        swal("Please Enter Address!", "", "error");
+        return false;
+    }
+    if(city.value==""){
+        swal("Please Enter City!", "", "error");
+        return false;
+    }
+}
+
+
+
+var chck=document.getElementById("chck");
+if(chck){
+if(chck.value==10){
+    swal("This email already exists!", "", "error");
+    
+}else if(chck.value==5){
+    swal("Done successfully!", "", "success");
+    
+}
+}
+
+
+function chekform(){
+    var title=document.adminnotice.title;
+    if(title.value==""){
+        swal("Please Enter title!", "", "error");
+        return false;
+    }
+
+
+   
+
+var whome=document.adminnotice.whome;
+    if(whome.value==""){
+        swal("Please Select Student/University or Both!", "", "error");
+        return false;
+    }
+
+
+
+var description=document.adminnotice.description;
+    if(description.value==""){
+        swal("Write Some description!", "", "error");
+        return false;
+    }
+
+
+
+}
+
+
+
+function pmtrej(id){
+    var link="paymentDeleteApprove.php?rejectfromapprove=";
+    var mainlink=link.concat(id);
+    swal({
+      title: "Are you sure want to Reject?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      return:false
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+           window.open(mainlink, "_self");
+      } 
+    });
+}
+
+
+
+function pmappr(id){
+    var link="paymentDeleteApprove.php?approve=";
+    var mainlink=link.concat(id);
+    swal({
+      title: "Are you sure want to Approve?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      return:false
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+           window.open(mainlink, "_self");
+      } 
+    });
+}
+
 //form validation
 function formvalidation(){
     var name=document.modaratorAddform.modaname;
@@ -9,38 +132,38 @@ function formvalidation(){
     var city=document.modaratorAddform.city;
     var zip=document.modaratorAddform.zip;
     if(name.value==""){
-        document.getElementById("errorShow").innerHTML="Please Admin/Modarator Name";
+        swal("Please Admin/Modarator Name!", "", "error");
         return false;
     }
     if(modaimg.value==""){
-        document.getElementById("errorShow").innerHTML="Please Upload Image";
+        swal("Please Upload Image!", "", "error");
         return false;
     }
 
     if(modaemail.value==""){
-        document.getElementById("errorShow").innerHTML="Please Enter Email";
+        swal("Please Enter Email!", "", "error");
         return false;
     }
     if(modapass.value==""){
-        document.getElementById("errorShow").innerHTML="Please Password";
+        swal("Please Enter Password!", "", "error");
         return false;
     }
 
     if(modaphone.value==""){
-        document.getElementById("errorShow").innerHTML="Please Enter Phone";
+        swal("Please Enter Phone Number!", "", "error");
         return false;
     }
     if(zip.value==""){
-        document.getElementById("errorShow").innerHTML="Please Enter Zip code";
+        swal("Please Enter Zip code!", "", "error");
         return false;
     }
 
     if(address.value==""){
-        document.getElementById("errorShow").innerHTML="Please Enter Address";
+        swal("Please Enter Address!", "", "error");
         return false;
     }
     if(city.value==""){
-        document.getElementById("errorShow").innerHTML="Please Enter City";
+        swal("Please Enter City!", "", "error");
         return false;
     }
 }
@@ -50,6 +173,28 @@ function formvalidation(){
 
 
 $(document).ready(function(){
+
+
+    //google location
+    var la=document.getElementById("lat");
+    var ln=document.getElementById("lng");
+    if (la && ln) {
+    var la=document.getElementById("lat").value;
+    var ln=document.getElementById("lng").value;
+    var map=  new GMaps({
+          div: '#map',
+          lat: la,
+          lng: ln
+        });
+
+    map.addMarker({
+      lat: la,
+      lng: ln,
+      title: 'Lima'
+    });
+}
+
+
     $('.studentsearchs').keyup(function(){
         var src=$('.studentsearchs').val();
         if (src=="") {
@@ -146,6 +291,125 @@ $(document).ready(function(){
 
 
 })
+
+
+var mymodarator = document.getElementById('mymodarator');
+var pendingModaraotr = document.getElementById('pendingModaraotr');
+var approvedModarator = document.getElementById('approvedModarator');
+var newModarator = document.getElementById('newModarator');
+
+
+var mymoda = document.getElementById('mymoda');
+var penmoda = document.getElementById('penmoda');
+var apmoda = document.getElementById('apmoda');
+var addmoda = document.getElementById('addmoda');
+
+if (mymodarator) {
+    mymodarator.addEventListener('click', function() {
+
+        mymodarator.style.color = "white";
+        mymodarator.style.background = "#798BFF";
+
+        pendingModaraotr.style.color = "#A4CFFF";
+        pendingModaraotr.style.background = "#101924";
+
+        approvedModarator.style.color = "#A4CFFF";
+        approvedModarator.style.background = "#101924";
+
+
+        newModarator.style.color = "#A4CFFF";
+        newModarator.style.background = "#101924";
+
+
+        mymoda.style.display = "block";
+        penmoda.style.display = "none";
+        apmoda.style.display = "none";
+        addmoda.style.display = "none";
+    });
+}
+
+
+
+
+if (pendingModaraotr) {
+    pendingModaraotr.addEventListener('click', function() {
+
+        pendingModaraotr.style.color = "white";
+        pendingModaraotr.style.background = "#798BFF";
+
+        mymodarator.style.color = "#A4CFFF";
+        mymodarator.style.background = "#101924";
+
+        approvedModarator.style.color = "#A4CFFF";
+        approvedModarator.style.background = "#101924";
+
+
+        newModarator.style.color = "#A4CFFF";
+        newModarator.style.background = "#101924";
+
+
+        mymoda.style.display = "none";
+        penmoda.style.display = "block";
+        apmoda.style.display = "none";
+        addmoda.style.display = "none";
+    });
+}
+
+
+
+
+
+if (approvedModarator) {
+    approvedModarator.addEventListener('click', function() {
+
+        approvedModarator.style.color = "white";
+        approvedModarator.style.background = "#798BFF";
+
+        mymodarator.style.color = "#A4CFFF";
+        mymodarator.style.background = "#101924";
+
+        pendingModaraotr.style.color = "#A4CFFF";
+        pendingModaraotr.style.background = "#101924";
+
+
+        newModarator.style.color = "#A4CFFF";
+        newModarator.style.background = "#101924";
+
+
+        mymoda.style.display = "none";
+        penmoda.style.display = "none";
+        apmoda.style.display = "block";
+        addmoda.style.display = "none";
+    });
+}
+
+
+
+
+if (newModarator) {
+    newModarator.addEventListener('click', function() {
+
+        newModarator.style.color = "white";
+        newModarator.style.background = "#798BFF";
+
+        mymodarator.style.color = "#A4CFFF";
+        mymodarator.style.background = "#101924";
+
+        pendingModaraotr.style.color = "#A4CFFF";
+        pendingModaraotr.style.background = "#101924";
+
+        approvedModarator.style.color = "#A4CFFF";
+        approvedModarator.style.background = "#101924";
+
+        mymoda.style.display = "none";
+        penmoda.style.display = "none";
+        apmoda.style.display = "none";
+        addmoda.style.display = "block";
+    });
+}
+
+
+
 
 
 
@@ -600,6 +864,11 @@ if (cros) {
 
 
 $(document).ready(function() {
+
+
+
+
+    appromdarator(0);
     loadstudent(0);
     loadpen(0);
     loadapr(0);
@@ -618,6 +887,7 @@ $(document).ready(function() {
     paymentpending(0);
     paymentRejects(0);
     modaratorAll(0);
+    
 });
 
 
@@ -710,10 +980,6 @@ function loadapr(page) {
 }
 
 
-
-
-
-
 function uniapr(page) {
     $.post('universityApprove.php?page=' + page, function(respos) {
         $('#allApproveuni').html(respos);
@@ -736,7 +1002,7 @@ function uniall(page) {
 
 function modaratorAdmin(page) {
     $.post('modaratorAdmin.php?page=' + page, function(respos) {
-        $('#amidnMOdaratoList').html(respos);
+        $('#mymoda').html(respos);
     })
 }
 
@@ -744,8 +1010,19 @@ function modaratorAdmin(page) {
 
 function approveModarator(page) {
     $.post('modaratorApprove.php?page=' + page, function(respos) {
-        $('#approveModarator').html(respos);
+        $('#penmoda').html(respos);
     })
 }
+
+
+
+function appromdarator(page) {
+    $.post('modaratorApproved.php?page=' + page, function(respos) {
+        $('#apmoda').html(respos);
+    })
+}
+
+
+
 
 

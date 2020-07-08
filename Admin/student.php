@@ -17,7 +17,7 @@
                     </ul>
                     </div>
                     <div class="col-md-3">
-                      <input class="p-3 form-control form-control-sm mr-3 w-100 studentsearchs" type="text" placeholder="Search...."
+                      <input class="p-3 form-control form-control-sm mr-3 w-100 studentsearchs" type="text" placeholder="Search By name...."
                             name="stdSearch">
                     </div>
                 </div>

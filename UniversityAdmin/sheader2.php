@@ -4,6 +4,9 @@
     session::checklogin();
 
     if (isset($_GET['log']) && $_GET['log'] == 'out') {
+        $id=$_SESSION['uid'];
+        $phpcls=new phpclass();
+        $res=$phpcls->unioffline($id);
         session::destroy();
     }
 ?>

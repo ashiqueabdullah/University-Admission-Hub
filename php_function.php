@@ -16,53 +16,140 @@
    
    	//Function start from Here
    	function RegistrationStudent($data){
-   		$sfname=$data['sfname'];
-   		$slname=$data['slname'];
-   		$sdate=$data['sdate'];
+
+         $sscroll=$data['sscroll'];
+         $sscregis=$data['sscregis'];
+         $hscroll=$data['hscroll'];
+         $hscreg=$data['hscreg'];
+         $sdate=$data['sdate'];
+         $semail=$data['semail'];
+         $sfname=$data['sfname'];
+         $slname=$data['slname'];
    		$radio=$data['radio'];
    		$sphone=$data['sphone'];
-   		$saddress=$data['saddress'];
-   		$pcode=$data['pcode'];
-   		$semail=$data['semail'];
    		$spass=$data['spass'];
    		
-   			$query="SELECT * FROM student_one WHERE email='$semail' LIMIT 1";
-   			$getresult=$this->db->select($query);
-   			if ($getresult==true) {
-   				echo '<script type="text/javascript">';
-   				echo ' alert("This email already exist")';
-   				echo '</script>';
-   			}else{
+   		$studentTable="SELECT `email` FROM student_one WHERE email='$semail' LIMIT 1";
+         $universityTable="SELECT `email` FROM `university` WHERE email='$semail' LIMIT 1";
+         $modaratortable="SELECT `email` FROM modarator WHERE email='$semail' LIMIT 1";
+
+
+         $StudentResult=$this->db->select($studentTable);
+         $universityResult=$this->db->select($universityTable);
+         $modaratorResult=$this->db->select($modaratortable);
+
+
+
+
+         $sscRollchk="SELECT `sscRoll` FROM `student_one` WHERE `sscRoll`=$sscroll";
+         $sscRegchk="SELECT `sscRgNumber` FROM `student_one` WHERE `sscRgNumber`=$sscregis";
+         $hscRlsschk="SELECT `hscRoll` FROM `student_one` WHERE `hscRoll`=$hscroll";
+         $hhscRlchk="SELECT `hscRgNumber` FROM `student_one` WHERE `hscRgNumber`=$hscreg";
+
+
+         $sscRlckeres=$this->db->select($sscRollchk);
+         $sscrgchekres=$this->db->select($sscRegchk);
+         $hscRlchkres=$this->db->select($hscRlsschk);
+         $hscrgres=$this->db->select($hhscRlchk);
+
+   			
+   		if ($sscRlckeres==true || $sscrgchekres==true || $hscRlchkres==true || $hscrgres==true) {
+            //roll ager ache
+            return 2;
+         }else if ($StudentResult==true || $universityResult==true || $modaratorResult==true) {
+   			//email ager ache
+            return 10;
+   		}else{
    
-   				$query="INSERT INTO `student_one`(`fname`, `lname`, `dateOfbirth`, `gender`, `phone`,`address`, `postCode`,`email`, `pass`) 
-   				VALUES ('$sfname','$slname','$sdate','$radio','$sphone','$saddress','$pcode','$semail','$spass')";
+   				$query="INSERT INTO `student_one`(`fname`, `lname`, `dateOfbirth`, `gender`, `phone`, `sscRoll`, `sscRgNumber`, `email`, `pass`, `hscRoll`, `hscRgNumber`) 
+   				VALUES ('$sfname','$slname','$sdate','$radio','$sphone','$sscroll','$sscregis','$semail','$spass','$hscroll','$hscreg')";
    
    				$getresult=$this->db->insert($query);
+
    				$query="SELECT studentId FROM student_one ORDER BY studentId DESC LIMIT 1";
    				$getresult=$this->db->select($query)->fetch_assoc();
    				$val=$getresult["studentId"];
    				$query="INSERT INTO `student_two` (`std_one`,`satuss`) VALUES ($val,0)";
    				$getresult=$this->db->insert($query);
 
-               
-               $query="SELECT `universityId` FROM `university`";
-               $universityInfo=$this->db->select($query);
-               if($universityInfo){
-               while ($unires=$universityInfo->fetch_assoc()) {
+
+
+              
+
+               //for chat with student and admin
+               $query="SELECT * FROM `university`";
+               $query2="SELECT * FROM `modarator`";
+               $uniinformation=$this->db->select($query);
+               $admiModaAndAmdin=$this->db->select($query2);
+
+
+
+               if ($uniinformation) {
+                  
+               while ($unidinfo=$uniinformation->fetch_assoc()) {
                   
                   $timess=date("h:m:sa");
                   $datess=date("Y-m-d");
-                  $whomes="University";
-                  $uniId=$unires['universityId'];
+                  $kassathe="university";
+                  $name=$unidinfo['universityId'];
+                  $amike="student";
 
-                  $sql="INSERT INTO `friedns` (`stdId`, `otherId`,`whome`, `times`, `dates` ) VALUES ('$val','$uniId','$whomes','$timess','$datess')";
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
 
                   $getresult=$this->db->insert($sql);
-                  return $getresult;
-
+                  $getresult=$this->db->insert($sql2);
+                  
                }
             }
-   				
+
+
+
+               if ($admiModaAndAmdin) {
+                  
+               while ($info=$admiModaAndAmdin->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+
+                  if($info['uniid']==NULL && $info['types']=="Admin"){
+                     $kassathe="admin";
+                  }else if($info['uniid']==NULL && $info['types']=="Modarator"){
+                     $kassathe="adminModarator";
+                  }else if($info['uniid']!=NULL && $info['types']=="Admin"){
+                     $kassathe="adminUniversity";
+                  }else if($info['uniid']!=NULL && $info['types']=="Modarator"){
+                     $kassathe="universityModarator";
+                  }
+                  
+
+
+                  $name=$info['morId'];
+                  $amike="student";
+                  
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+                  
+               }
+            }
+
+
+
+
+
+
+
+            return 5;
    		}
    	}
    
@@ -198,7 +285,10 @@
    		WHERE std_one=$sid";
 
    		$getresult=$this->db->insert($query);
-   		
+         
+   		echo "<script type='text/javascript'>
+          window.open('profile.php','_self');
+          </script>";
    	}
    
    		
@@ -275,6 +365,33 @@
    		$hscCertificate=$file['hscCertificate']['name'];
    		$filetemp3=$file['hscCertificate']['tmp_name'];
    		move_uploaded_file($filetemp3,"img/upload/".$hscCertificate);
+
+
+         $iddds=$_SESSION['sid'];
+         $sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and
+         student_two.std_one=$iddds limit 1";
+         $naivalue=$this->db->select($sql);
+
+         while($r=$naivalue->fetch_assoc()){
+            $miimage=$r['image'];
+            $hsc=$r['hscCertificate'];
+            $ssc=$r['sscCertificate'];
+         }
+
+         if(empty($image)){
+            $image=$miimage;
+         }
+
+         if(empty($hscCertificate)){
+            $hscCertificate=$hsc;
+         }
+         
+         if(empty($sscCertificate)){
+            $sscCertificate=$ssc;
+         }
+
+
+
    
    
    		$sid=$_SESSION["sid"];
@@ -337,7 +454,7 @@
    		$getresult=$this->db->insert($query);
    	}
    	function getStatus($id){
-   		$query="SELECT `satuss` FROM `student_two` WHERE std_one=$id";
+   		$query="SELECT * FROM `student_two` WHERE std_one=$id";
    		$getresult=$this->db->select($query);
    		return $getresult;
    	}
@@ -416,43 +533,130 @@
    		$address=$data['address'];
    		$city=$data['city'];
    		$zip=$data['zip'];
+         $mdtp=$data['modatype'];
    		$adminId=$_SESSION['admid'];
    		
    
    		$modaimg=$file['modaimg']['name'];
    		$filetemp=$file['modaimg']['tmp_name'];
    		move_uploaded_file($filetemp,"img/upload/".$modaimg);
-   
-   		if ($modatype=='Modarator') {
-   			$mdtp=0;
-   		}else{
-   			$mdtp=1;
-   		}
-   		
+
 		   $status=1;
 		   
-		   $check="SELECT * FROM `modarator` WHERE `email`='$modaemail'";
-		   $checkEmail=$this->db->select($check);
-		   $checkEmail=$checkEmail->fetch_assoc();
 
-		   if($checkEmail['email']!=$modaemail){
 
-			$sql="INSERT INTO `modarator`
-			(`name`,  `adress`, `email`, `pass`,  `img`,  `status`, `phone`, `types`, `city`, `zip`, `adminId`) VALUES 
-			('$name','$address','$modaemail','$modapass','$modaimg','$status','$modaphone','$mdtp','$city','$zip','$adminId')";
-			$getresult=$this->db->insert($sql);
-			
-		   }else{
-				echo '<script type="text/javascript">';
-				echo ' alert("Email Already exsist")';
-				echo '</script>';
-		   }
-		
-		
-		   
+
+		   $studentTable="SELECT `email` FROM student_one WHERE email='$modaemail' LIMIT 1";
+         $universityTable="SELECT `email` FROM `university` WHERE email='$modaemail' LIMIT 1";
+         $modaratortable="SELECT `email` FROM modarator WHERE email='$modaemail' LIMIT 1";
+
+
+
+         $StudentResult=$this->db->select($studentTable);
+         $universityResult=$this->db->select($universityTable);
+         $modaResult=$this->db->select($modaratortable);
+
+         if($StudentResult || $universityResult || $modaResult){
+            return 10;
+         }else{
+            $sql="INSERT INTO `modarator`
+         (`name`,  `adress`, `email`, `pass`,  `img`,  `status`, `phone`, `types`, `city`, `zip`, `adminId`) VALUES 
+         ('$name','$address','$modaemail','$modapass','$modaimg','$status','$modaphone','$mdtp','$city','$zip','$adminId')";
+         $getresult=$this->db->insert($sql);
+
+
+
+
+         //for chat with student and admin
+         $sql="SELECT * FROM `modarator` WHERE `uniid` IS NULL ORDER BY `morId` DESC LIMIT 1";
+         $amarId=$this->db->select($sql)->fetch_assoc();
+         $val=$amarId['morId'];
+
+
+
+               
+               $query="SELECT * FROM `student_one`";
+               $query2="SELECT * FROM `modarator`";
+               $query3="SELECT * FROM `university`";
+               $stdinformation=$this->db->select($query);
+               $admiModaAndAmdin=$this->db->select($query2);
+               $university=$this->db->select($query3);
+
+
+
+               if ($university) {
+                  
+               while ($uni=$university->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+                  $kassathe="university";
+                  $name=$uni['universityId'];
+
+
+                  if($amarId['uniid']==NULL && $amarId['types']=="Admin"){
+                     $amike="admin";
+                  }else if($amarId['uniid']==NULL && $amarId['types']=="Modarator"){
+                     $amike="adminModarator";
+                  }
+
+
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+                  
+               }
+            }
+
+
+
+               if ($stdinformation) {
+                  
+               while ($stdinfo=$stdinformation->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+                  $kassathe="student";
+                  $name=$stdinfo['studentId'];
+
+                  if($amarId['uniid']==NULL && $amarId['types']=="Admin"){
+                     $amike="admin";
+                  }else if($amarId['uniid']==NULL && $amarId['types']=="Modarator"){
+                     $amike="adminModarator";
+                  }
 
 
    
+
+
+
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+                  
+               }
+            }
+
+
+
+               
+
+
+         return 5;
+         }
+
    		
    	}
    
@@ -467,36 +671,154 @@
    		$address=$data['address'];
    		$city=$data['city'];
    		$zip=$data['zip'];
+         $mdtp=$data['modatype'];
    		$uid=$_SESSION['uid'];
-   		
+   		$status=0;
    
    		$modaimg=$file['modaimg']['name'];
    		$filetemp=$file['modaimg']['tmp_name'];
-   		move_uploaded_file($filetemp,"img/upload/".$modaimg);
+
+         $studentTable="SELECT `email` FROM student_one WHERE email='$modaemail' LIMIT 1";
+         $universityTable="SELECT `email` FROM `university` WHERE email='$modaemail' LIMIT 1";
+         $modaratortable="SELECT `email` FROM modarator WHERE email='$modaemail' LIMIT 1";
+
+
+
+         $StudentResult=$this->db->select($studentTable);
+         $universityResult=$this->db->select($universityTable);
+         $modaResult=$this->db->select($modaratortable);
+
+         if($StudentResult || $universityResult || $modaResult){
+            return 10;
+         }else{
+            
+         move_uploaded_file($filetemp,"img/upload/".$modaimg);
    
-   		if ($modatype=='Modarator') {
-   			$mdtp=0;
-   		}else{
-   			$mdtp=1;
-   		}
-   		
-   		$status=0;
+         $sql="INSERT INTO `modarator`(`name`,  `adress`, `email`, `pass`,  `img`,  `status`, `phone`, `types`, `city`, `zip`, `uniid`) VALUES ('$name','$address','$modaemail','$modapass','$modaimg','$status','$modaphone','$mdtp','$city','$zip','$uid')";
+         $getresult=$this->db->insert($sql);
+
+
+
+
+
+
+
+
+
+         //for chat with student and admin
+         $sql="SELECT * FROM `modarator` WHERE `uniid` IS NOT NULL ORDER BY `morId` DESC LIMIT 1";
+         $amarId=$this->db->select($sql)->fetch_assoc();
+         $val=$amarId['morId'];
+
+
+
+               
+               $query="SELECT * FROM `student_one`";
+               $query2="SELECT * FROM `modarator`";
+               $query3="SELECT * FROM `university`";
+               $stdinformation=$this->db->select($query);
+               $admiModaAndAmdin=$this->db->select($query2);
+               $university=$this->db->select($query3);
+
+
+
+             
+
+
+
+
+
+
+               if ($stdinformation) {
+                  
+               while ($stdinfo=$stdinformation->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+                  $kassathe="student";
+                  $name=$stdinfo['studentId'];
+
+
+                  if($amarId['uniid']!=NULL && $amarId['types']=="Admin"){
+                     $amike="universityAdmin";
+                  }else if($amarId['uniid']!=NULL && $amarId['types']=="Modarator"){
+                     $amike="universityModarator";
+                  }
+
+
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+                  
+               }
+            }
+
+
+
+               if ($admiModaAndAmdin) {
+                  
+               while ($info=$admiModaAndAmdin->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+
+                  if($info['uniid']==NULL && $info['types']=="Admin"){
+                     $kassathe="admin";
+                  }else if($info['uniid']==NULL && $info['types']=="Modarator"){
+                     $kassathe="adminModarator";
+                  }else if($info['uniid']!=NULL && $info['types']=="Admin" && $val!=$info['uniid']){
+                     $kassathe="universityAdmin";
+                  }else if($info['uniid']!=NULL && $info['types']=="Modarator" && $val!=$info['uniid']){
+                     $kassathe="universityModarator";
+                  }
+                  
+
+                  if($val!=$info['uniid']){
+
+                  $name=$info['morId'];
+
+                  if($info['uniid']!=NULL && $info['types']=="Admin"){
+                     $amike="universityAdmin";
+                  }else if($info['uniid']!=NULL && $info['types']=="Modarator"){
+                     $amike="universityModarator";
+                  }
+                  
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+               }
+                  
+               }
+            }
+
+
+
+
+
+
+
    
-   		
-   
-   		$sql="INSERT INTO `modarator`(`name`,  `adress`, `email`, `pass`,  `img`,  `status`, `phone`, `types`, `city`, `zip`, `uniid`) VALUES ('$name','$address','$modaemail','$modapass','$modaimg','$status','$modaphone','$mdtp','$city','$zip','$uid')";
-   		$getresult=$this->db->insert($sql);
-   
-   		$sqls="select count(`morId`) FROM modarator WHERE `adminId`IS NOT NULL";
-   
-   		$gcou=$this->db->select($sqls);		
-   		return array($getresult,$gcou);
+         return 5;
+         }
    	}
    
    
    	function getModaratorInfo2($limit,$offset){
 		$id=$_SESSION['admid'];
-   		$sql="SELECT * FROM `modarator` WHERE `adminId`=$id limit $limit,$offset";
+   		$sql="SELECT * FROM `modarator` WHERE `adminId`=$id ORDER BY morId DESC limit $limit,$offset ";
    		$getresult=$this->db->select($sql);
    
    		$sqls="select count(`morId`) FROM modarator WHERE `adminId`=$id";
@@ -506,15 +828,27 @@
 	   }
 	   
 
+
 	   function getModaratorInfo($limit,$offset){
 		$sql="SELECT * FROM `modarator` WHERE `status`=0 AND `uniid` IS NOT NULL limit $limit,$offset";
 		$getresult=$this->db->select($sql);
 
-		$sqls="select count(`morId`) FROM modarator WHERE `adminId` IS NOT NULL";
+		$sqls="select count(`morId`) FROM modarator WHERE `status`=0 AND `adminId` IS NOT NULL";
 
 		$gcou=$this->db->select($sqls);		
 		return array($getresult,$gcou);
 	}
+
+
+   function getModaratorInfo3($limit,$offset){
+      $sql="SELECT * FROM `modarator` WHERE `status`=1 AND `uniid` IS NOT NULL limit $limit,$offset";
+      $getresult=$this->db->select($sql);
+
+      $sqls="select count(`morId`) FROM modarator WHERE `status`=1 AND `adminId` IS NOT NULL";
+
+      $gcou=$this->db->select($sqls);     
+      return array($getresult,$gcou);
+   }
    
    
    	function getModaratorInfoForUniversity($limit,$offset){
@@ -531,7 +865,7 @@
    
    	function getApproveModaratorInfoForUniversity($limit,$offset){
    		$id=$_SESSION['uid'];
-   		$sql="SELECT * FROM `modarator` WHERE `uniid`=$id AND `status`=1  limit $limit,$offset";
+   		$sql="SELECT * FROM `modarator` WHERE `uniid`=$id AND (`status`=1 OR `status`=2)  limit $limit,$offset";
    		$getresult=$this->db->select($sql);
    
    		$sqls="select count(`morId`) FROM modarator WHERE `uniid`=$id AND `status`=1";
@@ -571,49 +905,7 @@
    	}
    
    
-   	function editModarator($data,$file,$id,$img){
-   		$name=$data['modaname'];
-   		$modaemail=$data['modaemail'];
-   		$modapass=$data['modapass'];
-   		$modaphone=$data['modaphone'];
-   		$modatype=$data['modatype'];
-   		$address=$data['address'];
-   		$city=$data['city'];
-   		$zip=$data['zip'];
-   		
-   
-   		$modaimg=$file['modaimg']['name'];
-   		$filetemp=$file['modaimg']['tmp_name'];
-   		move_uploaded_file($filetemp,"img/upload/".$modaimg);
-   
-   		if ($modatype=='Modarator') {
-   			$mdtp=0;
-   		}else{
-   			$mdtp=1;
-   		}
-   
-   		if (empty($modaimg)) {
-   			$modaimg=$img;
-   		}
-   
-   		$sql="UPDATE `modarator` SET 
-   		`name`='$name', 
-   		`email`='$modaemail', 
-   		`pass`='$modapass', 
-   		`phone`='$modaphone', 
-   		`adress`='$address', 
-   		`types`='$mdtp', 
-   		`city`='$city', 
-   		`zip`='$zip', 
-   		`img`='$modaimg'
-   		WHERE morId=$id";
-   		$getresult=$this->db->insert($sql);
-   
-   	}
-   
-   
-   
-   	function editModaratorForUniversity($data,$file,$id,$img){
+   	function editModarator($data,$file,$id){
    		$name=$data['modaname'];
    		$modaemail=$data['modaemail'];
    		$modapass=$data['modapass'];
@@ -628,11 +920,24 @@
    		$filetemp=$file['modaimg']['tmp_name'];
    		move_uploaded_file($filetemp,"img/upload/".$modaimg);
    
-   
-   
-   		if (empty($modaimg)) {
-   			$modaimg=$img;
-   		}
+   		if(empty($modaimg)){
+            $sql="UPDATE `modarator` SET 
+         `name`='$name', 
+         `email`='$modaemail', 
+         `pass`='$modapass', 
+         `phone`='$modaphone', 
+         `adress`='$address', 
+         `types`='$mdtp', 
+         `city`='$city', 
+         `zip`='$zip'
+         WHERE morId=$id";
+         $getresult=$this->db->insert($sql);
+        
+         echo "<script type='text/javascript'>
+          window.open('modarator.php','_self');
+          </script>";
+
+         }else{
    
    		$sql="UPDATE `modarator` SET 
    		`name`='$name', 
@@ -646,7 +951,63 @@
    		`img`='$modaimg'
    		WHERE morId=$id";
    		$getresult=$this->db->insert($sql);
+        
+         echo "<script type='text/javascript'>
+          window.open('modarator.php','_self');
+          </script>";
+
+         }
    
+   	}
+   
+   
+   
+   	function editModaratorForUniversity($data,$file,$id){
+   		$name=$data['modaname'];
+   		$modaemail=$data['modaemail'];
+   		$modapass=$data['modapass'];
+   		$modaphone=$data['modaphone'];
+   		$mdtp=$data['modatype'];
+   		$address=$data['address'];
+   		$city=$data['city'];
+   		$zip=$data['zip'];
+   		
+   
+   		$modaimg=$file['modaimgg']['name'];
+   		$filetemp=$file['modaimgg']['tmp_name'];
+
+
+         if (empty($modaimg)) {
+            $sql="UPDATE `modarator` SET 
+            `name`='$name', 
+            `email`='$modaemail', 
+            `pass`='$modapass', 
+            `phone`='$modaphone', 
+            `adress`='$address', 
+            `types`='$mdtp', 
+            `city`='$city', 
+            `status`=0,
+            `zip`='$zip'
+            WHERE morId=$id";
+            $getresult=$this->db->insert($sql);
+            header("Location:modarator.php");
+         }else{
+            move_uploaded_file($filetemp,"img/upload/".$modaimg);
+            $sql="UPDATE `modarator` SET 
+            `name`='$name', 
+            `email`='$modaemail', 
+            `pass`='$modapass', 
+            `phone`='$modaphone', 
+            `adress`='$address', 
+            `types`='$mdtp', 
+            `city`='$city', 
+            `zip`='$zip',
+            `status`=0, 
+            `img`='$modaimg'
+            WHERE morId=$id";
+            $getresult=$this->db->insert($sql);
+            hheader("Location:modarator.php");
+         }
    	}
    
    
@@ -666,7 +1027,7 @@
    		$dates=date("Y/m/d");
    		$time=date("h:i:sa");
    
-   		$whoAdd=2;
+   		$whoAdd="Admin";
    		$statuss=1;
    		$authors=$_SESSION['admid'];
    		
@@ -692,7 +1053,7 @@
    		$dates=date("Y/m/d");
    		$time=date("h:i:sa");
    
-   		$whoAdd=1;
+   		$whoAdd="University";
    		$statuss=0;
    		$authors=$_SESSION['uid'];
    
@@ -764,30 +1125,30 @@
    
    
    	function noticeForStudent($limit,$offset){
-   		$sql="SELECT * FROM `notice`  WHERE `whome`=1  limit $limit,$offset";
+   		$sql="SELECT * FROM `notice`  WHERE `whome`='Student' OR `whome`='Both'  limit $limit,$offset";
    		$getresult=$this->db->select($sql);
    
-   		$sqls="select count(`noticeId`) FROM notice  WHERE `whome`=1";
+   		$sqls="select count(`noticeId`) FROM notice  WHERE `whome`='Student' OR `whome`='Both'";
    
    		$gcou=$this->db->select($sqls);		
    		return array($getresult,$gcou);
    	}
    
    	function noticeForUniversity($limit,$offset){
-   		$sql="SELECT * FROM `notice`  WHERE `whome`=2  limit $limit,$offset";
+   		$sql="SELECT * FROM `notice`  WHERE `whome`='Both' OR `whome`='University'  limit $limit,$offset";
    		$getresult=$this->db->select($sql);
    
-   		$sqls="select count(`noticeId`) FROM notice  WHERE `whome`=2";
+   		$sqls="select count(`noticeId`) FROM notice  WHERE `whome`='Both' OR `whome`='University'";
    
    		$gcou=$this->db->select($sqls);		
    		return array($getresult,$gcou);
    	}
    
    	function noticeAllReadyApprove($limit,$offset){
-   		$sql="SELECT * FROM `notice`  WHERE `statuss`=1 AND `whoAdd`=1  limit $limit,$offset";
+   		$sql="SELECT * FROM `notice`  WHERE `statuss`=1 AND `whoAdd`='University'  limit $limit,$offset";
    		$getresult=$this->db->select($sql);
    
-   		$sqls="select count(`noticeId`) FROM notice  WHERE `statuss`=1 AND `whoAdd`=1";
+   		$sqls="select count(`noticeId`) FROM notice  WHERE `statuss`=1 AND `whoAdd`='University'";
    
    		$gcou=$this->db->select($sqls);		
    		return array($getresult,$gcou);
@@ -795,10 +1156,10 @@
    
    
    	function noticeWantApprove($limit,$offset){
-   		$sql="SELECT * FROM `notice` WHERE `statuss`=0 AND `whoAdd`=1  limit $limit,$offset";
+   		$sql="SELECT * FROM `notice` WHERE `statuss`=0 AND `whoAdd`='University'  limit $limit,$offset";
    		$getresult=$this->db->select($sql);
    
-   		$sqls="select count(`noticeId`) FROM notice  WHERE `statuss`=0 AND `whoAdd`=1";
+   		$sqls="select count(`noticeId`) FROM notice  WHERE `statuss`=0 AND `whoAdd`='University'";
    
    		$gcou=$this->db->select($sqls);		
    		return array($getresult,$gcou);
@@ -834,7 +1195,7 @@
 	   }
 	   
 	   function getnoticeforhomepage(){
-		$sql="SELECT * FROM `notice` WHERE `statuss`=1 AND `whome`<>2 LIMIT 10";
+		$sql="SELECT * FROM `notice` WHERE `statuss`=1 AND `whome`<>2 LIMIT 5";
 		$getresult=$this->db->select($sql);	
    		return $getresult;
 	   }
@@ -996,21 +1357,21 @@
    	}
    
    
-   	function recentSudent(){
-   		$sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId limit 5";
+   	function recentUniversity(){
+   		$sql="SELECT * FROM `university` ORDER BY `universityId` DESC LIMIT 4";
    		$getresult=$this->db->select($sql);
    		return $getresult;
    	}
    
    	function recentModarator(){
-   		$sql="SELECT * FROM modarator LIMIT 5";
+   		$sql="SELECT * FROM modarator ORDER BY `morId` DESC LIMIT 5";
    		$getresult=$this->db->select($sql);
    		return $getresult;
    	}
    
    
    	function recentPayment(){
-   		$sql="SELECT * FROM paymenthistory LIMIT 5";
+   		$sql="SELECT * FROM paymenthistory ORDER BY `payId` DESC LIMIT 5";
    		$getresult=$this->db->select($sql);
    		return $getresult;
    	}
@@ -1136,8 +1497,8 @@
    
    	function getAllPendingStudent($limit,$offset){
    		$sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and
-   		student_two.satuss = 1 and student_two.hold <> 1 limit $limit,$offset";
-   		$count="select count(`student_id`) FROM student_two WHERE student_two.satuss = 1 and student_two.hold <> 1";
+   		(student_two.satuss = 0 and (student_two.hold IS NULL OR student_two.hold <> 1)) limit $limit,$offset";
+   		$count="select count(`student_id`) FROM student_two WHERE student_two.satuss = 0 and student_two.hold <> 1";
    		$getresult=$this->db->select($sql);
    		$gcou=$this->db->select($count);
    		return array($getresult,$gcou);
@@ -1145,7 +1506,7 @@
    
    	function getAllApproveStudent($limit,$offset){
    		$sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and
-   		student_two.satuss = 2 and student_two.hold <> 1 limit $limit,$offset";
+   		student_two.satuss = 2  and (student_two.hold IS NULL OR  student_two.hold =0) limit $limit,$offset";
    		$count="select count(`student_id`) FROM student_two WHERE student_two.satuss = 2  and student_two.hold <> 1 ";
    		$getresult=$this->db->select($sql);
    		$gcou=$this->db->select($count);
@@ -1176,6 +1537,14 @@
    		 $getresult=$this->db->select($sql);
    		 return $getresult;
    	}
+
+      function getStudentInfoforedit(){
+         $id=$_SESSION['sid'];
+         $sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and
+         student_two.std_one=$id limit 1";
+          $getresult=$this->db->select($sql);
+          return $getresult;
+      }
 
 
       function getStudentInfoForChat($id){
@@ -1236,9 +1605,9 @@
    	}
    
    	function getPendingUniversity(){
-   		$sql="SELECT * FROM `university` WHERE `statuss` =1";
+   		$sql="SELECT * FROM `university` WHERE `statuss` =0";
    		$getresult=$this->db->select($sql);
-   		$count="select count(`universityId`) FROM university WHERE statuss = 1";
+   		$count="select count(`universityId`) FROM university WHERE statuss = 0";
    		
    		$gcou=$this->db->select($count);
    		return array($getresult,$gcou);
@@ -1247,7 +1616,7 @@
    	function getAllApproveUniversity(){
    		$sql="SELECT * FROM `university` WHERE `statuss` =2 and hold <> 1";
    		$getresult=$this->db->select($sql);
-   		$count="select count(`universityId`) FROM university WHERE statuss = 2";
+   		$count="select count(`universityId`) FROM university WHERE `statuss` =2 and hold <> 1 ";
    		$gcou=$this->db->select($count);
    		return array($getresult,$gcou);
    	}
@@ -1287,7 +1656,7 @@
    	}
    
    	function getUniInfo2($id){
-   		$sql="SELECT *  FROM `university` where universityId=$id";
+   		$sql="SELECT * FROM `university` WHERE universityId=$id ";
    		$getresult=$this->db->select($sql);
    		return $getresult;
    	}
@@ -1400,60 +1769,167 @@
    		return array($getresult,$gcou);
    	}
    
-   	function RegistationUniversity($data){
+   	function RegistationUniversity($data,$file){
    
    		$uname=$data['uname'];
    		$rgcode=$data['rgcode'];
-   		$unimage=$data['unimage'];
    		$division=$data['division'];
    		$phone=$data['phone'];
    		$email=$data['email'];
    		$zcode=$data['zcode'];
-   		$district=$data['district'];
    		$city=$data['city'];
    		$pass=$data['pass'];
+         $lan=$data['lan'];
+         $lat=$data['lat'];
+
+
+        
+         $studentTable="SELECT `email` FROM student_one WHERE email='$email' LIMIT 1";
+         $universityTable="SELECT `email` FROM `university` WHERE email='$email' LIMIT 1";
+         $modaratortable="SELECT `email` FROM modarator WHERE email='$email' LIMIT 1";
+
+         $universutyname="SELECT `universityName` FROM university WHERE universityName='$uname' LIMIT 1";
+
+
+         $StudentResult=$this->db->select($studentTable);
+         $universityResult=$this->db->select($universityTable);
+         $modaResult=$this->db->select($modaratortable);
+         $uninameResult=$this->db->select($universutyname);
+
+         if($StudentResult || $universityResult || $modaResult || $uninameResult){
+            return 10;
+         }else{
    
-   			$query="SELECT * FROM university WHERE email='$email' and universityName='$uname' LIMIT 1";
-   			$getresult=$this->db->select($query);
-   			if ($getresult==true) {
-   				echo '<script type="text/javascript">';
-   				echo ' alert("This university already exist")';
-   				echo '</script>';
-   			}else{
-   
-   				$query="INSERT INTO `university`(`universityName`, `universityCode`, `universityImg`, `division`, `district`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`,`onlines`) VALUES ('$uname','$rgcode','$unimage','$division','$district','$city','$zcode','$phone','$email','$pass', 0,'offline')";
+               $image=$file['unimage']['name'];
+               $filetemp=$file['unimage']['tmp_name'];
+               move_uploaded_file($filetemp,"UniversityAdmin/img/upload/".$image);
+
+
+               $image2=$file['single']['name'];
+               $filetemp2=$file['single']['tmp_name'];
+               move_uploaded_file($filetemp2,"UniversityAdmin/img/upload/".$image2);
+
+
+   				$query="INSERT INTO `university`(`universityName`, `universityCode`, `universityImg`, `division`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`, `hold`, `online`, `lat`, `lng`, `single`) 
+
+               VALUES ('$uname','$rgcode','$image','$division','$city','$zcode','$phone','$email','$pass', 0,0,'offline','$lat','$lan','$image2')";
    
    				$getresult=$this->db->insert($query);
    				
 
-
-
-
-
+               //for chat with student and admin
                $query="SELECT universityId FROM university ORDER BY universityId DESC LIMIT 1";
                $getresult=$this->db->select($query)->fetch_assoc();
                $val=$getresult["universityId"];
 
+
+
+
                
-               $query="SELECT `studentId` FROM `student_one`";
+               $query="SELECT * FROM `student_one`";
+               $query2="SELECT * FROM `modarator`";
+               $query3="SELECT * FROM `university`";
                $stdinformation=$this->db->select($query);
+               $admiModaAndAmdin=$this->db->select($query2);
+               $university=$this->db->select($query3);
+
+
+
+               if ($university) {
+                  
+               while ($uni=$university->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+                  $kassathe="university";
+                  $name=$uni['universityId'];
+
+
+                  $amike="university";
+
+                  if($name!=$val){
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+               }
+                  
+               }
+            }
+
+
+
                if ($stdinformation) {
                   
                while ($stdinfo=$stdinformation->fetch_assoc()) {
-
+                  
                   $timess=date("h:m:sa");
                   $datess=date("Y-m-d");
-                  $whomes="University";
-                  $stdid=$stdinfo['studentId'];
+                  $kassathe="student";
+                  $name=$stdinfo['studentId'];
+                  $amike="university";
 
-                  $sql="INSERT INTO `friedns` (`stdId`, `otherId`,`whome`, `times`, `dates` ) VALUES ('$stdid','$val','$whomes','$timess','$datess')";
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
 
                   $getresult=$this->db->insert($sql);
-                  return $getresult;
+                  $getresult=$this->db->insert($sql2);
+                  
                }
             }
+
+
+
+               if ($admiModaAndAmdin) {
+                  
+               while ($info=$admiModaAndAmdin->fetch_assoc()) {
+                  
+                  $timess=date("h:m:sa");
+                  $datess=date("Y-m-d");
+
+                  if($info['uniid']==NULL && $info['types']=="Admin"){
+                     $kassathe="admin";
+                  }else if($info['uniid']==NULL && $info['types']=="Modarator"){
+                     $kassathe="adminModarator";
+                  }else if($info['uniid']!=NULL && $info['types']=="Admin" && $val!=$info['uniid']){
+                     $kassathe="adminUniversity";
+                  }else if($info['uniid']!=NULL && $info['types']=="Modarator"){
+                     $kassathe="universityModarator";
+                  }
+                  
+
+
+                  $name=$info['morId'];
+                  $amike="university";
+                  
+
+                  $sql="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$kassathe','$name','$amike','$val','$datess','$timess')";
+
+                  $sql2="INSERT INTO `friedns` (`karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) 
+                  VALUES ('$amike','$val','$kassathe','$name','$datess','$timess')";
+
+                  $getresult=$this->db->insert($sql);
+                  $getresult=$this->db->insert($sql2);
+                  
+               }
+            }
+
+
+
+
+
+            return 5;
                  
-   			}
+   		}
    	}
    
    
@@ -1737,7 +2213,12 @@
    	
    	function addmission($id,$data){
 
-         $qutaIds=$data['qutas'];
+         
+         if(isset($data['qutas'])){
+            $qutaIds=$data['qutas'];
+         }else{
+            $qutaIds=0;
+         }
          $sql="SELECT * FROM `unit` WHERE `uniId`=$id LIMIT 1";
          $uniID=$this->db->select($sql);
          while($r=$uniID->fetch_assoc()){
@@ -1786,31 +2267,23 @@
          $sql="UPDATE `student_two` SET `balace`=$afterblnc WHERE `std_one`=$stdId";
          $getresult=$this->db->update($sql);
          
-         $sql="INSERT INTO `addmisson`(`studentId`, `universityId`, `statuss`, `dates`, `times`, `unitId`,`qutaId`) VALUES ('$studentId','$universityId','$statuss','$dates','$times','$unitId','$qutaIds')";
+         $sql="INSERT INTO `addmisson`(`studentId`, `universityId`, `statuss`, `dates`, `times`, `unitId`,`qutaId`,`results`) VALUES ('$studentId','$universityId','$statuss','$dates','$times','$unitId','$qutaIds',0)";
          $getresult=$this->db->insert($sql);
-         
-         header("Location:prospectus.php");
-         
-      
-      
-      
+         return 5;   
       
       
             }else{
-            echo '<script type="text/javascript">';
-            echo ' alert("CG kom")';
-            echo '</script>';
+               //CG kom
+               return 4;
             }
          
          }else{
-            echo '<script type="text/javascript">';
-            echo ' alert("Tk nai")';
-            echo '</script>';
+            //Tk nai
+            return 3;
          }
       }else{
-         echo '<script type="text/javascript">';
-            echo ' alert("unit age ache")';
-            echo '</script>';
+         //unit age ache
+         return 2;
       }
    }
 
@@ -1822,15 +2295,23 @@
    	}
 	
 	function getStudentwhoareappied($limit,$offset){
-		$sql="SELECT * FROM `addmisson` WHERE `statuss`=0 limit $limit,$offset";
+      $id=$_SESSION['uid'];
+		$sql="SELECT * FROM `addmisson` WHERE `statuss`=0 AND universityId=$id limit $limit,$offset";
 		$pending=$this->db->select($sql);
    		
-		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=0";
+		$count="select count(`addmissonId`) FROM addmisson WHERE `statuss`=0 AND universityId=$id";
    		$gcou=$this->db->select($count);
 		
 		return array($pending,$gcou);
 		
 	}
+
+   function getStudentwhoareappied2(){
+      $id=$_SESSION['uid'];
+      $sql="SELECT * FROM `addmisson` WHERE `statuss`=0 AND universityId=$id  ORDER BY `addmissonId` DESC limit 5";
+      $pending=$this->db->select($sql);
+      return $pending;
+   }
 	
 	
 	function sendstudentvalue($id){
@@ -1911,32 +2392,54 @@
 	function edituniversity($id,$data,$file){
 		$code=$data['code'];
 		$name=$data['name'];
-		$disision=$data['disision'];
-		$district=$data['district'];
+		$division=$data['division'];
 		$city=$data['city'];
 		$zip=$data['zip'];
 		$phone=$data['phone'];
 		$emil=$data['emil'];
+      $lat=$data['lat'];
+      $lng=$data['lng'];
 
 		$image=$file['image']['name'];
-   		$filetemp=$file['image']['tmp_name'];
-		move_uploaded_file($filetemp,"img/upload/".$image);
+   	$filetemp=$file['image']['tmp_name'];
 		
+
+      if(!empty($image)){
+      move_uploaded_file($filetemp,"img/upload/".$image);
+
 		$sql="UPDATE `university` SET 
 		`universityName`='$name',
 		`universityCode`='$code',
 		`universityImg`='$image',
-		`division`='$disision',
-		`district`='$district',
+		`division`='$division',
 		`city`='$city',
 		`zip`='$zip',
 		`pohne`='$phone',
+      `lat`='$lat',
+      `lng`='$lng',
 		`email`='$emil'
 		 WHERE `universityId`=$id";
 
 		$getresult=$this->db->update($sql);
 		return $getresult;
-	}
+   }else{
+      $sql="UPDATE `university` SET 
+      `universityName`='$name',
+      `universityCode`='$code',
+      `division`='$division',
+      `city`='$city',
+      `zip`='$zip',
+      `pohne`='$phone',
+      `lat`='$lat',
+      `lng`='$lng',
+      `email`='$emil'
+       WHERE `universityId`=$id";
+
+      $getresult=$this->db->update($sql);
+      return $getresult;
+   }
+	
+   }
 
 	function getuniname($id){
 		$sql="SELECT * FROM `university` WHERE `universityId`=$id";
@@ -2080,12 +2583,7 @@
 		return $getresult;
 	}
 
-   function getchatlist(){
-      $sql="SELECT * FROM `friedns` ORDER BY `times` DESC";
-      $getresult=$this->db->select($sql);
-      return $getresult;
-   }
-
+  
    function getindividualeUniversity($id){
       $sql="SELECT * FROM `university` WHERE universityId=$id limit 1";
       $getresult=$this->db->select($sql);
@@ -2105,32 +2603,124 @@
       return $getresult;
    }
 
-   function addmsz($data,$uid,$who,$kar){
+   
 
 
-      $msz=$data['msz'];
-      $stdid=$_SESSION['sid'];
-      $tim=date("h:m:sa");
-      $dts=date("Y-m-d");
+  
 
-      $sql="INSERT INTO `chatwith`(`stdId`, `chatwhomeId`, `who`, `chats`, `times`, `dates`, `cheacks`) 
-      VALUES ('$stdid','$uid','$who','$msz','$tim','$dts','$kar')";
-      $getresult=$this->db->insert($sql);
+  function universitynameforchat($id){
+      $sql="SELECT * FROM `university` WHERE  `universityId`=$id";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+  }
+
+
+
+
+
+    function getchatlist($id){
+      $sql="SELECT * FROM `friedns` WHERE `amarId`=$id ORDER BY `time` DESC";
+      $getresult=$this->db->select($sql);
       return $getresult;
    }
 
+   function getchatlist2($id){
+      $sql="SELECT * FROM `friedns` WHERE `frinid`=$id LIMIT 1";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+    function getchatlist3($id){
+      $sql="SELECT * FROM `friedns` WHERE `amarId`=$id LIMIT 1";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function getatramarId($id){
+      $sql="SELECT * FROM `friedns` WHERE `frinid`=$id LIMIT 1";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function getsingleInfo($id){
+      $sql="SELECT * FROM `modarator` WHERE `morId`=$id LIMIT 1";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+    function getsingleuniname($uniid){
+      $sql="SELECT * FROM `university` WHERE  `universityId`=$uniid";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function gtchatstudent($id){
+         $sql="SELECT * FROM `student_two` join student_one WHERE student_two.std_one=$id AND student_one.studentId=$id LIMIT 1";
+          $getresult=$this->db->select($sql);
+          return $getresult;
+      }
 
 
-   function addmsz2($data,$sid,$who,$kar){
+      function getmsz($id1,$id2){
+      $sql="SELECT * FROM `chatwith` WHERE (`name`=$id1 AND `amike`=$id2 ) OR (`name`=$id2 AND `amike`=$id1 )";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+      }
 
+
+      function infoforchatHead($id){
+         $sql="SELECT * FROM `friedns` WHERE `frinid`=$id LIMIT 1";
+         $getresult=$this->db->select($sql);
+         return $getresult;
+      }
+
+      function gectadminInfoforchat($id){
+         $sql="SELECT * FROM `modarator` WHERE  `morId`=$id";
+         $getresult=$this->db->select($sql);
+         return $getresult;
+      }
+   function offline($id){
+      $sql="UPDATE `student_one` SET `online`='offline' WHERE `studentId`=$id";
+      $upt=$this->db->update($sql);
+   }
+
+
+   function unioffline($id){
+
+      $sql="SELECT * FROM `modarator` WHERE `morId`=$id";
+      $getresult=$this->db->select($sql);
+      if($getresult){
+         $sql="UPDATE `modarator` SET `online`='offline' WHERE `morId`=$id";
+         $upt=$this->db->update($sql);
+      }else{
+         $sql="UPDATE `university` SET `online`='offline' WHERE `universityId`=$id";
+         $upt=$this->db->update($sql);
+      }
+      
+
+   }
+
+   function getmdinfo($id){
+      $sql="SELECT * FROM `modarator` WHERE `morId`=$id";
+      $getresult=$this->db->select($sql);
+      return $getresult;
+   }
+
+   function adminffline($id){
+      $sql="UPDATE `modarator` SET `online`='offline' WHERE `morId`=$id";
+      $upt=$this->db->update($sql);
+   }
+
+   function addmsz($data,$tarname,$amike){
 
       $msz=$data['msz'];
-      $uid=$_SESSION['uid'];
       $tim=date("h:m:sa");
       $dts=date("Y-m-d");
 
-      $sql="INSERT INTO `chatwith`(`stdId`, `chatwhomeId`, `who`, `chats`, `times`, `dates`, `cheacks`) 
-      VALUES ('$sid','$uid','$who','$msz','$tim','$dts','$kar')";
+      $sql="INSERT INTO `chatwith`(`name`, `amike`,`times`, `dates`, `msz`) 
+      
+      VALUES ('$tarname','$amike','$tim','$dts','$msz')";
+
       $getresult=$this->db->insert($sql);
       return $getresult;
    }
@@ -2138,42 +2728,64 @@
    	function login($data){
    		$email=$data['email'];
    		$passs=$data['pass'];
+
    		$sqr="SELECT * FROM student_one WHERE email='$email' AND pass='$passs'";
-		$uqr="SELECT * FROM university WHERE email='$email' AND pass='$passs'";
+		   $uqr="SELECT * FROM university WHERE email='$email' AND pass='$passs'";
 		   
    		
-		$adminsql="SELECT * FROM modarator WHERE email='$email' AND pass='$passs'";
+		   $adminsql="SELECT * FROM modarator WHERE email='$email' AND pass='$passs'";
 		   
    		$sres=$this->db->select($sqr);
    		$ures=$this->db->select($uqr);
    		$adminqr=$this->db->select($adminsql);
    		 if ($sres==true) {
-   			$value=$sres->fetch_assoc();
-   			session::set("std",true);
-			   session::set("sid",$value['studentId']);
-			   session::set("stdname",$value['fname']." ".$value['lname']);
-            session::set("msz",1);
-   			
-			$studentIds=$value['studentId'];
-   			$payment="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and student_two.std_one=$studentIds";
-   			$pmt=$this->db->select($payment);
-   			
-			$values=$pmt->fetch_assoc();
-			$amt=$values['balace'];
-			session::set("amoint",$amt);
-   			
-   			
-   			header("Location:StudentAdmin/index.php");
+            
+   		$value=$sres->fetch_assoc();
+         $studentIds=$value['studentId'];
+         $payment="SELECT * FROM `student_two` join student_one WHERE student_two.std_one= student_one.studentId and student_two.std_one=$studentIds";
+         $pmt=$this->db->select($payment);
+      
+         $valuess=$pmt->fetch_assoc();
+
+            if($valuess['satuss']==2 && $value['hold']==0){
+               $amt=$valuess['balace'];
+               session::set("amoint",$amt);
+      			session::set("std",true);
+   			   session::set("sid",$value['studentId']);
+   			   session::set("stdname",$value['fname']." ".$value['lname']);
+               session::set("msz",1);
+
+               $id=$valuess['studentId'];
+               $sql="UPDATE `student_one` SET `online`='online' WHERE `studentId`=$id";
+               $upt=$this->db->update($sql);
+
+      			header("Location:StudentAdmin/index.php");
+      }else{
+         return 2;
+      }
    		}else if ($ures==true) {
+            
    			$value=$ures->fetch_assoc();
-   				session::set("uni",true);
+            if($value['statuss']==2 && $value['hold']==0){
+   			session::set("uni",true);
 			   session::set("uid",$value['universityId']);
 			   session::set("unicheck",2);
 			   session::set("typ",1);
+
+
+            $id=$value['universityId'];
+            $sql="UPDATE `university` SET `online`='online' WHERE `universityId`=$id";
+            $upt=$this->db->update($sql);
+
+
+
    			header("Location:UniversityAdmin/index.php");
+         }else{
+            return 2;
+         }
    		}else if ($adminqr==true) {
    			$value=$adminqr->fetch_assoc();
-   			
+   			if($value['status']==1){
 			if(empty($value['uniid']) && !empty($value['adminId']) && $value['status']==1){
 				//admin
 				session::set("admin",true);
@@ -2181,6 +2793,13 @@
 				session::set("admintype",$value['types']);
 				session::set("adminname",$value['name']);
 				session::set("unicheck",0);
+
+            $id=$value['morId'];
+            $sql="UPDATE `modarator` SET `online`='online' WHERE `morId`=$id";
+            $upt=$this->db->update($sql);
+
+
+
 				header("Location:Admin/index.php");	
 			}else if(!empty($value['uniid']) && empty($value['adminId']) && $value['status']==1){
 				//university
@@ -2191,13 +2810,21 @@
 				session::set("morId",$value['morId']);
 				session::set("userimg",$value['img']);
 				session::set("unicheck",1);
-   				header("Location:UniversityAdmin/index.php");
+
+            $id=$value['morId'];
+            $sql="UPDATE `modarator` SET `online`='online' WHERE `morId`=$id";
+            $upt=$this->db->update($sql);
+
+
+
+   			header("Location:UniversityAdmin/index.php");
 			}
+      }else{
+         return 2;
+      }
    			
    		}else{
-   			echo '<script type="text/javascript">';
-   			echo ' alert("Password and email do not match")';
-   			echo '</script>';	
+   			return 10;
    		}
    	}
    }

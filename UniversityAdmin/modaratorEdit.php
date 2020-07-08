@@ -1,16 +1,26 @@
 <?php
 	include_once("sheader.php");
+    $GLOBALS['editchek'] = 0;
 ?>
 
 
 
     <div class="p-5">
     <div class="noticeView p-5">
-    <h4 >Edit Modarator</h4>
+    <h4 class="text-center">Edit Modarator/Admin</h4>
     
     <hr>
-     
-        <form  method="post" enctype="multipart/form-data">
+        <?php
+           
+            $phpcls=new phpclass();
+            if (isset($_POST['editmd'])) {
+                 $res=$phpcls->editModaratorForUniversity($_POST,$_FILES,$_GET['id']);
+                 $editchek=$res;
+            }
+
+        ?>
+        
+        <form name="modaaddform" onsubmit="return adminFormvalid2()"  method="post" enctype="multipart/form-data">
             <?php
             if ($_GET['id']) {
                 $id=$_GET['id'];
@@ -22,17 +32,16 @@
                     $GLOBALS['img'] = $r['img']; 
         ?>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
+                    <label>Upload Image</label><br>
+                    
+                    <input type="file" name="modaimgg" class="file-control"><br>
+                    <img src="img/upload/<?php echo $r['img']?>" alt="" width="200" height="200">
+                </div>
+                <div class="form-group col-md-12">
                     <label>Modarator Name</label>
                     <input type="text" name="modaname"  class="form-control" value="<?php echo $r['name']?>">
                 </div>
-                <div class="form-group col-md-6">
-                    <label>Upload Image</label>
-                    <img src="img/upload/<?php echo $r['img']?>" alt="" width="100">
-                    <input type="file" name="modaimg" class="file-control">
-                </div>
-
-
 
             </div>
             <div class="form-row">
@@ -51,9 +60,9 @@
                 <div class="form-group col-md-6">
                     <label for="inputState">Type</label>
                     <select name="modatype" class="form-control">
-                        <option >Choose...</option>
-                        <option <?php echo ($r['types'] == '1')?"selected":"" ?> value="0">Admin</option>
-                        <option <?php echo ($r['types'] == '0')?"selected":"" ?> value="1">Modarator</option>
+                        
+                        <option <?php echo ($r['types'] == 'Modarator')?"selected":"" ?> value="Modarator">Modarator</option>
+                        <option <?php echo ($r['types'] == 'Admin')?"selected":"" ?> value="Admin">Admin</option>
                     </select>
                 </div>
             </div>
@@ -89,11 +98,7 @@
 
 
 <?php
-    $phpcls=new phpclass();
-
-    if (isset($_POST['editmd'])) {
-        $res=$phpcls->editModaratorForUniversity($_POST,$_FILES,$_GET['id'],$img);
-    }
+    
 
     include_once("sfooter.php");
 ?>

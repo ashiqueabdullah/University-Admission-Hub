@@ -1,5 +1,6 @@
 <?php
 	include_once("sheader.php");
+	$GLOBALS['chladmison'] = 1;
 ?>
 
 
@@ -51,6 +52,7 @@
 				<?php 
 				if(isset($_POST['adds'])){
 					$ress=$phpcls->addmission($id,$_POST);
+					$chladmison=$ress;
 				}
 					$uniID=$r['universityId'];
 					$rr=$phpcls->getUnitForUnitshow($uniID);
@@ -60,7 +62,8 @@
 						
 					
 					<?php }}?>
-				
+					
+					<input style="display: none;" id="chkaddmissonn" name="chkaddmissonn" type="text" value="<?php echo $chladmison?>">
 					<input type="submit" name="adds" class="btn btn-success mt-3 w-100">
 					
 				</form>

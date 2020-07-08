@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2020 at 07:31 PM
+-- Generation Time: Jul 07, 2020 at 08:04 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -44,9 +44,10 @@ CREATE TABLE `addmisson` (
 --
 
 INSERT INTO `addmisson` (`addmissonId`, `studentId`, `universityId`, `statuss`, `dates`, `times`, `unitId`, `qutaId`, `results`) VALUES
-(1, 86, 18, 1, '2020-06-19', '09:36:47', 2, 42, 1),
+(1, 86, 18, 0, '2020-06-19', '09:36:47', 2, 42, 1),
 (5, 86, 18, 0, '2020-06-20', '01:00:43', 3, 0, NULL),
-(6, 86, 18, 2, '2020-06-20', '01:01:14', 4, 42, NULL);
+(6, 86, 18, 0, '2020-06-20', '01:01:14', 4, 42, NULL),
+(7, 95, 26, 1, '2020-07-03', '05:15:50', 5, 43, NULL);
 
 -- --------------------------------------------------------
 
@@ -72,23 +73,28 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `chatwith` (
   `chatwithId` int(11) NOT NULL,
-  `stdId` int(11) DEFAULT NULL,
-  `chatwhomeId` int(11) DEFAULT NULL,
-  `who` varchar(50) DEFAULT NULL,
-  `chats` longtext DEFAULT NULL,
+  `name` int(11) DEFAULT NULL,
+  `amike` int(11) DEFAULT NULL,
   `times` time DEFAULT NULL,
   `dates` date DEFAULT NULL,
-  `cheacks` varchar(50) DEFAULT NULL
+  `msz` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `chatwith`
 --
 
-INSERT INTO `chatwith` (`chatwithId`, `stdId`, `chatwhomeId`, `who`, `chats`, `times`, `dates`, `cheacks`) VALUES
-(54, 86, 18, 'University', 'kemon acho?', '08:06:37', '2020-06-19', 'student'),
-(55, 86, 19, 'University', 'valo achen', '11:06:31', '2020-06-19', 'student'),
-(56, 86, 18, 'student', 'eito tumar ki khovor ?', '05:06:26', '2020-06-19', 'university');
+INSERT INTO `chatwith` (`chatwithId`, `name`, `amike`, `times`, `dates`, `msz`) VALUES
+(103, 50, 110, '05:07:14', '2020-07-06', 'okay'),
+(104, 50, 110, '05:07:24', '2020-07-06', 'start houk'),
+(105, 71, 110, '05:07:30', '2020-07-06', 'ji vai '),
+(106, 52, 112, '06:07:27', '2020-07-07', 'ke vai '),
+(107, 87, 112, '07:07:16', '2020-07-07', 'kene te '),
+(108, 88, 52, '07:07:27', '2020-07-07', 'hoise'),
+(109, 53, 71, '07:07:43', '2020-07-07', 'apni ke ?'),
+(110, 71, 53, '07:07:15', '2020-07-07', 'tumar nana '),
+(111, 53, 71, '07:07:28', '2020-07-07', 'accah thik ache '),
+(112, 111, 71, '07:07:47', '2020-07-07', 'tumi ni ?');
 
 -- --------------------------------------------------------
 
@@ -116,7 +122,8 @@ INSERT INTO `depertment` (`depertmentId`, `depertmentName`, `statuss`, `uid`, `d
 (13, 'CE', 0, 5, 'CE'),
 (14, 'MSE', 0, 5, 'MSE'),
 (15, 'CSE', 1, 5, 'CSE'),
-(16, 'CSE', 1, 18, 'CSE');
+(16, 'CSE', 1, 18, 'CSE'),
+(17, 'CSE', 1, 26, 'CSE');
 
 -- --------------------------------------------------------
 
@@ -126,20 +133,80 @@ INSERT INTO `depertment` (`depertmentId`, `depertmentName`, `statuss`, `uid`, `d
 
 CREATE TABLE `friedns` (
   `frinid` int(11) NOT NULL,
-  `stdId` int(11) DEFAULT NULL,
-  `otherId` int(11) DEFAULT NULL,
-  `whome` varchar(50) DEFAULT NULL,
-  `times` time DEFAULT NULL,
-  `dates` date DEFAULT NULL
+  `karsathe` varchar(50) DEFAULT NULL,
+  `name` int(11) DEFAULT NULL,
+  `amaname` varchar(50) DEFAULT NULL,
+  `amarId` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `friedns`
 --
 
-INSERT INTO `friedns` (`frinid`, `stdId`, `otherId`, `whome`, `times`, `dates`) VALUES
-(14, 86, 18, 'University', '12:06:28', '2020-06-19'),
-(15, 86, 19, 'University', '12:06:17', '2020-06-19');
+INSERT INTO `friedns` (`frinid`, `karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) VALUES
+(687, 'admin', 71, 'university', 51, '2020-07-07', '04:07:32'),
+(689, 'admin', 71, 'university', 52, '2020-07-07', '04:07:50'),
+(690, 'university', 52, 'admin', 71, '2020-07-07', '04:07:50'),
+(691, 'university', 52, 'university', 53, '2020-07-07', '04:07:22'),
+(692, 'university', 53, 'university', 52, '2020-07-07', '04:07:22'),
+(693, 'admin', 71, 'university', 53, '2020-07-07', '04:07:22'),
+(694, 'university', 53, 'admin', 71, '2020-07-07', '04:07:22'),
+(695, 'university', 52, 'student', 111, '2020-07-07', '04:07:26'),
+(696, 'student', 111, 'university', 52, '2020-07-07', '04:07:26'),
+(697, 'university', 53, 'student', 111, '2020-07-07', '04:07:26'),
+(698, 'student', 111, 'university', 53, '2020-07-07', '04:07:26'),
+(699, 'admin', 71, 'student', 111, '2020-07-07', '04:07:26'),
+(700, 'student', 111, 'admin', 71, '2020-07-07', '04:07:26'),
+(701, 'university', 52, 'student', 112, '2020-07-07', '04:07:24'),
+(702, 'student', 112, 'university', 52, '2020-07-07', '04:07:24'),
+(703, 'university', 53, 'student', 112, '2020-07-07', '04:07:24'),
+(704, 'student', 112, 'university', 53, '2020-07-07', '04:07:24'),
+(705, 'admin', 71, 'student', 112, '2020-07-07', '04:07:25'),
+(706, 'student', 112, 'admin', 71, '2020-07-07', '04:07:25'),
+(707, 'university', 52, 'adminModarator', 87, '2020-07-07', '04:07:36'),
+(708, 'adminModarator', 87, 'university', 52, '2020-07-07', '04:07:36'),
+(709, 'university', 53, 'adminModarator', 87, '2020-07-07', '04:07:36'),
+(710, 'adminModarator', 87, 'university', 53, '2020-07-07', '04:07:36'),
+(711, 'student', 111, 'adminModarator', 87, '2020-07-07', '04:07:36'),
+(712, 'adminModarator', 87, 'student', 111, '2020-07-07', '04:07:36'),
+(713, 'student', 112, 'adminModarator', 87, '2020-07-07', '04:07:36'),
+(714, 'adminModarator', 87, 'student', 112, '2020-07-07', '04:07:36'),
+(715, 'university', 52, 'admin', 88, '2020-07-07', '04:07:05'),
+(716, 'admin', 88, 'university', 52, '2020-07-07', '04:07:05'),
+(717, 'university', 53, 'admin', 88, '2020-07-07', '04:07:06'),
+(718, 'admin', 88, 'university', 53, '2020-07-07', '04:07:06'),
+(719, 'student', 111, 'admin', 88, '2020-07-07', '04:07:06'),
+(720, 'admin', 88, 'student', 111, '2020-07-07', '04:07:06'),
+(721, 'student', 112, 'admin', 88, '2020-07-07', '04:07:06'),
+(722, 'admin', 88, 'student', 112, '2020-07-07', '04:07:06'),
+(723, 'student', 111, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(724, 'universityModarator', 89, 'student', 111, '2020-07-07', '05:07:52'),
+(725, 'student', 112, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(726, 'universityModarator', 89, 'student', 112, '2020-07-07', '05:07:52'),
+(727, 'admin', 71, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(728, 'universityModarator', 89, 'admin', 71, '2020-07-07', '05:07:52'),
+(729, 'adminModarator', 87, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(730, 'universityModarator', 89, 'adminModarator', 87, '2020-07-07', '05:07:52'),
+(731, 'admin', 88, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(732, 'universityModarator', 89, 'admin', 88, '2020-07-07', '05:07:52'),
+(733, 'universityModarator', 89, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(734, 'universityModarator', 89, 'universityModarator', 89, '2020-07-07', '05:07:52'),
+(735, 'student', 111, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
+(736, 'universityAdmin', 90, 'student', 111, '2020-07-07', '05:07:33'),
+(737, 'student', 112, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
+(738, 'universityAdmin', 90, 'student', 112, '2020-07-07', '05:07:33'),
+(739, 'admin', 71, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
+(740, 'universityAdmin', 90, 'admin', 71, '2020-07-07', '05:07:33'),
+(741, 'adminModarator', 87, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
+(742, 'universityAdmin', 90, 'adminModarator', 87, '2020-07-07', '05:07:33'),
+(743, 'admin', 88, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
+(744, 'universityAdmin', 90, 'admin', 88, '2020-07-07', '05:07:33'),
+(745, 'universityModarator', 89, 'universityModarator', 90, '2020-07-07', '05:07:33'),
+(746, 'universityModarator', 90, 'universityModarator', 89, '2020-07-07', '05:07:33'),
+(747, 'universityAdmin', 90, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
+(748, 'universityAdmin', 90, 'universityAdmin', 90, '2020-07-07', '05:07:33');
 
 -- --------------------------------------------------------
 
@@ -190,22 +257,23 @@ CREATE TABLE `modarator` (
   `img` varchar(50) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
-  `types` int(11) DEFAULT NULL,
+  `types` varchar(50) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `zip` varchar(50) DEFAULT NULL,
-  `adminId` int(11) DEFAULT NULL
+  `adminId` int(11) DEFAULT NULL,
+  `online` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modarator`
 --
 
-INSERT INTO `modarator` (`morId`, `name`, `uniid`, `adress`, `email`, `pass`, `img`, `status`, `phone`, `types`, `city`, `zip`, `adminId`) VALUES
-(17, 'Ashique', NULL, 'House 29, Rajar Golli Sylhet', 'admin@gmail.com', '1234', '8347420_1583619553966shutterstock_425107399_1.webp', 1, '01745610313', 1, 'Sylhet', '3100', 1),
-(18, 'Shoiab Ibne ', NULL, 'House 29, Rajar Golli Sylhet', 'admin@gmail.com', '1234', 'ezgif.com-webp-to-png.png', 1, '01745610313', 1, 'Sylhet', '3100', 1),
-(23, 'Ashique Abdullah', NULL, 'House 29, Rajar Golli Sylhet', 'admin@gmail.com', '1234', 'Screenshot_5.png', 1, '01745610313', 0, 'Sylhet', '3100', 17),
-(28, 'a', 5, 'as@gmail.com', 'asd@gmail.com', '1234', 'Screenshot_5.png', 1, 'a', 1, 'Sylhet', 'as', NULL),
-(33, 'Ashique Abdullah', 18, 'House 29, Rajar Golli Sylhet', 'moda@gmail.com', '1234', 'Misc_motivational_167205.jpg', 0, '01745610313', 0, 'Sylhet', '3100', NULL);
+INSERT INTO `modarator` (`morId`, `name`, `uniid`, `adress`, `email`, `pass`, `img`, `status`, `phone`, `types`, `city`, `zip`, `adminId`, `online`) VALUES
+(71, 'Admin', NULL, NULL, 'admin@gmail.com', '1234', 'TradingBG3.jpg', 1, NULL, 'Admin', NULL, NULL, 1, 'offline'),
+(87, 'Kashem', NULL, 'House 29, Rajar Golli Sylhet', 'admin1@gmail.com', '1234', 'adminmodarator1.jpg', 1, '01745610313', 'Modarator', 'Sylhet', '3100', 71, 'Online'),
+(88, 'Badsha', NULL, 'House 29, Rajar Golli Sylhet', 'admin2@gmail.com', '1234', 'adminmodarator1.jpg', 1, '01745610313', 'Admin', 'Sylhet', '3100', 71, 'Online'),
+(89, 'Halima', 52, 'House 29, Rajar Golli Sylhet', 'admin3@gmail.com', '1234', 'universitymodarator.jpg', 0, '+8801745610313', 'Modarator', 'Sylhet', '3100', NULL, 'Online'),
+(90, 'Ashique Abdullah', 52, 'House 29, Rajar Golli Sylhet', 'admi42@gmail.com', '1234', 'universitymodarator.jpg', 0, '+8801745610313', 'Admin', 'Sylhet', '3100', NULL, 'Online');
 
 -- --------------------------------------------------------
 
@@ -216,24 +284,27 @@ INSERT INTO `modarator` (`morId`, `name`, `uniid`, `adress`, `email`, `pass`, `i
 CREATE TABLE `notice` (
   `noticeId` int(11) NOT NULL,
   `noticeTitle` longtext DEFAULT NULL,
-  `noticeMessage` mediumtext DEFAULT NULL,
   `file` varchar(50) DEFAULT NULL,
   `author` varchar(50) DEFAULT NULL,
   `dates` date DEFAULT NULL,
   `times` time DEFAULT NULL,
   `statuss` int(11) DEFAULT NULL,
-  `whome` int(50) DEFAULT NULL,
-  `whoAdd` int(11) DEFAULT NULL
+  `whome` varchar(50) DEFAULT NULL,
+  `whoAdd` varchar(50) DEFAULT NULL,
+  `noticeMessage` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notice`
 --
 
-INSERT INTO `notice` (`noticeId`, `noticeTitle`, `noticeMessage`, `file`, `author`, `dates`, `times`, `statuss`, `whome`, `whoAdd`) VALUES
-(71, 'asd', 'asd', '', '5', '2020-04-19', '04:51:04', 1, 0, 1),
-(72, 'asd', 'asd', '', '5', '2020-04-19', '04:52:23', 1, 0, 1),
-(73, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', 'asd', 'Misc_motivational_167205.jpg', '18', '2020-06-20', '07:09:20', 0, 1, 1);
+INSERT INTO `notice` (`noticeId`, `noticeTitle`, `file`, `author`, `dates`, `times`, `statuss`, `whome`, `whoAdd`, `noticeMessage`) VALUES
+(81, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:03:37', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(82, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:03:43', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(83, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:03:56', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(84, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:05:27', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(85, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:06:04', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(86, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '26', '2020-07-05', '07:43:43', 0, '0', 'University', 'as');
 
 -- --------------------------------------------------------
 
@@ -256,14 +327,6 @@ CREATE TABLE `paymenthistory` (
   `nidOrphone` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `paymenthistory`
---
-
-INSERT INTO `paymenthistory` (`payId`, `amount`, `phoneN`, `txtId`, `reDate`, `reTime`, `stId`, `statuss`, `method`, `banksrecipt`, `depositname`, `nidOrphone`) VALUES
-(13, 1000, '01745610313', 'XLm085QWsf2r', '2020-06-19', '08:53:01', 86, 1, 'Bkash', NULL, NULL, NULL),
-(14, 1000, '01745610313', 'XLm085QWsf2r', '2020-06-19', '08:54:02', 86, 1, 'Bkash', NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -277,20 +340,6 @@ CREATE TABLE `quota` (
   `soutaseat` int(11) DEFAULT NULL,
   `uid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `quota`
---
-
-INSERT INTO `quota` (`quotaId`, `quotaName`, `statuss`, `soutaseat`, `uid`) VALUES
-(35, '', 0, 0, 0),
-(36, 'as', 0, 0, 0),
-(37, 'as', 0, 0, 0),
-(38, 'as', 0, 0, 5),
-(39, 'as', 0, 0, 5),
-(40, 'as', 0, 0, 5),
-(41, 'as', 0, 0, 5),
-(42, 'Protibondi', 1, 20, 18);
 
 -- --------------------------------------------------------
 
@@ -334,14 +383,6 @@ CREATE TABLE `seet` (
   `statuss` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `seet`
---
-
-INSERT INTO `seet` (`seatId`, `numberOfSet`, `deptname`, `unitname`, `ubiversityId`, `statuss`) VALUES
-(1, 10, 'CSE', 'A', 18, '1'),
-(2, 60, '', 'B', 18, '1');
-
 -- --------------------------------------------------------
 
 --
@@ -355,19 +396,22 @@ CREATE TABLE `student_one` (
   `dateOfbirth` date DEFAULT NULL,
   `gender` int(11) DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `postCode` varchar(50) DEFAULT NULL,
+  `sscRoll` int(11) DEFAULT NULL,
+  `sscRgNumber` int(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `pass` varchar(50) DEFAULT NULL,
-  `onlines` varchar(50) DEFAULT NULL
+  `online` varchar(50) DEFAULT NULL,
+  `hscRoll` int(11) DEFAULT NULL,
+  `hscRgNumber` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_one`
 --
 
-INSERT INTO `student_one` (`studentId`, `fname`, `lname`, `dateOfbirth`, `gender`, `phone`, `address`, `postCode`, `email`, `pass`, `onlines`) VALUES
-(86, 'Ashique ', 'Abdullah', '2020-06-20', 0, 1745610313, 'House 29, Rajar Golli Sylhet', '3100', 'ashique@gmail.com', '1234', NULL);
+INSERT INTO `student_one` (`studentId`, `fname`, `lname`, `dateOfbirth`, `gender`, `phone`, `sscRoll`, `sscRgNumber`, `email`, `pass`, `online`, `hscRoll`, `hscRgNumber`) VALUES
+(111, 'Ashique', 'Abdullah', '2020-07-07', 0, 2147483647, 2147483647, 2147483647, 'ashique@gmail.com', '1234', NULL, 2147483647, 2147483647),
+(112, 'Halima', 'Abdullah', '2020-07-07', 0, 2147483647, 2147483647, 2147483647, 'sidra@gmail.com', '1234', NULL, 2147483647, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -442,7 +486,8 @@ CREATE TABLE `student_two` (
 --
 
 INSERT INTO `student_two` (`student_id`, `nationality`, `placeOfBirthDistrict`, `image`, `married`, `BloodGroup`, `ParmanentAddress`, `ParmanentDivision`, `ParmanentZipCode`, `ParmanentDistrict`, `ParmanentCity`, `fatherName`, `fatherOccipation`, `fatherAddress`, `fatherPhone`, `fatherEmail`, `motherName`, `motherOccipation`, `motherAddress`, `motherPhone`, `motherEmail`, `nameOfLocalGuardian`, `relationshipOfLocalGuardian`, `addressOfLocalGuardian`, `phoneOfLocalGuardian`, `emailOfLocalGuardian`, `emergencyPersonName`, `emergencyPersonRelationshipe`, `emergencyPersonAddress`, `emergencyPersonPhone`, `emergencyPersonEmail`, `personPayTheFeeName`, `personPayTheFeeRealtion`, `personPayTheFeeAddress`, `personPayTheFeePhone`, `personPayTheFeeEmail`, `personPayTheFeeAnnualIncome`, `sat`, `satDate`, `ielts`, `ieltsDate`, `tofel`, `tofelDate`, `gmat`, `gmatDate`, `sscInstituteName`, `sscBordeName`, `sscGpa`, `sscpassingYear`, `sscCertificate`, `hscInstituteName`, `hscBordeName`, `hscGpa`, `hscpassingYear`, `hscCertificate`, `std_one`, `balace`, `satuss`, `hold`) VALUES
-(84, 'Bangladesh', 'Chittagong', 'Misc_motivational_167205.jpg', 'Married', 'a+', 'House 29, Rajar Golli Sylhet', 'Dhaka', '3100', 'Chittagong', 'Sylhet', 'Abdul Malek', 'Abrod', 'House 29, Rajar Golli Sylhet', '01745610313', 'eaadm01@gmail.com', 'Daisy Alther', 'House Wife', 'House 29, Rajar Golli Sylhet', '01745610313', 'eaadm01@gmail.com', 'Ashique Abdullah', '', '', '', '', 'eaadm01@gmail.com', 'Friends ', 'House 29, Rajar Golli Sylhet', '01745610313', 'eaadm01@gmail.com', 'eaadm01@gmail.com', 'Father', 'House 29, Rajar Golli Sylhet', '01745610313', 'eaadm01@gmail.com', '1000', '', '0000-00-00', '', '0000-00-00', '', '', '', '0000-00-00', 'The Aided High school', 'Sylhet', '5', '2013', 'Misc_motivational_167205.jpg', 'Sate College Sylhet', 'Sylhet', '5', '2016', 'Misc_motivational_167205.jpg', 86, 1994, 0, NULL);
+(109, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 111, NULL, 0, NULL),
+(110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 112, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -473,19 +518,6 @@ CREATE TABLE `subject` (
   `statuss` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `subject`
---
-
-INSERT INTO `subject` (`subjectId`, `subjectname`, `subjectMark`, `uid`, `statuss`) VALUES
-(7, 'Bangla', 10, 5, 0),
-(8, 'English', 10, 5, 0),
-(9, 'Physic', 10, 5, 0),
-(10, 'Math ', 10, 5, 0),
-(11, 'Chemistry', 10, 5, 0),
-(12, 'Bangla', 10, 18, 1),
-(13, 'English ', 20, 18, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -511,15 +543,6 @@ CREATE TABLE `unit` (
   `admsFee` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `unit`
---
-
-INSERT INTO `unit` (`uniId`, `unitName`, `statuss`, `minSSCGpa`, `minHSCGpa`, `TotalGpa`, `sscReguler`, `sscIreg`, `hscReg`, `hscIreg`, `allow`, `examDuration`, `notes`, `universityId`, `groups`, `admsFee`) VALUES
-(2, 'A', 1, 1, 2, 0, 4, 5, 6, 7, '2', '00:00:10', 'asd', 18, 'Science Arch Commerce', 1),
-(3, 'B', 1, 1, 2, 3, 4, 5, 6, 7, '2', '00:00:10', 'asd', 18, 'Science', 1),
-(4, 'C', 1, 3.5, 2, 3, 4, 5, 6, 7, '2', '00:00:10', 'asdf', 18, 'Science', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -531,14 +554,6 @@ CREATE TABLE `unitanddepert` (
   `unitId` int(11) DEFAULT NULL,
   `deptname` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `unitanddepert`
---
-
-INSERT INTO `unitanddepert` (`unitDeptId`, `unitId`, `deptname`) VALUES
-(1, 2, 'CSE'),
-(2, 4, 'CSE');
 
 -- --------------------------------------------------------
 
@@ -552,15 +567,6 @@ CREATE TABLE `unitandsubject` (
   `subName` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `unitandsubject`
---
-
-INSERT INTO `unitandsubject` (`unitSubId`, `unitId`, `subName`) VALUES
-(1, 2, 'Bangla'),
-(2, 3, 'English '),
-(3, 4, 'Bangla');
-
 -- --------------------------------------------------------
 
 --
@@ -573,7 +579,6 @@ CREATE TABLE `university` (
   `universityCode` varchar(50) DEFAULT NULL,
   `universityImg` varchar(50) DEFAULT NULL,
   `division` varchar(50) DEFAULT NULL,
-  `district` varchar(50) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `zip` varchar(50) DEFAULT NULL,
   `pohne` varchar(50) DEFAULT NULL,
@@ -581,18 +586,19 @@ CREATE TABLE `university` (
   `pass` varchar(50) DEFAULT NULL,
   `statuss` int(11) DEFAULT NULL,
   `hold` int(11) DEFAULT NULL,
-  `onlines` varchar(50) DEFAULT NULL,
+  `online` varchar(50) DEFAULT NULL,
   `lat` double DEFAULT NULL,
-  `lng` double DEFAULT NULL
+  `lng` double DEFAULT NULL,
+  `single` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `university`
 --
 
-INSERT INTO `university` (`universityId`, `universityName`, `universityCode`, `universityImg`, `division`, `district`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`, `hold`, `onlines`, `lat`, `lng`) VALUES
-(18, 'North east University Bangladesh', '120', 'AdmitCard_ZMFPRLBWOM-page-001-1-1024x615.jpg', 'Sylhet', 'Sylhet', 'Sylhet', '3100', '01745610313', 'neub@gmail.com', 'neub', 0, NULL, 'offline', 24.8901, 91.861),
-(19, 'Shajalal University Bangladesh ', '120', 'AdmitCard_ZMFPRLBWOM-page-001-1-1024x615.jpg', 'Sylhet', 'bangladesh', 'Sylhet', '3100', '01745610313', 'sust@gmail.com', 'sust', 0, NULL, 'offline', 24.9172, 91.8319);
+INSERT INTO `university` (`universityId`, `universityName`, `universityCode`, `universityImg`, `division`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`, `hold`, `online`, `lat`, `lng`, `single`) VALUES
+(52, 'North east University Bangladesh', '120', 'neub.jpg', 'Sylhet', 'Sylhet', '3100', '01745610313', 'neub@gmail.com', 'neub', 0, 0, 'offline', 24.8901, 91.861, 'sig.png'),
+(53, 'shahjalal university of science and technology', '120', 'shajalal.jpeg', 'Sylhet', 'Sylhet', '3100', '+8801745610313', 'sust@gmail.com', 'sust', 0, 0, 'offline', 24.9172, 91.8319, 'sig.png');
 
 -- --------------------------------------------------------
 
@@ -772,7 +778,7 @@ ALTER TABLE `university_verift`
 -- AUTO_INCREMENT for table `addmisson`
 --
 ALTER TABLE `addmisson`
-  MODIFY `addmissonId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `addmissonId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -784,19 +790,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `chatwith`
 --
 ALTER TABLE `chatwith`
-  MODIFY `chatwithId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `chatwithId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `depertment`
 --
 ALTER TABLE `depertment`
-  MODIFY `depertmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `depertmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `friedns`
 --
 ALTER TABLE `friedns`
-  MODIFY `frinid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `frinid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=749;
 
 --
 -- AUTO_INCREMENT for table `information`
@@ -814,25 +820,25 @@ ALTER TABLE `instruction`
 -- AUTO_INCREMENT for table `modarator`
 --
 ALTER TABLE `modarator`
-  MODIFY `morId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `morId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `noticeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `noticeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `paymenthistory`
 --
 ALTER TABLE `paymenthistory`
-  MODIFY `payId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `payId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `quota`
 --
 ALTER TABLE `quota`
-  MODIFY `quotaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `quotaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `requerment`
@@ -856,13 +862,13 @@ ALTER TABLE `seet`
 -- AUTO_INCREMENT for table `student_one`
 --
 ALTER TABLE `student_one`
-  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `student_two`
 --
 ALTER TABLE `student_two`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `student_verift`
@@ -874,31 +880,31 @@ ALTER TABLE `student_verift`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subjectId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `subjectId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `unit`
 --
 ALTER TABLE `unit`
-  MODIFY `uniId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uniId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `unitanddepert`
 --
 ALTER TABLE `unitanddepert`
-  MODIFY `unitDeptId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `unitDeptId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `unitandsubject`
 --
 ALTER TABLE `unitandsubject`
-  MODIFY `unitSubId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `unitSubId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `university`
 --
 ALTER TABLE `university`
-  MODIFY `universityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `universityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `university_verift`

@@ -9,11 +9,13 @@
 
 ?>
 
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table table-bordered">
+        <thead >
             <tr>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
                 <th>Type</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -45,17 +47,19 @@
                         ?>
 
                 <tr>
-                    <td><img src="img/upload/<?php echo $r['img']?>" alt=""></td>
+                    <td><img src="img/upload/<?php echo $r['img']?>" height="70" width="70" alt=""></td>
                     <td>
                         <?php echo $r['name']?>
                     </td>
                     <td>
+                        <?php echo $r['email']?>
+                    </td>
+                    <td>
+                        <?php echo $r['pass']?>
+                    </td>
+                    <td>
                         <?php 
-                    if ($r['types']==0) {
-                       echo "Modarator";
-                    }else{
-                        echo "Admin";
-                    }
+                    echo $r['types'];
                 ?>
                     </td>
                     <td>
@@ -71,7 +75,7 @@
 
                     </td>
                     <td>
-                        <a href="modaratorView.php?id=<?php echo $r['morId']?>" class="viewmod btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
+                        <a target="_blank" href="modaratorView.php?id=<?php echo $r['morId']?>" class="viewmod btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
                         <a href="modaratorEdit.php?id=<?php echo $r['morId']?>" class=" btn btn-warning float-right mr-1">Edit</a>
                         <a href="modaratordlt.php?id=<?php echo $r['morId']?>" class=" btn btn-danger  float-right mr-1"><i class="fas fa-trash-alt"></i> Delete</a>
                     </td>

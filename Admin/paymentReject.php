@@ -23,7 +23,7 @@
                         
                         <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -46,9 +46,11 @@
                                 <td><?php echo $r['reDate']?></td>
                                 <td><span style="color: red">Reject</span></td>
                               <td>
-                                <a href="paymentView.php?view=<?php echo $r['payId']?>" class="btn btn-info float-right mr-1"><i class="fas fa-eye"></i> View</a> 
-                                <a href="paymentEdit.php?edit=<?php echo $r['payId']?>" class="btn btn-warning float-right mr-1"><i class="far fa-stop-circle"></i> Edit</a>
-                                <a href="paymentDeleteApprove.php?approve=<?php echo $r['payId']?>" class="btn btn-success float-right mr-1"><i class="fas fa-check-circle"></i> Approve</a>
+                                <a target="_blank" href="studentView.php?id=<?php echo $r['stId']?>" class="btn btn-info float-right mr-1"><i class="fas fa-eye"></i> Student View</a>  
+
+                               
+
+                                <button onclick="return pmappr('<?php echo $r['payId']?>')" class="btn btn-success float-right mr-1"><i class="fas fa-check-circle"></i> Approve</button> 
                                 
                 
                             </td>

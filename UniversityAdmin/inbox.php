@@ -1,143 +1,299 @@
 <?php
-   include_once("sheader.php");
-   $obj=new phpclass();
+    include_once("sheader.php");
+     $phpcls=new phpclass();
 
+     if(isset($_SESSION['admid'])){
+        $id=$_SESSION['admid'];
+                            
+    }else if(isset($_SESSION['uid'])){
+        $id=$_SESSION['uid'];
+                            
+    }
+    
+    if (isset($_POST['msz']) && isset($_GET['karjonne'])) {
+    
+     $res=$phpcls->getchatList2($_GET['karjonne'])->fetch_assoc();
+     $tarname=$res['name'];
+     $amike=$id;
 
-   if (isset($_POST['msz']) && isset($_GET['chatid'])) {
-    $who="student";
-    $kar="university";
-       $res=$obj->addmsz2($_POST,$_GET['chatid'],$who,$kar);
+    $res=$phpcls->addmsz($_POST,$tarname,$amike);
+     
    }
-
 ?>
-<div class="chat">
-   <div class="row">
-      <div class="col-md-8 offset-md-2 main_box bgone">
+    
+   <div class="chat">
+       <div class="row">
+            <div class="col-md-9 offset-md-2 main_box">
 
 
 
+                <div class="left_box">
+                    <div id="user_box" class="mt-1">
+                         <?php if(isset($_SESSION['admid'])){
+                                 $id=$_SESSION['admid'];
+                            
+                             }else if(isset($_SESSION['uid'])){
+                                 $id=$_SESSION['uid'];
+                            
+                             }
 
 
-         <div class="left_box">
-            <?php 
+                            $phpcls=new phpclass();
 
-                    $res=$obj->getchatlist();
-                    if($res){
-                        while ($r=$res->fetch_assoc()){ 
-                           $id=$r['stdId'];
-                           if($_SESSION['uid']==$r['otherId']){
-                           $res2=$obj->getStudentInfoForChat($id); 
-                           if($res2){
-                                $res2=$res2->fetch_assoc();
-                                $GLOBALS['chatstdname'] = $res2['fname']." ".$res2['lname'];
-                                $GLOBALS['active'] = $res2['onlines'];
-                                $GLOBALS['image'] = $res2['image'];
-                           }
-                    
+                            $res=$phpcls->getchatList($id);
+                           
+                            if($res){
+                                while ($r=$res->fetch_assoc()) {
+
+                        ?>
+
+                        <a  style="text-decoration:none;" href="?karjonne=<?php echo $r['frinid']?>">
+        <?php 
+
+            
+
+
+            if($r['karsathe']=="admin" || $r['karsathe']=="adminModarator"  || $r['karsathe']=="universityAdmin"){ 
+                $id=$r['name'];
+                $ress=$phpcls->getsingleInfo($id)->fetch_assoc();
+
+
                 ?>
-            <div class="user_box">
-                
-               
-               <a href="?chatid=<?php echo $res2['studentId']?>">
-                  <img src="../StudentAdmin/img/upload/<?php echo $res2['image']?>" alt="">
-                  <h6><?php echo $chatstdname ?></h6>
-                  <p>simply dummy...</p>
-               </a>
-
-           
-            </div>
-            <?php }}} ?>
-         </div>
-
-        
-
-
-
-
-         <div class="right_box bgtwo">
-
-
-        
-
-            <div class="disply_name">
-               <div class="row">
-                  <div class="col-10">
-                     <img src="../UniversityAdmin/img/upload/<?php echo $image?>" alt="">
-                     <p><?php echo $chatstdname?></p>
-                  </div>
-                  <div class="col-2">
-                     <h6><?php
-                        if($active=="offline"){
-                            echo "offline";
-                        }else{
-                            echo "Active";
-                        }
-                      ?></h6>
-                  </div>
-               </div>
-            </div>
-
-
-
-
-
-
-
-
-<div class="show_text">
-<?php 
-
-            if(isset($_GET['chatid'])){
-                $id=$_GET['chatid'];
-                $res=$obj->getchaat2($id);
-                if ($res) {
-                    while ($r=$res->fetch_assoc()) {
-                        
-
-        ?>
-
-
-
-            
                 <?php
-                    if($r['cheacks']=="university"){ ?>
-                        <p class="textUniversity"><?php echo $r['chats']?></p>
-                   
-                    <?php }else{ ?>
-                        <p class="text-right textNonUniversity" style="background-color:red;"><?php echo $r['chats']?></p>
+
+                  if($ress['uniid']!=NULL){ ?>
+                    <img class="ml-1" src="../UniversityAdmin/img/upload/<?php echo $ress['img']?>" alt="">
+                  <?php }else{?>
+                    <img class="ml-1" src="../Admin/img/upload/<?php echo $ress['img']?>" alt="">
+                <?php  }
+
+                ?>
+                
+                <h6><?php echo $ress['name']?></h6>
+                <?php 
+
+                  if($ress['uniid']!=NULL){ 
+                    $ress=$phpcls->universitynameforchat($ress['uniid'])->fetch_assoc();
+
+                    ?>
                     
-                    <?php } ?>
-               
-               
-            
 
 
+                    <p><?php echo $ress['universityName'] ?> University Admin</p>
+                 <?php  }else{ ?>
+                    <p>Admin</p>
+                  <?php }
+
+                ?>
+
+
+
+
+            <?php }else if($r['karsathe']=="university"){
+                $id=$r['name'];
+                $ress=$phpcls->getsingleuniname($id)->fetch_assoc();
+
+                ?>
+                <img class="ml-1" src="../UniversityAdmin/img/upload/<?php echo $ress['universityImg']?>" alt="">
+                <h6><?php echo $ress['universityName']?></h6>
+                <span> University Admin</span><
+
+
+            <?php }else if($r['karsathe']=="universityModarator"){
+                $id=$r['name'];
+                $ress=$phpcls->getsingleInfo($id)->fetch_assoc();
+                $id=$ress['uniid'];
+                $resss=$phpcls->getsingleuniname($id)->fetch_assoc();
+                ?>
+                <img class="ml-1" src="../UniversityAdmin/img/upload/<?php echo $ress['img']?>" alt="">
+                <h6><?php echo $ress['name']?></h6>
+                <p><?php echo $resss['universityName']?> University Modarator</p>
+
+
+
+
+
+
+
+            <?php }else if($r['karsathe']=="student"){
+                $id=$r['name'];
+                $ress=$phpcls->gtchatstudent($id);
+                  if($ress){
+                    $ress=$phpcls->gtchatstudent($id)->fetch_assoc();
+                  
+                ?>
+                <img class="ml-1" src="../StudentAdmin/img/upload/<?php echo $ress['image']?>" alt="">
+                <h6><?php echo $ress['fname']." ".$ress['lname'] ?></h6>
+                <p>Student</p>
+
+
+            <?php }} ?>
+
+        
+    </a>
+    <hr>
+
+    <?php }} ?>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="right_box">
 
 <?php
-         }
-                }
-            }
-?>
-</div>
+                      $phpcls=new phpclass();
+                      if(isset($_GET['karjonne'])){
+                        $id=$_GET['karjonne'];
+                        $res=$phpcls->infoforchatHead($id);
+                        if($res){
+                          $res=$phpcls->infoforchatHead($id)->fetch_assoc();
+                          $id=$res['name'];
+                          if($res['karsathe']=="student"){
+                             $ress=$phpcls->gtchatstudent($id);
+                            if($ress){
+                              $ress=$phpcls->gtchatstudent($id)->fetch_assoc();
+                              $GLOBALS['name'] = $ress['fname']." ".$ress['lname'];
+                              $GLOBALS['img'] = $ress['image'];
+                              $GLOBALS['table'] ="student";
 
-            <div class="send_text">
+                              $GLOBALS['onlines'] = $ress['online'];
+                              
+                              $GLOBALS['imgpath'] = "../StudentAdmin/img/upload/";
+                              //echo $name;
+                              //echo $name;
+                            }
+                          
+                          }else if($res['karsathe']=="university"){
+                             $ress=$phpcls->getsingleuniname($id);
+                            if($ress){
+                              $ress=$phpcls->getsingleuniname($id)->fetch_assoc();
+                              $GLOBALS['name'] = $ress['universityName'];
+                              $GLOBALS['img'] = $ress['universityImg'];
+                              $GLOBALS['onlines'] = $ress['online'];
+                              $GLOBALS['table'] = "university";
+                              $GLOBALS['imgpath'] = "../UniversityAdmin/img/upload/";
+                              //echo $name;
+                            }
+                          }else{
+                            $ress=$phpcls->gectadminInfoforchat($id);
+                            if($ress){
+                              $ress=$phpcls->gectadminInfoforchat($id)->fetch_assoc();
+                              $GLOBALS['name'] = $ress['name'];
+                              $GLOBALS['img'] = $ress['img'];
+                              $GLOBALS['onlines'] = $ress['online'];
+                              $GLOBALS['table'] = "modara";
 
-               <form action="" method="post">
-                  <div class="text">
-                     <input placeholder="Type you message..." type="text" name="msz" class="form-control">
-                  </div>
-               </form>
 
+                              if($ress['uniid']!=NULL){
+                                //universityModa
+                                $GLOBALS['imgpath'] = "../UniversityAdmin/img/upload/";
+                                
+                              }else{
+                                //admin moda
+                                $GLOBALS['imgpath'] = "../Admin/img/upload/";
+                              }
+                              
+                            }
+                          }
+                          }
+}
+
+                    
+
+
+                  ?>
+
+                    <div class="disply_name">
+                        <div class="row">
+<div class="col-10">
+
+
+
+                                <img src="<?php echo $imgpath.$img?>" alt="">
+                                <p>
+                                  <?php 
+                                if(!empty($name)){
+                                  echo $name;
+                                } else{
+                                  echo "Name";
+                                }
+                                 ?>
+                                   
+                                 </p>
+                                
+                            </div>
+                            <div class="col-2">
+                                <h6><?php 
+                                if(!empty($onlines)){
+                                  echo $onlines;
+                                }
+                                 ?></h6>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="show_text">
+                        <?php 
+                        $phpcls=new phpclass();
+                            if(isset($_GET['karjonne'])){
+                                $id=$_GET['karjonne'];
+                                $res=$phpcls->getatramarId($id)->fetch_assoc();
+                                $id1=$res['name'];
+                                $id2=$res['amarId'];
+                                $res=$phpcls->getmsz($id1,$id2);
+                                if($res){
+                                    while($r=$res->fetch_assoc()){
+                                        if($id1==$r['name']  && $id2==$r['amike']){ ?>
+                                            <p style="background-color:#101924; "   class="float-right"><?php echo $r['msz']?></p>
+                                        <?php }else{?>
+                                           <p style="background-color:#798BFF; " class="float-left"><?php echo $r['msz']?></p>
+                                       <?php }
+                                    }
+                                }
+                            }
+                         ?>
+                    </div>
+
+
+
+
+                    <div class="send_text">
+                        <form action="" method="post">
+                            <div class="text">
+                            <input placeholder="Type you message..." class="w-100 p-2" type="text" name="msz">
+                        </div>
+                        <div class="send">
+                            <button class="btn"><i class="fas fa-arrow-circle-right"></i></button>
+                        </div>
+                        </form>
+                    </div>
+
+
+                </div>
             </div>
-
-
-
-
-
-         </div>
-      </div>
+       </div>
    </div>
-</div>
+
 <?php
-   include_once("sfooter.php");
-   ?>
+
+
+
+
+
+
+    include_once("sfooter.php");
+?>

@@ -33,16 +33,20 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Image or file</label>
+                                <?php 
+                                    if($r['file']){
+                                ?>
                                 <h1><img src="img/upload/<?php echo $r['file']?>" alt="" width="100"></h1>
+                            <?php }?>
                                 <input type="file" name="files" class="form-control-file">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>For whome</label>
                                 <select name="whome" class="form-control">
                                     <option>Choose...</option>
-                                    <option <?php echo ($r['whome']=="both")?"selected":""?> value="both">Both</option>
-                                    <option <?php echo ($r['whome']=="student")?"selected":""?> value="student">Student</option>
-                                    <option <?php echo ($r['whome']=="university")?"selected":""?> value="university">University</option>
+                                    <option <?php echo ($r['whome']=="Both")?"selected":""?> value="both">Both</option>
+                                    <option <?php echo ($r['whome']=="Student")?"selected":""?> value="student">Student</option>
+                                    <option <?php echo ($r['whome']=="University")?"selected":""?> value="university">University</option>
                                 </select>
                             </div>
                         </div>

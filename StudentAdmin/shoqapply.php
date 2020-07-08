@@ -3,7 +3,7 @@
     include_once"../php_function.php";
 ?>
 <div class="pros">
-        <h3>Requirement and information of each university</h3>
+        <h3>You can apply to all these universities</h3>
         <div class="row">
 
             <?php 
@@ -21,7 +21,6 @@
 						<h5><?php echo $r['universityName']?></h5>
 						</center>
 						<p>Divisition: <strong><?php echo $r['division']?></strong></p>
-						<p>District: <strong><?php echo $r['district']?></strong></p>
 						<p>City: <strong><?php echo $r['city']?></strong></p>
 						<p>Phone: <strong><?php echo $r['pohne']?></strong></p>
 					

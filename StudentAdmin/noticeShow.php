@@ -47,7 +47,7 @@
 					 <td><?php echo $r['noticeMessage']?></td>
                     <td><?php echo $r['dates']?></td>
 					<td>
-						<a href="noticeView.php?id=<?php echo $r['noticeId']?>" class="btn btn-info">View</a>
+						<a target="_blank" href="noticeView.php?id=<?php echo $r['noticeId']?>" class="btn btn-info">View</a>
 					</td>
          
                 </tr>

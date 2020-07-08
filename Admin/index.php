@@ -10,10 +10,10 @@
                 <div class="left">
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Recent Student</h5>
+                            <h5>Recent University</h5>
                         </div>
                         <div class="col-md-2">
-                            <a href="student.php" class="float-right btn btn-info">All</a>
+                            <a href="university.php" class="float-right btn btn-info">All</a>
                         </div>
                     </div>
                     <hr>
@@ -21,15 +21,15 @@
                         
                         <?php 
                             $phcls=new phpclass();
-                            $res=$phcls->recentSudent();
+                            $res=$phcls->recentUniversity();
                             if ($res) {
                                 while ($r=$res->fetch_assoc()) {?>                        
 
                         <div class="col-md-3 mt-3">
-                            <img src="../StudentAdmin/img/upload/<?php echo $r['image']?>" alt="">
+                            <img src="../UniversityAdmin/img/upload/<?php echo $r['universityImg']?>" alt="">
                         </div>
                         <div class="col-md-9 mt-3">
-                            <h6 class="mt-2" style="color: #798BFF"><?php echo $r['fname']." ".$r['lname']?></h6>
+                            <h6 class="mt-2" style="color: #798BFF"><?php echo $r['universityName'] ?></h6>
                             
                         </div>
                         <?php }}?>
@@ -60,7 +60,13 @@
                                 while ($r=$res->fetch_assoc()) {?> 
                             
                             <div class="col-md-3 mt-3">
-                                <img src="img/upload/<?php echo $r['img']?>" alt="">
+                                <?php
+                                    if($r['uniid']==NULL){ ?>
+                                        <img src="img/upload/<?php echo $r['img']?>" alt="">
+                                    <?php }else{?>
+                                        <img src="../UniversityAdmin/img/upload/<?php echo $r['img']?>" alt="">
+                                   <?php } ?>
+                                
                             </div>
                             <div class="col-md-9 mt-3">
                                 <h6 class="mt-2" style="color: #798BFF"><?php echo $r['name']?></h6>

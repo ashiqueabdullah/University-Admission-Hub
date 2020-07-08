@@ -23,7 +23,7 @@
                         
                         <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -44,14 +44,14 @@
                                         
                                     
                         ?>
-                        <tr>
+                      <tr>
                            
                             <td><?php echo $r['universityName']?></td>
                             <td><?php echo $r['universityCode']?></td>
-                            <td><img src="img/<?php echo $r['universityImg']?>" alt=""></td>
+                            <td><img src="../UniversityAdmin/img/upload/<?php echo $r['universityImg']?>" alt="" height="50" width="50"></td>
                             <td><?php echo $r['division']?></td>
-                             <td>
-                                <a href="universityInformation.php?id=<?php echo $r['universityId']?>" class="btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
+                            <td>
+                                <a target="_blank" href="universityInformation.php?id=<?php echo $r['universityId']?>" class="btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
                                 <?php if ($r['statuss']!=2) { ?>
                                 <a href="universityDeleteApprove.php?approve=<?php echo $r['universityId']?>" class="btn btn-success float-right mr-1"><i class="fas fa-check-circle"></i> Approve</a>
                                 <?php } ?>
@@ -62,6 +62,8 @@
                                 <?php }else{ ?>
                                 <a href="universityDeleteApprove.php?unhold=<?php echo $r['universityId']?>" class="btn btn-secondary float-right mr-1"><i class="far fa-stop-circle"></i> Hold</a>
                                 <?php }?>
+
+                                
                             </td>
                         </tr>
                     <?php }}}?>

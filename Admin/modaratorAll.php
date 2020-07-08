@@ -42,7 +42,7 @@
                                 while($r=$res[0]->fetch_assoc()){
                         ?>
                         <tr>
-                        <td><img  src="../UniversityAdmin/img/upload/<?php echo $r['img'] ?>" height="70" alt=""></td> 
+                        <td><img  src="../UniversityAdmin/img/upload/<?php echo $r['img'] ?>" height="70" width="70" alt=""></td> 
                         <td><?php echo $r['name']?></td>
                         <td><?php 
                         

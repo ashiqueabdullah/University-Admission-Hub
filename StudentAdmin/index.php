@@ -10,12 +10,10 @@
                      <?php
                         $sid=$_SESSION['sid'];
                         $phpcls=new phpclass();
-                        $res=$phpcls->getStatus($sid);
-                        while($r=$res->fetch_assoc()){
-                        session::set('satuss',$r['satuss']);
-                        }
-                        if ($_SESSION['satuss']==0) {
-                            ?>
+                        $res=$phpcls->getStatus($sid)->fetch_assoc();
+                        $_SESSION['chk']=$res['hscGpa'];
+                        if (empty($chks)) {
+                           ?>
                      <h6 class="text-info">20% Done</h6>
                      <?php }else{?>
                      <h6>100% Complete</h6>
@@ -24,7 +22,7 @@
          </a>
       </div>
       <div class="col-md-3">
-         <a href="apply.php">
+         <a href="prospectus.php">
             <div class="box bgone text-center">
                <h2>Apply</h2>
                      <h6> 
@@ -53,7 +51,7 @@
 
 
       <div class="col-md-3 ">
-         <a href="Payment.php">
+         <a href="inbox.php">
             <div class="box bgone text-center">
                <h2>Message</h2>
                <h6>Start Conversation</h6>
@@ -66,8 +64,8 @@
 
 <div  class="admitAndnotice ">
    <h1 class="text-center pt-3" >Some Notice Here</h1>
-   <center><hr class="w-50"></center>
-   <table style="background-color: white" class="col-md-8 offset-md-2  table table-bordered">
+   <center><hr></center>
+   <table style="background-color: white" class="col-md-10 offset-md-1  table table-bordered">
    <thead>
       <th>Title</th>
       <th>Message</th>
@@ -84,7 +82,7 @@
          <td><?php echo $r['noticeMessage']?></td>
          <td><?php echo $r['dates']?></td>
          <td>
-            <a href="noticeView.php?id=<?php echo $r['noticeId']?>" class="btn btn-info">View</a>
+            <a target="_blank" href="noticeView.php?id=<?php echo $r['noticeId']?>" class="btn btn-info">View</a>
          </td>
       </tr>
            <?php }}?>

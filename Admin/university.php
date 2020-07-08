@@ -17,7 +17,7 @@
                 </ul>
                     </div>
                     <div class="col-md-3">
-                      <input class="p-3 form-control form-control-sm mr-3" id="universitySearch" type="text" placeholder="Search Student By SSC Rool Or Name"
+                      <input class="p-3 form-control form-control-sm mr-3" id="universitySearch" type="text" placeholder="Search By Name"
                             >  
                     </div>
                 </div>

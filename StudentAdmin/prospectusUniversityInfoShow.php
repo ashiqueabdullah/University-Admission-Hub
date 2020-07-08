@@ -18,10 +18,10 @@
 		<div class="col-md-6">
 			<p>University Name: <strong><?php echo $r['universityName']?></strong></p>
 			<p>Division: <strong><?php echo $r['division']?></strong></p>
-			<p>District: <strong><?php echo $r['district']?></strong></p>
+			<p>Pone: <strong><?php echo $r['pohne']?></strong></p>
 		</div>
 		<div class="col-md-6">
-			<p>Pone: <strong><?php echo $r['pohne']?></strong></p>
+			
 			<p>Email: <strong><?php echo $r['email']?></strong></p>
 			<p>City: <strong><?php echo $r['city']?></strong></p>
 			<p>Zip: <strong><?php echo $r['zip']?></strong></p>

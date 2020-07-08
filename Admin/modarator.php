@@ -1,17 +1,43 @@
 <?php
     include_once("sheader.php");
+    $GLOBALS['chelcks'] = 0;
 ?>
 
-    <div id="outer">
-        <div id="cros">X</div>
-        <div class="add_modarator">
+    <div class="p-5">
+        <div class="main">
+           <div class="notice">
+
+                <ul>
+                    <li><a id="mymodarator" href="#">My modarator</a></li>
+                    <li><a id="pendingModaraotr" href="#">Pending Modarator</a></li>
+                    <li><a id="approvedModarator" href="#">Approved Modarator</a></li>
+                    <li><a id="newModarator" href="#">Add Modarator</a></li>
+
+                </ul>
+                <hr>
+
+            <div id="mymoda">
+                
+            </div>
+
+            <div id="penmoda">
+                
+            </div>
+            <div id="apmoda">
+                as
+            </div>
+            <div id="addmoda">
+                <div class="add_modarator">
             <?php
             $phpcls=new phpclass();
             if (isset($_POST['addmoda'])) {
                 $res=$phpcls->addModarator($_POST,$_FILES);
+                $chelcks=$res;
             }
         ?>
+        <input id="chck" style="display: none" type="text" value="<?php echo $chelcks ?>">
                 <form action="" method="post" enctype="multipart/form-data" name="modaratorAddform" onsubmit="return formvalidation()">
+                    
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Modarator Name</label>
@@ -69,94 +95,9 @@
                     <input type="submit" name="addmoda" class="btn btn-success w-100" value="Add Modarator">
                 </form>
         </div>
-    </div>
-
-    <div class="modarator pt-3 pl-5 pb-5">
-
-        <div id="">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <div class="myModarator">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <h5 class="pb-2 mt-1">All My Modarator and Admin</h5>
-                            </div>
-                            <div class="col-md-5 mb-1">
-                                    
-                                    <div class="input-group md-form form-sm form-2 pl-0">
-                                    <input id="mymodasearch" class="form-control my-0 py-1 red-border" type="text" placeholder="Search Modarator">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text red lighten-3" id="basic-text1"><i style="color: #798BFF" class="fas fa-search text-grey"
-                        aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-md-2">
-                                <a style="color: white" href="#" id="admod" class="asd btn btn-info float-right"><i class="fas fa-plus-square"></i> <span style="color: white">Modarator</span></a>
-                            </div>
-                        </div>
-
-                        <div id="amidnMOdaratoList">
-
-                        </div>
-
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
-
-        <div class="wantapprove mt-5">
-
-            <div class="row pb-1">
-                <div class="col-md-7">
-                    <h5>Modarator Want to Approve</h5>
-                </div>
-                
-            </div>
-
-            <hr class="pb-3">
-            
-
-
-
-
-                <div id="approveModarator">
-                    
-                </div>
-
-
-
-
-                
-        </div>
-
-        <div class="allModarator">
-            <div class="row pb-1">
-                <div class="col-md-7">
-                    <h5>All Modarator List</h5>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-row">
-
-                        <div class="col-md-8 offset-md-4">
-                            <div class="input-group md-form form-sm form-2 pl-0">
-                                <input id="modaratorAllList" class="form-control my-0 py-1 red-border" type="text" placeholder="Search Modarator">
-                                <div class="input-group-append">
-                                    <span class="input-group-text red lighten-3" id="basic-text1"><i style="color: #798BFF" class="fas fa-search text-grey"
-                        aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="modaratorAll">
-                
-            </div>
-        </div>
-
     </div>
 
     <?php

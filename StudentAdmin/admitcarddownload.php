@@ -10,6 +10,7 @@
     if($res){
         while($r=$res->fetch_assoc()){
             $GLOBALS['unitname']=$r['unitName'];
+            $GLOBALS['universityId']=$r['universityId'];
         }
     }
     $id=$_SESSION['sid'];
@@ -23,6 +24,8 @@
             $GLOBALS['id']=$rr['studentId'];
         }
     }
+    $uniname=$phpcls->getuniname($universityId)->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +69,7 @@
         <div class="col-md-4">
             <img src="img/upload/<?php echo $img?>" alt="">
 
-            <img src="../UniversityAdmin/img/sin.png" alt="" class="singimg">
+            <img src="../UniversityAdmin/img/upload/<?php echo $uniname['single'] ?>" alt="" class="singimg">
             <p class="ml-3"><strong>Applicante Signature</strong></p>
         </div>
         

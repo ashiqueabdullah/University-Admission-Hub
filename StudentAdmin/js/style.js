@@ -1,3 +1,17 @@
+var chkaddmissonn = document.getElementById('chkaddmissonn');
+if(chkaddmissonn){
+  if(chkaddmissonn.value==2){
+    swal("You have applied once before!", "", "error");
+  }else if(chkaddmissonn.value==3){
+    swal("Not enough money. Please recharge!", "", "error");
+  }else if(chkaddmissonn.value==4){
+    swal("Your CGPA is lower than required!", "", "error");
+  }else if(chkaddmissonn.value==5){
+    swal("Done successfully!", "", "success");
+  }
+}
+
+
 $(document).ready(function() {
     progress();
     progress2();
@@ -26,7 +40,7 @@ $(document).ready(function() {
     });
 });
 
-function cmtValidation(){
+function ccomplitProfileValidation(){
 
     var nationality=document.cmtForm.nationality;
     if(nationality.value==""){
@@ -170,44 +184,149 @@ function cmtValidation(){
         swal("Upload HSC cirtificate!", "", "error");
         return false;
     }
-
-
-
-
-
-    // var sat=document.cmtForm.sat;
-    // if(sat.value!="" && isNaN(at.value)){
-    //     swal("Upload HSC cirtificate!", "", "error");
-    //     return false;
-    // }
-
-    // var sat=document.cmtForm.sat;
-    // if(sat.value==""){
-    //     swal("Upload HSC cirtificate!", "", "error");
-    //     return false;
-    // }
-
-    //  var ielts=document.cmtForm.ielts;
-    // if(ielts.value==""){
-    //     swal("Upload HSC cirtificate!", "", "error");
-    //     return false;
-    // }
-
-    //  var tofel=document.cmtForm.tofel;
-    // if(tofel.value==""){
-    //     swal("Upload HSC cirtificate!", "", "error");
-    //     return false;
-    // }
-    // var gmat=document.cmtForm.gmat;
-    // if(gmat.value==""){
-    //     swal("Upload HSC cirtificate!", "", "error");
-    //     return false;
-    // }
-    
-
-
     
 }
+
+
+
+
+
+
+function editFormvalidation(){
+
+    var nationality=document.editform.nationality;
+    if(nationality.value==""){
+        swal("Please Enter Nationality!", "", "error");
+        return false;
+    }
+
+   
+    var fatherName=document.editform.fatherName;
+    if(fatherName.value==""){
+        swal("Please Enter Father Name!", "", "error");
+        return false;
+    }
+    var fatherOccipation=document.editform.fatherOccipation;
+    if(fatherOccipation.value==""){
+        swal("Please Enter Father Occipation!", "", "error");
+        return false;
+    }
+    var fatherAddress=document.editform.fatherAddress;
+    if(fatherAddress.value==""){
+        swal("Please Enter Father Address!", "", "error");
+        return false;
+    }
+    var fatherPhone=document.editform.fatherPhone;
+    if(fatherPhone.value==""){
+        swal("Please Enter Father Phone!", "", "error");
+        return false;
+    }
+    
+    var motherName=document.editform.motherName;
+    if(motherName.value==""){
+        swal("Please Enter Mother Name!", "", "error");
+        return false;
+    }
+    var motherOccipation=document.editform.motherOccipation;
+    if(motherOccipation.value==""){
+        swal("Please Enter Mother Occipation!", "", "error");
+        return false;
+    }
+   
+    
+    var emergencyPersonRelationshipe=document.editform.emergencyPersonRelationshipe;
+    if(emergencyPersonRelationshipe.value==""){
+        swal("Please Enter Emergency Person relationship!", "", "error");
+        return false;
+    }
+    var emergencyPersonName=document.editform.emergencyPersonName;
+    if(emergencyPersonName.value==""){
+        swal("Please Enter Emergency Person name!", "", "error");
+        return false;
+    }
+    var emergencyPersonAddress=document.editform.emergencyPersonAddress;
+    if(emergencyPersonAddress.value==""){
+        swal("Please Enter Emergency person address!", "", "error");
+        return false;
+    }
+    var emergencyPersonPhone=document.editform.emergencyPersonPhone;
+    if(emergencyPersonPhone.value==""){
+        swal("Please Enter Emengency person Phone!", "", "error");
+        return false;
+    }
+    
+    var personPayTheFeeName=document.editform.personPayTheFeeName;
+    if(personPayTheFeeName.value==""){
+        swal("Please Enter Name Who pay the fee!", "", "error");
+        return false;
+    }
+    var personPayTheFeeRealtion=document.editform.personPayTheFeeRealtion;
+    if(personPayTheFeeRealtion.value==""){
+        swal("Please Enter Relationship!", "", "error");
+        return false;
+    }
+    var personPayTheFeeAddress=document.editform.personPayTheFeeAddress;
+    if(personPayTheFeeAddress.value==""){
+        swal("Please Enter Person pay the fee Address!", "", "error");
+        return false;
+    }
+    var personPayTheFeePhone=document.editform.personPayTheFeePhone;
+    if(personPayTheFeePhone.value==""){
+        swal("Please Enter Person pay the fee Phone!", "", "error");
+        return false;
+    }
+    
+    var personPayTheFeeAnnualIncome=document.editform.personPayTheFeeAnnualIncome;
+    if(personPayTheFeeAnnualIncome.value==""){
+        swal("Please Enter Anual Income!", "", "error");
+        return false;
+    }
+    var sscInstituteName=document.editform.sscInstituteName;
+    if(sscInstituteName.value==""){
+        swal("Please Enter SSC Instruite Name!", "", "error");
+        return false;
+    }
+    var sscBordeName=document.editform.sscBordeName;
+    if(sscBordeName.value==""){
+        swal("Please Enter SSC Bord!", "", "error");
+        return false;
+    }
+    var sscGpa=document.editform.sscGpa;
+    if(sscGpa.value==""){
+        swal("Please Enter SSC GPA!", "", "error");
+        return false;
+    }
+    var sscpassingYear=document.editform.sscpassingYear;
+    if(sscpassingYear.value==""){
+        swal("Please Enter SSC Passing Year!", "", "error");
+        return false;
+    }
+   
+    var hscInstituteName=document.editform.hscInstituteName;
+    if(hscInstituteName.value==""){
+        swal("Please Enter HSC Instruite Name!", "", "error");
+        return false;
+    }
+    var hscBordeName=document.editform.hscBordeName;
+    if(hscBordeName.value==""){
+        swal("Please Enter HSC Bord name!", "", "error");
+        return false;
+    }
+    var hscGpa=document.editform.hscGpa;
+    if(hscGpa.value==""){
+        swal("Please Enter HSC GPA!", "", "error");
+        return false;
+    }
+    var hscpassingYear=document.editform.hscpassingYear;
+    if(hscpassingYear.value==""){
+        swal("Please Enter HSC Passing Year!", "", "error");
+        return false;
+    }
+    
+    
+}
+
+
 
 
 function getnotice(page) {

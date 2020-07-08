@@ -9,7 +9,6 @@
 
 ?>
 
-    <p>Showing all notice thus are created university</p>
 
     <table class="table table-bordered">
         <thead>
@@ -21,7 +20,7 @@
 
             <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -45,7 +44,7 @@
                     <td><?php echo $r['noticeTitle']?></td>
                     <td><?php echo $r['dates']?></td>
                     <td>
-                        <a href="noticeShowAdmin.php?id=<?php echo $r['noticeId']?>" class="viewmod btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
+                        <a target="_blank" href="noticeShowAdmin.php?id=<?php echo $r['noticeId']?>" class="viewmod btn btn-info float-right"><i class="fas fa-eye"></i> View</a>
                         <a href="noriceEdit.php?id=<?php echo $r['noticeId']?>" class=" btn btn-warning float-right mr-1"><i class="far fa-stop-circle"></i> Edit</a>
                         <a href="noticeRejectDeleteHolde.php?delete=<?php echo $r['noticeId']?>" class=" btn btn-danger  float-right mr-1"><i class="fas fa-trash-alt"></i> Delete</a>
                         

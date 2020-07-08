@@ -25,7 +25,18 @@
         ?>
         <h5 class="text-center">Information About <?php echo $r['name']?></h5>
         <hr>
-        <center><img class="img-thumbnail mb-2" src="img/upload/<?php echo $r['img']?>" alt="" width="300"></center>
+        <center>
+
+            <?php 
+                if($r['uniid']==NULL){ ?>
+                    <img class="img-thumbnail mb-2" src="img/upload/<?php echo $r['img']?>" alt="" width="300">
+                <?php }else{?>
+                    <img class="img-thumbnail mb-2" src="../UniversityAdmin/img/upload/<?php echo $r['img']?>" alt="" width="300">
+               <?php }
+            ?>
+            </center>
+
+
         <div class="row">
             <div class="col-md-6">
                 <p class="mt-3"><strong>Name: </strong><?php echo $r['name']?></p>
@@ -39,11 +50,7 @@
                 <p class="mt-3"><strong>Type: </strong>
 
  <?php 
-                    if ($r['types']==0) {
-                       echo "Modarator";
-                    }else{
-                        echo "Admin";
-                    }
+                   echo $r['types']
                 ?>
 
                 </p>
@@ -51,21 +58,7 @@
                 <p class="mt-3"><strong>Password: </strong><?php echo $r['pass']?></p>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <a href="modaratorEdit.php?id=<?php echo $r['morId']?>" class=" btn btn-warning  mr-1">Edit</a>
-            </div>
-            <div class="col-md-6">
-                <a href="modaratordlt.php?id=<?php echo $r['morId']?>" class=" btn btn-danger  float-right mr-1">Delete</a>
-            </div>
-
-
-
-
-                        
-
-
-        </div>
+        
     <?php }}?>
     </div>
 </div>

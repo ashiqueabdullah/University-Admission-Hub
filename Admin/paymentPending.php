@@ -23,7 +23,7 @@
                         
                         <?php
                             $obj=new phpclass();
-                            $limit=2;
+                            $limit=20;
                             if (isset($_GET['page'])) {
                                 $get_page=$_GET['page'];
                                 if ($get_page=="" || $get_page=="1") {
@@ -47,9 +47,13 @@
                                 <td><span style="color: red">Pending</span> </td>
                               <td>
 
-                                       <a href="paymentDeleteApprove.php?approve=<?php echo $r['payId']?>" class="btn btn-success float-right mr-1"><i class="fas fa-check-circle"></i> Approve</a>
-                                        <a href="paymentDeleteApprove.php?reject=<?php echo $r['payId']?>" class="btn btn-danger float-right mr-1"><i class="fas fa-trash-alt"></i> Reject</a> 
-                                <a href="paymentView.php?view=<?php echo $r['payId']?>" class="btn btn-info float-right mr-1"><i class="fas fa-eye"></i> View</a> 
+                                    
+
+                                       <button onclick="return pmappr('<?php echo $r['payId']?>')" class="btn btn-success float-right mr-1"><i class="fas fa-check-circle"></i> Approve</button> 
+
+                                        <button onclick="return pmtrej('<?php echo $r['payId']?>')" class="btn btn-danger float-right mr-1"><i class="fas fa-trash-alt"></i> Reject</button> 
+
+                                <a target="_blank" href="studentView.php?id=<?php echo $r['stId']?>" class="btn btn-info float-right mr-1"><i class="fas fa-eye"></i> Student View</a>  
                 
                             </td>
                             </tr>

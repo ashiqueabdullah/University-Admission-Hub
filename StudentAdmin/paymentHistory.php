@@ -22,7 +22,7 @@
 						
 						<?php
 							$obj=new phpclass();
-							$limit=6;
+							$limit=20;
 							if (isset($_GET['page'])) {
 								$get_page=$_GET['page'];
 								if ($get_page=="" || $get_page=="1") {
