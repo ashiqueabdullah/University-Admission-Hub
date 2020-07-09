@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2020 at 08:04 PM
+-- Generation Time: Jul 09, 2020 at 07:16 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -44,10 +44,9 @@ CREATE TABLE `addmisson` (
 --
 
 INSERT INTO `addmisson` (`addmissonId`, `studentId`, `universityId`, `statuss`, `dates`, `times`, `unitId`, `qutaId`, `results`) VALUES
-(1, 86, 18, 0, '2020-06-19', '09:36:47', 2, 42, 1),
-(5, 86, 18, 0, '2020-06-20', '01:00:43', 3, 0, NULL),
-(6, 86, 18, 0, '2020-06-20', '01:01:14', 4, 42, NULL),
-(7, 95, 26, 1, '2020-07-03', '05:15:50', 5, 43, NULL);
+(16, 132, 61, 1, '2020-07-08', '09:44:41', 8, 46, 1),
+(17, 132, 61, 0, '2020-07-09', '06:43:20', 9, 46, 0),
+(18, 132, 61, 0, '2020-07-09', '06:43:41', 10, 46, 0);
 
 -- --------------------------------------------------------
 
@@ -85,16 +84,11 @@ CREATE TABLE `chatwith` (
 --
 
 INSERT INTO `chatwith` (`chatwithId`, `name`, `amike`, `times`, `dates`, `msz`) VALUES
-(103, 50, 110, '05:07:14', '2020-07-06', 'okay'),
-(104, 50, 110, '05:07:24', '2020-07-06', 'start houk'),
-(105, 71, 110, '05:07:30', '2020-07-06', 'ji vai '),
-(106, 52, 112, '06:07:27', '2020-07-07', 'ke vai '),
-(107, 87, 112, '07:07:16', '2020-07-07', 'kene te '),
-(108, 88, 52, '07:07:27', '2020-07-07', 'hoise'),
-(109, 53, 71, '07:07:43', '2020-07-07', 'apni ke ?'),
-(110, 71, 53, '07:07:15', '2020-07-07', 'tumar nana '),
-(111, 53, 71, '07:07:28', '2020-07-07', 'accah thik ache '),
-(112, 111, 71, '07:07:47', '2020-07-07', 'tumi ni ?');
+(118, 61, 71, '09:07:37', '2020-07-08', 'Education is an art of life which makes our'),
+(119, 62, 71, '09:07:49', '2020-07-08', 'Education is very important for all of us. '),
+(120, 135, 71, '09:07:55', '2020-07-08', 'Education is very important for all of us. '),
+(121, 134, 71, '09:07:59', '2020-07-08', 'Education is very important for all of us. '),
+(122, 71, 61, '09:07:46', '2020-07-08', 'hmm shob bujcih');
 
 -- --------------------------------------------------------
 
@@ -115,15 +109,10 @@ CREATE TABLE `depertment` (
 --
 
 INSERT INTO `depertment` (`depertmentId`, `depertmentName`, `statuss`, `uid`, `depertshortname`) VALUES
-(9, 'Computer', 0, 5, 'CSE'),
-(10, 'BBA', 0, 5, 'BBA'),
-(11, 'LAW', 0, 5, 'LAW'),
-(12, 'EEE', 0, 5, 'EEE'),
-(13, 'CE', 0, 5, 'CE'),
-(14, 'MSE', 0, 5, 'MSE'),
-(15, 'CSE', 1, 5, 'CSE'),
-(16, 'CSE', 1, 18, 'CSE'),
-(17, 'CSE', 1, 26, 'CSE');
+(20, 'Computer Science Engineering', 1, 61, 'CSE'),
+(21, 'Department of Islamic History & culture', 1, 61, 'IH'),
+(22, 'Department of Political science', 1, 61, 'PS'),
+(23, 'Department of BBA', 1, 61, 'BBA');
 
 -- --------------------------------------------------------
 
@@ -146,67 +135,172 @@ CREATE TABLE `friedns` (
 --
 
 INSERT INTO `friedns` (`frinid`, `karsathe`, `name`, `amaname`, `amarId`, `date`, `time`) VALUES
-(687, 'admin', 71, 'university', 51, '2020-07-07', '04:07:32'),
-(689, 'admin', 71, 'university', 52, '2020-07-07', '04:07:50'),
-(690, 'university', 52, 'admin', 71, '2020-07-07', '04:07:50'),
-(691, 'university', 52, 'university', 53, '2020-07-07', '04:07:22'),
-(692, 'university', 53, 'university', 52, '2020-07-07', '04:07:22'),
-(693, 'admin', 71, 'university', 53, '2020-07-07', '04:07:22'),
-(694, 'university', 53, 'admin', 71, '2020-07-07', '04:07:22'),
-(695, 'university', 52, 'student', 111, '2020-07-07', '04:07:26'),
-(696, 'student', 111, 'university', 52, '2020-07-07', '04:07:26'),
-(697, 'university', 53, 'student', 111, '2020-07-07', '04:07:26'),
-(698, 'student', 111, 'university', 53, '2020-07-07', '04:07:26'),
-(699, 'admin', 71, 'student', 111, '2020-07-07', '04:07:26'),
-(700, 'student', 111, 'admin', 71, '2020-07-07', '04:07:26'),
-(701, 'university', 52, 'student', 112, '2020-07-07', '04:07:24'),
-(702, 'student', 112, 'university', 52, '2020-07-07', '04:07:24'),
-(703, 'university', 53, 'student', 112, '2020-07-07', '04:07:24'),
-(704, 'student', 112, 'university', 53, '2020-07-07', '04:07:24'),
-(705, 'admin', 71, 'student', 112, '2020-07-07', '04:07:25'),
-(706, 'student', 112, 'admin', 71, '2020-07-07', '04:07:25'),
-(707, 'university', 52, 'adminModarator', 87, '2020-07-07', '04:07:36'),
-(708, 'adminModarator', 87, 'university', 52, '2020-07-07', '04:07:36'),
-(709, 'university', 53, 'adminModarator', 87, '2020-07-07', '04:07:36'),
-(710, 'adminModarator', 87, 'university', 53, '2020-07-07', '04:07:36'),
-(711, 'student', 111, 'adminModarator', 87, '2020-07-07', '04:07:36'),
-(712, 'adminModarator', 87, 'student', 111, '2020-07-07', '04:07:36'),
-(713, 'student', 112, 'adminModarator', 87, '2020-07-07', '04:07:36'),
-(714, 'adminModarator', 87, 'student', 112, '2020-07-07', '04:07:36'),
-(715, 'university', 52, 'admin', 88, '2020-07-07', '04:07:05'),
-(716, 'admin', 88, 'university', 52, '2020-07-07', '04:07:05'),
-(717, 'university', 53, 'admin', 88, '2020-07-07', '04:07:06'),
-(718, 'admin', 88, 'university', 53, '2020-07-07', '04:07:06'),
-(719, 'student', 111, 'admin', 88, '2020-07-07', '04:07:06'),
-(720, 'admin', 88, 'student', 111, '2020-07-07', '04:07:06'),
-(721, 'student', 112, 'admin', 88, '2020-07-07', '04:07:06'),
-(722, 'admin', 88, 'student', 112, '2020-07-07', '04:07:06'),
-(723, 'student', 111, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(724, 'universityModarator', 89, 'student', 111, '2020-07-07', '05:07:52'),
-(725, 'student', 112, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(726, 'universityModarator', 89, 'student', 112, '2020-07-07', '05:07:52'),
-(727, 'admin', 71, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(728, 'universityModarator', 89, 'admin', 71, '2020-07-07', '05:07:52'),
-(729, 'adminModarator', 87, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(730, 'universityModarator', 89, 'adminModarator', 87, '2020-07-07', '05:07:52'),
-(731, 'admin', 88, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(732, 'universityModarator', 89, 'admin', 88, '2020-07-07', '05:07:52'),
-(733, 'universityModarator', 89, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(734, 'universityModarator', 89, 'universityModarator', 89, '2020-07-07', '05:07:52'),
-(735, 'student', 111, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
-(736, 'universityAdmin', 90, 'student', 111, '2020-07-07', '05:07:33'),
-(737, 'student', 112, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
-(738, 'universityAdmin', 90, 'student', 112, '2020-07-07', '05:07:33'),
-(739, 'admin', 71, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
-(740, 'universityAdmin', 90, 'admin', 71, '2020-07-07', '05:07:33'),
-(741, 'adminModarator', 87, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
-(742, 'universityAdmin', 90, 'adminModarator', 87, '2020-07-07', '05:07:33'),
-(743, 'admin', 88, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
-(744, 'universityAdmin', 90, 'admin', 88, '2020-07-07', '05:07:33'),
-(745, 'universityModarator', 89, 'universityModarator', 90, '2020-07-07', '05:07:33'),
-(746, 'universityModarator', 90, 'universityModarator', 89, '2020-07-07', '05:07:33'),
-(747, 'universityAdmin', 90, 'universityAdmin', 90, '2020-07-07', '05:07:33'),
-(748, 'universityAdmin', 90, 'universityAdmin', 90, '2020-07-07', '05:07:33');
+(987, 'admin', 71, 'student', 132, '2020-07-08', '08:07:29'),
+(988, 'student', 132, 'admin', 71, '2020-07-08', '08:07:29'),
+(989, 'admin', 71, 'student', 133, '2020-07-08', '08:07:04'),
+(990, 'student', 133, 'admin', 71, '2020-07-08', '08:07:04'),
+(991, 'admin', 71, 'student', 134, '2020-07-08', '08:07:37'),
+(992, 'student', 134, 'admin', 71, '2020-07-08', '08:07:37'),
+(993, 'admin', 71, 'student', 135, '2020-07-08', '09:07:15'),
+(994, 'student', 135, 'admin', 71, '2020-07-08', '09:07:15'),
+(995, 'student', 132, 'university', 61, '2020-07-08', '09:07:59'),
+(996, 'university', 61, 'student', 132, '2020-07-08', '09:07:59'),
+(997, 'student', 133, 'university', 61, '2020-07-08', '09:07:59'),
+(998, 'university', 61, 'student', 133, '2020-07-08', '09:07:59'),
+(999, 'student', 134, 'university', 61, '2020-07-08', '09:07:59'),
+(1000, 'university', 61, 'student', 134, '2020-07-08', '09:07:59'),
+(1001, 'student', 135, 'university', 61, '2020-07-08', '09:07:59'),
+(1002, 'university', 61, 'student', 135, '2020-07-08', '09:07:59'),
+(1003, 'admin', 71, 'university', 61, '2020-07-08', '09:07:59'),
+(1004, 'university', 61, 'admin', 71, '2020-07-08', '09:07:59'),
+(1005, 'university', 61, 'university', 62, '2020-07-08', '09:07:43'),
+(1006, 'university', 62, 'university', 61, '2020-07-08', '09:07:43'),
+(1007, 'student', 132, 'university', 62, '2020-07-08', '09:07:43'),
+(1008, 'university', 62, 'student', 132, '2020-07-08', '09:07:43'),
+(1009, 'student', 133, 'university', 62, '2020-07-08', '09:07:43'),
+(1010, 'university', 62, 'student', 133, '2020-07-08', '09:07:43'),
+(1011, 'student', 134, 'university', 62, '2020-07-08', '09:07:43'),
+(1012, 'university', 62, 'student', 134, '2020-07-08', '09:07:43'),
+(1013, 'student', 135, 'university', 62, '2020-07-08', '09:07:43'),
+(1014, 'university', 62, 'student', 135, '2020-07-08', '09:07:43'),
+(1015, 'admin', 71, 'university', 62, '2020-07-08', '09:07:43'),
+(1016, 'university', 62, 'admin', 71, '2020-07-08', '09:07:43'),
+(1017, 'university', 61, 'university', 63, '2020-07-08', '09:07:01'),
+(1018, 'university', 63, 'university', 61, '2020-07-08', '09:07:01'),
+(1019, 'university', 62, 'university', 63, '2020-07-08', '09:07:01'),
+(1020, 'university', 63, 'university', 62, '2020-07-08', '09:07:01'),
+(1021, 'student', 132, 'university', 63, '2020-07-08', '09:07:01'),
+(1022, 'university', 63, 'student', 132, '2020-07-08', '09:07:01'),
+(1023, 'student', 133, 'university', 63, '2020-07-08', '09:07:01'),
+(1024, 'university', 63, 'student', 133, '2020-07-08', '09:07:01'),
+(1025, 'student', 134, 'university', 63, '2020-07-08', '09:07:01'),
+(1026, 'university', 63, 'student', 134, '2020-07-08', '09:07:01'),
+(1027, 'student', 135, 'university', 63, '2020-07-08', '09:07:02'),
+(1028, 'university', 63, 'student', 135, '2020-07-08', '09:07:02'),
+(1029, 'admin', 71, 'university', 63, '2020-07-08', '09:07:02'),
+(1030, 'university', 63, 'admin', 71, '2020-07-08', '09:07:02'),
+(1031, 'university', 61, 'adminModarator', 94, '2020-07-08', '09:07:24'),
+(1032, 'adminModarator', 94, 'university', 61, '2020-07-08', '09:07:24'),
+(1033, 'university', 62, 'adminModarator', 94, '2020-07-08', '09:07:24'),
+(1034, 'adminModarator', 94, 'university', 62, '2020-07-08', '09:07:24'),
+(1035, 'university', 63, 'adminModarator', 94, '2020-07-08', '09:07:24'),
+(1036, 'adminModarator', 94, 'university', 63, '2020-07-08', '09:07:24'),
+(1037, 'student', 132, 'adminModarator', 94, '2020-07-08', '09:07:25'),
+(1038, 'adminModarator', 94, 'student', 132, '2020-07-08', '09:07:25'),
+(1039, 'student', 133, 'adminModarator', 94, '2020-07-08', '09:07:25'),
+(1040, 'adminModarator', 94, 'student', 133, '2020-07-08', '09:07:25'),
+(1041, 'student', 134, 'adminModarator', 94, '2020-07-08', '09:07:25'),
+(1042, 'adminModarator', 94, 'student', 134, '2020-07-08', '09:07:25'),
+(1043, 'student', 135, 'adminModarator', 94, '2020-07-08', '09:07:25'),
+(1044, 'adminModarator', 94, 'student', 135, '2020-07-08', '09:07:25'),
+(1045, 'university', 61, 'admin', 95, '2020-07-08', '09:07:10'),
+(1046, 'admin', 95, 'university', 61, '2020-07-08', '09:07:10'),
+(1047, 'university', 62, 'admin', 95, '2020-07-08', '09:07:10'),
+(1048, 'admin', 95, 'university', 62, '2020-07-08', '09:07:10'),
+(1049, 'university', 63, 'admin', 95, '2020-07-08', '09:07:10'),
+(1050, 'admin', 95, 'university', 63, '2020-07-08', '09:07:10'),
+(1051, 'student', 132, 'admin', 95, '2020-07-08', '09:07:10'),
+(1052, 'admin', 95, 'student', 132, '2020-07-08', '09:07:10'),
+(1053, 'student', 133, 'admin', 95, '2020-07-08', '09:07:10'),
+(1054, 'admin', 95, 'student', 133, '2020-07-08', '09:07:10'),
+(1055, 'student', 134, 'admin', 95, '2020-07-08', '09:07:10'),
+(1056, 'admin', 95, 'student', 134, '2020-07-08', '09:07:10'),
+(1057, 'student', 135, 'admin', 95, '2020-07-08', '09:07:11'),
+(1058, 'admin', 95, 'student', 135, '2020-07-08', '09:07:11'),
+(1059, 'university', 61, 'adminModarator', 96, '2020-07-08', '09:07:56'),
+(1060, 'adminModarator', 96, 'university', 61, '2020-07-08', '09:07:56'),
+(1061, 'university', 62, 'adminModarator', 96, '2020-07-08', '09:07:56'),
+(1062, 'adminModarator', 96, 'university', 62, '2020-07-08', '09:07:56'),
+(1063, 'university', 63, 'adminModarator', 96, '2020-07-08', '09:07:56'),
+(1064, 'adminModarator', 96, 'university', 63, '2020-07-08', '09:07:56'),
+(1065, 'student', 132, 'adminModarator', 96, '2020-07-08', '09:07:57'),
+(1066, 'adminModarator', 96, 'student', 132, '2020-07-08', '09:07:57'),
+(1067, 'student', 133, 'adminModarator', 96, '2020-07-08', '09:07:57'),
+(1068, 'adminModarator', 96, 'student', 133, '2020-07-08', '09:07:57'),
+(1069, 'student', 134, 'adminModarator', 96, '2020-07-08', '09:07:57'),
+(1070, 'adminModarator', 96, 'student', 134, '2020-07-08', '09:07:57'),
+(1071, 'student', 135, 'adminModarator', 96, '2020-07-08', '09:07:57'),
+(1072, 'adminModarator', 96, 'student', 135, '2020-07-08', '09:07:57'),
+(1073, 'university', 61, 'admin', 97, '2020-07-08', '09:07:08'),
+(1074, 'admin', 97, 'university', 61, '2020-07-08', '09:07:08'),
+(1075, 'university', 62, 'admin', 97, '2020-07-08', '09:07:08'),
+(1076, 'admin', 97, 'university', 62, '2020-07-08', '09:07:08'),
+(1077, 'university', 63, 'admin', 97, '2020-07-08', '09:07:08'),
+(1078, 'admin', 97, 'university', 63, '2020-07-08', '09:07:08'),
+(1079, 'student', 132, 'admin', 97, '2020-07-08', '09:07:08'),
+(1080, 'admin', 97, 'student', 132, '2020-07-08', '09:07:08'),
+(1081, 'student', 133, 'admin', 97, '2020-07-08', '09:07:08'),
+(1082, 'admin', 97, 'student', 133, '2020-07-08', '09:07:08'),
+(1083, 'student', 134, 'admin', 97, '2020-07-08', '09:07:08'),
+(1084, 'admin', 97, 'student', 134, '2020-07-08', '09:07:08'),
+(1085, 'student', 135, 'admin', 97, '2020-07-08', '09:07:09'),
+(1086, 'admin', 97, 'student', 135, '2020-07-08', '09:07:09'),
+(1087, 'student', 132, 'universityModarator', 98, '2020-07-08', '09:07:41'),
+(1088, 'universityModarator', 98, 'student', 132, '2020-07-08', '09:07:41'),
+(1089, 'student', 133, 'universityModarator', 98, '2020-07-08', '09:07:41'),
+(1090, 'universityModarator', 98, 'student', 133, '2020-07-08', '09:07:41'),
+(1091, 'student', 134, 'universityModarator', 98, '2020-07-08', '09:07:41'),
+(1092, 'universityModarator', 98, 'student', 134, '2020-07-08', '09:07:41'),
+(1093, 'student', 135, 'universityModarator', 98, '2020-07-08', '09:07:41'),
+(1094, 'universityModarator', 98, 'student', 135, '2020-07-08', '09:07:41'),
+(1095, 'admin', 71, 'universityModarator', 98, '2020-07-08', '09:07:41'),
+(1096, 'universityModarator', 98, 'admin', 71, '2020-07-08', '09:07:41'),
+(1097, 'adminModarator', 94, 'universityModarator', 98, '2020-07-08', '09:07:42'),
+(1098, 'universityModarator', 98, 'adminModarator', 94, '2020-07-08', '09:07:42'),
+(1099, 'admin', 95, 'universityModarator', 98, '2020-07-08', '09:07:42'),
+(1100, 'universityModarator', 98, 'admin', 95, '2020-07-08', '09:07:42'),
+(1101, 'adminModarator', 96, 'universityModarator', 98, '2020-07-08', '09:07:42'),
+(1102, 'universityModarator', 98, 'adminModarator', 96, '2020-07-08', '09:07:42'),
+(1103, 'admin', 97, 'universityModarator', 98, '2020-07-08', '09:07:42'),
+(1104, 'universityModarator', 98, 'admin', 97, '2020-07-08', '09:07:42'),
+(1105, 'universityModarator', 98, 'universityModarator', 98, '2020-07-08', '09:07:42'),
+(1106, 'universityModarator', 98, 'universityModarator', 98, '2020-07-08', '09:07:42'),
+(1107, 'student', 132, 'universityAdmin', 99, '2020-07-08', '09:07:12'),
+(1108, 'universityAdmin', 99, 'student', 132, '2020-07-08', '09:07:12'),
+(1109, 'student', 133, 'universityAdmin', 99, '2020-07-08', '09:07:12'),
+(1110, 'universityAdmin', 99, 'student', 133, '2020-07-08', '09:07:12'),
+(1111, 'student', 134, 'universityAdmin', 99, '2020-07-08', '09:07:12'),
+(1112, 'universityAdmin', 99, 'student', 134, '2020-07-08', '09:07:12'),
+(1113, 'student', 135, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1114, 'universityAdmin', 99, 'student', 135, '2020-07-08', '09:07:13'),
+(1115, 'admin', 71, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1116, 'universityAdmin', 99, 'admin', 71, '2020-07-08', '09:07:13'),
+(1117, 'adminModarator', 94, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1118, 'universityAdmin', 99, 'adminModarator', 94, '2020-07-08', '09:07:13'),
+(1119, 'admin', 95, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1120, 'universityAdmin', 99, 'admin', 95, '2020-07-08', '09:07:13'),
+(1121, 'adminModarator', 96, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1122, 'universityAdmin', 99, 'adminModarator', 96, '2020-07-08', '09:07:13'),
+(1123, 'admin', 97, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1124, 'universityAdmin', 99, 'admin', 97, '2020-07-08', '09:07:13'),
+(1125, 'universityModarator', 98, 'universityModarator', 99, '2020-07-08', '09:07:13'),
+(1126, 'universityModarator', 99, 'universityModarator', 98, '2020-07-08', '09:07:13'),
+(1127, 'universityAdmin', 99, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1128, 'universityAdmin', 99, 'universityAdmin', 99, '2020-07-08', '09:07:13'),
+(1129, 'student', 132, 'universityModarator', 100, '2020-07-08', '09:07:00'),
+(1130, 'universityModarator', 100, 'student', 132, '2020-07-08', '09:07:00'),
+(1131, 'student', 133, 'universityModarator', 100, '2020-07-08', '09:07:00'),
+(1132, 'universityModarator', 100, 'student', 133, '2020-07-08', '09:07:00'),
+(1133, 'student', 134, 'universityModarator', 100, '2020-07-08', '09:07:00'),
+(1134, 'universityModarator', 100, 'student', 134, '2020-07-08', '09:07:00'),
+(1135, 'student', 135, 'universityModarator', 100, '2020-07-08', '09:07:00'),
+(1136, 'universityModarator', 100, 'student', 135, '2020-07-08', '09:07:00'),
+(1137, 'admin', 71, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1138, 'universityModarator', 100, 'admin', 71, '2020-07-08', '09:07:01'),
+(1139, 'adminModarator', 94, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1140, 'universityModarator', 100, 'adminModarator', 94, '2020-07-08', '09:07:01'),
+(1141, 'admin', 95, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1142, 'universityModarator', 100, 'admin', 95, '2020-07-08', '09:07:01'),
+(1143, 'adminModarator', 96, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1144, 'universityModarator', 100, 'adminModarator', 96, '2020-07-08', '09:07:01'),
+(1145, 'admin', 97, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1146, 'universityModarator', 100, 'admin', 97, '2020-07-08', '09:07:01'),
+(1147, 'universityModarator', 98, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1148, 'universityModarator', 100, 'universityModarator', 98, '2020-07-08', '09:07:01'),
+(1149, 'universityAdmin', 99, 'universityAdmin', 100, '2020-07-08', '09:07:01'),
+(1150, 'universityAdmin', 100, 'universityAdmin', 99, '2020-07-08', '09:07:01'),
+(1151, 'universityModarator', 100, 'universityModarator', 100, '2020-07-08', '09:07:01'),
+(1152, 'universityModarator', 100, 'universityModarator', 100, '2020-07-08', '09:07:01');
 
 -- --------------------------------------------------------
 
@@ -269,11 +363,14 @@ CREATE TABLE `modarator` (
 --
 
 INSERT INTO `modarator` (`morId`, `name`, `uniid`, `adress`, `email`, `pass`, `img`, `status`, `phone`, `types`, `city`, `zip`, `adminId`, `online`) VALUES
-(71, 'Admin', NULL, NULL, 'admin@gmail.com', '1234', 'TradingBG3.jpg', 1, NULL, 'Admin', NULL, NULL, 1, 'offline'),
-(87, 'Kashem', NULL, 'House 29, Rajar Golli Sylhet', 'admin1@gmail.com', '1234', 'adminmodarator1.jpg', 1, '01745610313', 'Modarator', 'Sylhet', '3100', 71, 'Online'),
-(88, 'Badsha', NULL, 'House 29, Rajar Golli Sylhet', 'admin2@gmail.com', '1234', 'adminmodarator1.jpg', 1, '01745610313', 'Admin', 'Sylhet', '3100', 71, 'Online'),
-(89, 'Halima', 52, 'House 29, Rajar Golli Sylhet', 'admin3@gmail.com', '1234', 'universitymodarator.jpg', 0, '+8801745610313', 'Modarator', 'Sylhet', '3100', NULL, 'Online'),
-(90, 'Ashique Abdullah', 52, 'House 29, Rajar Golli Sylhet', 'admi42@gmail.com', '1234', 'universitymodarator.jpg', 0, '+8801745610313', 'Admin', 'Sylhet', '3100', NULL, 'Online');
+(71, 'Main Admin', NULL, NULL, 'admin@gmail.com', '1234', 'emni.jpg', 1, NULL, 'Admin', NULL, NULL, 1, 'online'),
+(94, 'Joshim Khan', NULL, 'House 29, Rajar Golli Sylhet', 'admin1@gmail.com', '1234', 'emni.jpg', 1, '01745610313', 'Modarator', 'Sylhet', '3100', 71, NULL),
+(95, 'Abdull Aziz', NULL, 'House 29, Rajar Golli Sylhet', 'admin2@gmail.com', '1234', 'ke.jpg', 1, '01745610313', 'Admin', 'Sylhet', '3100', 71, NULL),
+(96, 'Kamran Ahmed', NULL, 'House 29, Rajar Golli Sylhet', 'admin3@gmail.com', '1234', 'okay.jpg', 1, '01745610313', 'Modarator', 'Sylhet', '3100', 71, NULL),
+(97, 'Shoaib Ashraf', NULL, 'House 29, Rajar Golli Sylhet', 'admin4@gmail.com', '1234', 'teacer2.webp', 1, '01745610313', 'Admin', 'Sylhet', '3100', 71, NULL),
+(98, 'Kibriya ', 61, 'House 29, Rajar Golli Sylhet', 'mod1@gmail.com', '1234', 'teacher1.jfif', 1, '+8801745610313', 'Modarator', 'Sylhet', '3100', NULL, 'online'),
+(99, 'kawasar Ahmed', 61, 'House 29, Rajar Golli Sylhet', 'mod2@gmail.com', '1234', 'teacer2.webp', 1, '+8801745610313', 'Admin', 'Sylhet', '3100', NULL, 'online'),
+(100, 'Sultan khan', 61, 'House 29, Rajar Golli Sylhet', 'mod3@gmail.com', '1234', 'ke.jpg', 1, '+8801745610313', 'Modarator', 'Sylhet', '3100', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -291,7 +388,7 @@ CREATE TABLE `notice` (
   `statuss` int(11) DEFAULT NULL,
   `whome` varchar(50) DEFAULT NULL,
   `whoAdd` varchar(50) DEFAULT NULL,
-  `noticeMessage` varchar(255) DEFAULT NULL
+  `noticeMessage` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -299,12 +396,9 @@ CREATE TABLE `notice` (
 --
 
 INSERT INTO `notice` (`noticeId`, `noticeTitle`, `file`, `author`, `dates`, `times`, `statuss`, `whome`, `whoAdd`, `noticeMessage`) VALUES
-(81, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:03:37', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(82, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:03:43', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(83, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:03:56', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(84, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:05:27', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(85, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '18', '2020-07-05', '06:06:04', 1, 'Both', 'Admin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(86, 'Yellow Leads Extractor 6.9.0 Patch - Windows Activation Key', '', '26', '2020-07-05', '07:43:43', 0, '0', 'University', 'as');
+(87, 'Admission is going on', 'download.jfif', '71', '2020-07-08', '09:22:08', 1, 'both', 'Admin', 'plows our field. cow dung is a good manure. Shoes, bags, belts are made of its skin. The cow is very useful to us. So, we should take care of her.'),
+(88, 'A car is a vehicle that has wheels', 'Uttora-College-HSC-Admission.jpg', '71', '2020-07-08', '09:21:25', 1, 'Both', 'Admin', 'an cars, and they carry heavier loads. It is hard for anyone today to imagine what life was like before there were cars. Cars and other motor vehicles have made it e'),
+(89, 'It is not only your class that can educate you,', 'unnamed.png', '71', '2020-07-08', '09:23:46', 1, 'Both', 'Admin', 'cation like formal, informal, and non-formal. All of them aim to educate you and change your way of thinking. Academic studies are necessary for us to');
 
 -- --------------------------------------------------------
 
@@ -327,6 +421,14 @@ CREATE TABLE `paymenthistory` (
   `nidOrphone` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `paymenthistory`
+--
+
+INSERT INTO `paymenthistory` (`payId`, `amount`, `phoneN`, `txtId`, `reDate`, `reTime`, `stId`, `statuss`, `method`, `banksrecipt`, `depositname`, `nidOrphone`) VALUES
+(22, 1000, '+8801745610313', 'ADFV48EFG3B', '2020-07-08', '09:41:53', 132, 1, 'Rocket', NULL, NULL, NULL),
+(23, 1000, '01745610313', '145klkjaDSHAJkn', '2020-07-08', '09:42:04', 132, 1, 'Bkash', NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -340,6 +442,16 @@ CREATE TABLE `quota` (
   `soutaseat` int(11) DEFAULT NULL,
   `uid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `quota`
+--
+
+INSERT INTO `quota` (`quotaId`, `quotaName`, `statuss`, `soutaseat`, `uid`) VALUES
+(44, 'Freedom fighter', 1, 10, 52),
+(45, 'Freedom fighter', 1, 10, 58),
+(46, 'Freedom fighter', 1, 10, 61),
+(47, 'Physical Challenge ', 1, 20, 61);
 
 -- --------------------------------------------------------
 
@@ -383,6 +495,17 @@ CREATE TABLE `seet` (
   `statuss` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `seet`
+--
+
+INSERT INTO `seet` (`seatId`, `numberOfSet`, `deptname`, `unitname`, `ubiversityId`, `statuss`) VALUES
+(4, 10, 'CSE', 'A', 52, '1'),
+(5, 10, 'CSE', 'A', 58, '1'),
+(6, 10, 'CSE', 'A', 61, '1'),
+(7, 10, 'IH', 'B', 61, '1'),
+(8, 10, 'PS', 'C', 61, '1');
+
 -- --------------------------------------------------------
 
 --
@@ -410,8 +533,10 @@ CREATE TABLE `student_one` (
 --
 
 INSERT INTO `student_one` (`studentId`, `fname`, `lname`, `dateOfbirth`, `gender`, `phone`, `sscRoll`, `sscRgNumber`, `email`, `pass`, `online`, `hscRoll`, `hscRgNumber`) VALUES
-(111, 'Ashique', 'Abdullah', '2020-07-07', 0, 2147483647, 2147483647, 2147483647, 'ashique@gmail.com', '1234', NULL, 2147483647, 2147483647),
-(112, 'Halima', 'Abdullah', '2020-07-07', 0, 2147483647, 2147483647, 2147483647, 'sidra@gmail.com', '1234', NULL, 2147483647, 2147483647);
+(132, 'Halima ', 'Ashraf', '2020-07-09', 0, 2147483647, 2147483647, 2147483647, 'halima@gmail.com', '1234', 'offline', 2147483647, 2147483647),
+(133, 'Ashique', 'Abdullah', '2020-07-09', 0, 2147483647, 2147483647, 2147483647, 'ashique@gmail.com', '1234', 'offline', 2147483647, 2147483647),
+(134, 'Sidra', 'Ashraf', '2020-07-09', 0, 1765109953, 1234567, 1234567, 'sidra@gmail.com', '1234', 'offline', 1234567, 1234567),
+(135, 'Abdullah', 'Ashique', '2020-07-09', 0, 2147483647, 14545, 14545, 'abdullah@gmail.com', '1234', NULL, 14545, 14545);
 
 -- --------------------------------------------------------
 
@@ -486,8 +611,10 @@ CREATE TABLE `student_two` (
 --
 
 INSERT INTO `student_two` (`student_id`, `nationality`, `placeOfBirthDistrict`, `image`, `married`, `BloodGroup`, `ParmanentAddress`, `ParmanentDivision`, `ParmanentZipCode`, `ParmanentDistrict`, `ParmanentCity`, `fatherName`, `fatherOccipation`, `fatherAddress`, `fatherPhone`, `fatherEmail`, `motherName`, `motherOccipation`, `motherAddress`, `motherPhone`, `motherEmail`, `nameOfLocalGuardian`, `relationshipOfLocalGuardian`, `addressOfLocalGuardian`, `phoneOfLocalGuardian`, `emailOfLocalGuardian`, `emergencyPersonName`, `emergencyPersonRelationshipe`, `emergencyPersonAddress`, `emergencyPersonPhone`, `emergencyPersonEmail`, `personPayTheFeeName`, `personPayTheFeeRealtion`, `personPayTheFeeAddress`, `personPayTheFeePhone`, `personPayTheFeeEmail`, `personPayTheFeeAnnualIncome`, `sat`, `satDate`, `ielts`, `ieltsDate`, `tofel`, `tofelDate`, `gmat`, `gmatDate`, `sscInstituteName`, `sscBordeName`, `sscGpa`, `sscpassingYear`, `sscCertificate`, `hscInstituteName`, `hscBordeName`, `hscGpa`, `hscpassingYear`, `hscCertificate`, `std_one`, `balace`, `satuss`, `hold`) VALUES
-(109, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 111, NULL, 0, NULL),
-(110, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 112, NULL, 0, NULL);
+(130, 'Bangladesh', 'Chittagong', '2.png', 'Married', 'a+', 'House 29, Rajar Golli Sylhet', 'Barisal', '3100', 'Chittagong', 'Sylhet', 'Abdul Malek', 'Abrod', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'Daisy Alther', 'House Wife', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'Ashique Abdullah', 'Father', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'eaadm01@gmail.com', 'Friends ', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'eaadm01@gmail.com', 'Father', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', '1000', '5.5', '2020-07-09', '5.5', '2020-07-09', '5', '2020-07-16', '4', '2020-07-09', 'The Aided High school', 'Sylhet', '5', '2013', 'b44c10ec21fb252e4fe1fc8f7deca2c5.png', 'Sate College Sylhet', 'Sylhet', '5', '2016', 'certificate.png', 132, 1892, 2, 1),
+(131, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 133, NULL, 2, NULL),
+(132, 'Bangladesh', 'Chittagong', '2.png', 'Married', 'a+', 'House 29, Rajar Golli Sylhet', 'Dhaka', '3100', 'Chittagong', 'Sylhet', 'Abdul Malek', 'Abrod', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'Daisy Alther', 'House Wife', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'Ashique Abdullah', 'Father', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'eaadm01@gmail.com', 'Friends ', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', 'eaadm01@gmail.com', 'Father', 'House 29, Rajar Golli Sylhet', '+8801745610313', 'eaadm01@gmail.com', '1000', '5.5', '2020-07-09', 'as', '2020-07-09', '5', '2020-07-09', '4', '2020-07-09', 'The Aided High school', 'Sylhet', '5', '2013', 'certificate.png', 'Sate College Sylhet', 'Sylhet', '5', '2016', 'b44c10ec21fb252e4fe1fc8f7deca2c5.png', 134, NULL, 2, NULL),
+(133, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 135, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -518,6 +645,17 @@ CREATE TABLE `subject` (
   `statuss` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subjectId`, `subjectname`, `subjectMark`, `uid`, `statuss`) VALUES
+(17, 'Bangla', 10, 61, 1),
+(18, 'English ', 20, 61, 1),
+(19, 'Math', 10, 61, 1),
+(20, 'Biology', 20, 61, 1),
+(21, 'Chemistry ', 10, 61, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -543,6 +681,16 @@ CREATE TABLE `unit` (
   `admsFee` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `unit`
+--
+
+INSERT INTO `unit` (`uniId`, `unitName`, `statuss`, `minSSCGpa`, `minHSCGpa`, `TotalGpa`, `sscReguler`, `sscIreg`, `hscReg`, `hscIreg`, `allow`, `examDuration`, `notes`, `universityId`, `groups`, `admsFee`) VALUES
+(7, 'A', 1, 1, 2, 3, 4, 5, 6, 7, '2', '00:00:10', 'asd', 58, 'Science', 1),
+(8, 'A', 1, 3.5, 3.5, 7, 3.5, 3.5, 3.5, 3.5, '2', '00:01:00', 'It is a postgraduate teaching and research university as well as an affiliating university. ', 61, 'Science', 100),
+(9, 'B', 1, 1, 2, 3, 4, 5, 6, 7, '2', '00:01:00', '', 61, 'Commerce & Arch', 1),
+(10, 'C', 1, 7, 7, 7, 7, 7, 7, 7, '2', '01:00:00', '', 61, 'Commerce & Arch', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -555,6 +703,16 @@ CREATE TABLE `unitanddepert` (
   `deptname` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `unitanddepert`
+--
+
+INSERT INTO `unitanddepert` (`unitDeptId`, `unitId`, `deptname`) VALUES
+(6, 8, 'CSE'),
+(7, 9, 'IH'),
+(8, 9, 'BBA'),
+(9, 10, 'IH');
+
 -- --------------------------------------------------------
 
 --
@@ -566,6 +724,17 @@ CREATE TABLE `unitandsubject` (
   `unitId` int(11) DEFAULT NULL,
   `subName` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `unitandsubject`
+--
+
+INSERT INTO `unitandsubject` (`unitSubId`, `unitId`, `subName`) VALUES
+(7, 8, 'English '),
+(8, 8, 'Math'),
+(9, 9, 'Bangla'),
+(10, 9, 'Math'),
+(11, 10, 'English ');
 
 -- --------------------------------------------------------
 
@@ -597,8 +766,9 @@ CREATE TABLE `university` (
 --
 
 INSERT INTO `university` (`universityId`, `universityName`, `universityCode`, `universityImg`, `division`, `city`, `zip`, `pohne`, `email`, `pass`, `statuss`, `hold`, `online`, `lat`, `lng`, `single`) VALUES
-(52, 'North east University Bangladesh', '120', 'neub.jpg', 'Sylhet', 'Sylhet', '3100', '01745610313', 'neub@gmail.com', 'neub', 0, 0, 'offline', 24.8901, 91.861, 'sig.png'),
-(53, 'shahjalal university of science and technology', '120', 'shajalal.jpeg', 'Sylhet', 'Sylhet', '3100', '+8801745610313', 'sust@gmail.com', 'sust', 0, 0, 'offline', 24.9172, 91.8319, 'sig.png');
+(61, 'North East University Bangladesh', '120', 'neub.jpg', 'Sylhet', 'Sylhet', '3100', '+8801745610313', 'neub@gmail.com', '1234', 2, 1, 'offline', 24.8901, 91.861, 'sig.png'),
+(62, 'shahjalal university of science and technology', '120', 'sust.png', 'Sylhet', 'Sylhet', '3100', '+8801745610313', 'sust@gmail.com', '1234', 2, 0, 'offline', 24.9172, 91.8319, 'sig.png'),
+(63, 'Rajshahi University', '120', 'dhaka.jpg', 'Rajshahi', 'Sylhet', '3100', '+8801745610313', 'raj@gmail.com', '1234', 0, 0, 'offline', 24.3683, 88.6376, 'sig.png');
 
 -- --------------------------------------------------------
 
@@ -778,7 +948,7 @@ ALTER TABLE `university_verift`
 -- AUTO_INCREMENT for table `addmisson`
 --
 ALTER TABLE `addmisson`
-  MODIFY `addmissonId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `addmissonId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -790,19 +960,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `chatwith`
 --
 ALTER TABLE `chatwith`
-  MODIFY `chatwithId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `chatwithId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `depertment`
 --
 ALTER TABLE `depertment`
-  MODIFY `depertmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `depertmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `friedns`
 --
 ALTER TABLE `friedns`
-  MODIFY `frinid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=749;
+  MODIFY `frinid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1153;
 
 --
 -- AUTO_INCREMENT for table `information`
@@ -820,25 +990,25 @@ ALTER TABLE `instruction`
 -- AUTO_INCREMENT for table `modarator`
 --
 ALTER TABLE `modarator`
-  MODIFY `morId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `morId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `noticeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `noticeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `paymenthistory`
 --
 ALTER TABLE `paymenthistory`
-  MODIFY `payId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `payId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `quota`
 --
 ALTER TABLE `quota`
-  MODIFY `quotaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `quotaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `requerment`
@@ -856,19 +1026,19 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT for table `seet`
 --
 ALTER TABLE `seet`
-  MODIFY `seatId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `seatId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `student_one`
 --
 ALTER TABLE `student_one`
-  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `student_two`
 --
 ALTER TABLE `student_two`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `student_verift`
@@ -880,31 +1050,31 @@ ALTER TABLE `student_verift`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subjectId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `subjectId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `unit`
 --
 ALTER TABLE `unit`
-  MODIFY `uniId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `uniId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `unitanddepert`
 --
 ALTER TABLE `unitanddepert`
-  MODIFY `unitDeptId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `unitDeptId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `unitandsubject`
 --
 ALTER TABLE `unitandsubject`
-  MODIFY `unitSubId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `unitSubId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `university`
 --
 ALTER TABLE `university`
-  MODIFY `universityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `universityId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `university_verift`
